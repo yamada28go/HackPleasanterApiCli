@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GeneratorConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <InputFiles>
+    <SiteDefinitionFile>Sites.csv</SiteDefinitionFile>
+    <InterfaceDefinitionFile>Interface.csv</InterfaceDefinitionFile>
+    <Encoding>Shift_JIS</Encoding>
+  </InputFiles>
+  <OutputConfig>
+    <OutputDirectory>.\Generated</OutputDirectory>
+    <OutputExtension>cs</OutputExtension>
+    <Encoding>Shift_JIS</Encoding>
+  </OutputConfig>
+  <TemplateFiles>
+    <TemplateService>..\Generator\Templates\CSharp\ServiceTemplate.txt</TemplateService>
+    <TemplateModel>..\Generator\Templates\CSharp\ModelTemplate.txt</TemplateModel>
+    <Encoding>Shift_JIS</Encoding>
+  </TemplateFiles>
+  <CodeConfig>
+    <NameSpace />
+  </CodeConfig>
+</GeneratorConfig>

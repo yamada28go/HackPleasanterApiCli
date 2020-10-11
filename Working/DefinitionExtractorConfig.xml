@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DefinitionExtractorConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <PostgreSQL>
+    <Host>localhost</Host>
+    <Port>5432</Port>
+    <Database>Implem.Pleasanter</Database>
+    <Username>postgres</Username>
+    <Password>mysecretpassword1234</Password>
+  </PostgreSQL>
+  <Output>
+    <SiteDefinitionFile>Sites.csv</SiteDefinitionFile>
+    <InterfaceDefinitionFile>Interface.csv</InterfaceDefinitionFile>
+  </Output>
+</DefinitionExtractorConfig>

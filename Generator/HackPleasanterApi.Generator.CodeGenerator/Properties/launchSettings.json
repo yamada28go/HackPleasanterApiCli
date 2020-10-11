@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "HackPleasanterApi.Generator.CodeGenerator": {
+      "commandName": "Project",
+      "commandLineArgs": "Generate",
+      "workingDirectory": "../../Working"
+    }
+  }
+}

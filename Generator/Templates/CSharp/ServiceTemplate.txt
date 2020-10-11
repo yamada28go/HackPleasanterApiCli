@@ -1,0 +1,29 @@
+﻿using CsharpSamples.Generated.Models;
+using HackPleasanterApi.Client.Api.Service;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+@{
+//コード生成に必要な一時変数をまとめて定義する
+
+  // クラス名
+  string TargetClassName = Model.SiteDefinition.SiteVariableName;
+  // ユーザー拡張要素が定義されたクラス名
+  string ExtensionElementsClassName = TargetClassName + "ExtensionElements"; 
+
+}
+
+namespace CsharpSamples.Generated.Service
+{
+    /// <summary>
+    /// @(Model.SiteDefinition.Title)アクセスサービス
+    /// </summary>
+    class @(Model.SiteDefinition.SiteVariableName+"Service") : ItmeServiceBase<@(TargetClassName),@(TargetClassName).@(ExtensionElementsClassName)>
+    {
+        public @(Model.SiteDefinition.SiteVariableName+"Service")(ServiceConfig config) : base(config, @Model.SiteDefinition.SiteId )
+        {
+        }
+
+    }
+}
