@@ -188,6 +188,8 @@ public class @(ViewRequestClass) : ViewRequest, ColumnFilterHashGenerate
         
         return ret
     }
+
+    // -- 検索条件指定
     
     @* AttachmentsHashの出力定義 *@
     @foreach (var item in Model.ClassifiedInterface.AttachmentsHash) {
@@ -205,7 +207,6 @@ public class @(ViewRequestClass) : ViewRequest, ColumnFilterHashGenerate
         </text>
 
     }
-
 
     @* CheckHashの出力定義 *@
     @foreach (var item in Model.ClassifiedInterface.CheckHash) {
@@ -287,20 +288,89 @@ public class @(ViewRequestClass) : ViewRequest, ColumnFilterHashGenerate
 
     }
 
+    // -- ソートオーダーの指定
 
-    
-    
-    // 要素A用のソートキー
-    public class DescriptionA_ColumnSorterKey : ColumnSorterKey{
+    // AttachmentsHash は未対応
+
+
+   @* CheckHashの出力定義 *@
+    @foreach (var item in Model.ClassifiedInterface.CheckHash) {
+
+        <text>
+            // @(item.VariableName)用のソート条件
+            public class @(item.VariableName)_ColumnSorterKey : ColumnSorterKey{
         
-        public init(        // 対象ソート種別
-            ColumnSorterType : ColumnSorterType
-        ) {
-            super.init( DescriptionName : "DescriptionA", ColumnSorterType : ColumnSorterType )
-        }
+                public init( ColumnSorterType : ColumnSorterType) {
+                    super.init( DescriptionName : "@(item.ColumnName)", ColumnSorterType : ColumnSorterType )
+                }
         
+            }
+        </text>
+
     }
-    
+
+    @* ClassHashの出力定義 *@
+    @foreach (var item in Model.ClassifiedInterface.ClassHash) {
+
+         <text>
+            // @(item.VariableName)用のソート条件
+            public class @(item.VariableName)_ColumnSorterKey : ColumnSorterKey{
+        
+                public init( ColumnSorterType : ColumnSorterType) {
+                    super.init( DescriptionName : "@(item.ColumnName)", ColumnSorterType : ColumnSorterType )
+                }
+        
+            }
+        </text>
+
+    }
+
+    @* DateHashの出力定義 *@
+    @foreach (var item in Model.ClassifiedInterface.DateHash) {
+
+        <text>
+            // @(item.VariableName)用のソート条件
+            public class @(item.VariableName)_ColumnSorterKey : ColumnSorterKey{
+        
+                public init( ColumnSorterType : ColumnSorterType) {
+                    super.init( DescriptionName : "@(item.ColumnName)", ColumnSorterType : ColumnSorterType )
+                }
+        
+            }
+        </text>
+
+    }
+
+    @* DescriptionHashの出力定義 *@
+    @foreach (var item in Model.ClassifiedInterface.DescriptionHash) {
+
+        <text>
+            // @(item.VariableName)用のソート条件
+            public class @(item.VariableName)_ColumnSorterKey : ColumnSorterKey{
+        
+                public init( ColumnSorterType : ColumnSorterType) {
+                    super.init( DescriptionName : "@(item.ColumnName)", ColumnSorterType : ColumnSorterType )
+                }
+        
+            }
+        </text>
+
+    }
+
+    @* NumHashの出力定義 *@
+    @foreach (var item in Model.ClassifiedInterface.NumHash) {
+
+         <text>
+            // @(item.VariableName)用のソート条件
+            public class @(item.VariableName)_ColumnSorterKey : ColumnSorterKey{
+        
+                public init( ColumnSorterType : ColumnSorterType) {
+                    super.init( DescriptionName : "@(item.ColumnName)", ColumnSorterType : ColumnSorterType )
+                }
+        
+            }
+        </text>
+    }   
     
 }
 
