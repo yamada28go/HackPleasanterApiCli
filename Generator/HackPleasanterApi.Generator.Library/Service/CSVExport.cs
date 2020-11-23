@@ -66,6 +66,10 @@ namespace HackPleasanterApi.Generator.Library.Service
             write<SiteDefinition, SiteDefinitionMap>(sites, filePath);
         }
 
+        public void WriteSiteDefinition(IEnumerable<SiteDefinition> models, string filePath) {
+            write<SiteDefinition, SiteDefinitionMap>(models, filePath);
+        }
+
         /// <summary>
         /// TSV形式でエクスポートする
         /// </summary>
@@ -76,6 +80,11 @@ namespace HackPleasanterApi.Generator.Library.Service
             // エクスポート可能な形式へ変換する
             var el = Convert(models);
             write<InterfaceDefinition, InterfaceDefinitionMap>(el, filePath);
+        }
+
+        public void WriteInterfaceDefinition(IEnumerable<InterfaceDefinition> models, string filePath)
+        {
+            write<InterfaceDefinition, SiteDefinitionMap>(models, filePath);
         }
 
         /// <summary>
