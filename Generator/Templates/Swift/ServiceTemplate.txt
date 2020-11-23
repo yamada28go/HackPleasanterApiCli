@@ -1,0 +1,393 @@
+@{
+//コード生成に必要な一時変数をまとめて定義する
+
+  // クラス名
+  string TargetClassName = Model.SiteDefinition.SiteVariableName;
+
+  // データクラス名称
+  string TargetDataClass = TargetClassName + "_ItemElement";
+
+  // 検索定義用データクラス名
+  string ViewRequestClass = TargetClassName + "_ViewRequest";
+
+  // レスポンスクラス名定義
+  string ResponseClass = TargetClassName + "_Response";
+
+  // サービスクラス名定義
+  string ServiceClass = TargetClassName + "_Service";
+
+}
+
+//
+//  @(Model.SiteDefinition.SiteVariableName)Service.swift
+//  
+//  [注意]
+//  自動生成されたコードです。
+//  手動で変更しないように注意してください。
+//　　
+//  Created on @(Model.GeneratedDate)
+//
+
+import Foundation
+import Alamofire
+import Combine
+
+// 検索処理応答結果
+public class @(ResponseClass) : ItemResponseBase< @(TargetDataClass) > , Equatable
+{
+    // 要素比較
+    public static func == (lhs: @(ResponseClass), rhs: @(ResponseClass) ) -> Bool {
+        return true;
+    }
+}
+
+// 検索リクエストクエリ
+public class @(ViewRequestClass) : ViewRequest, ColumnFilterHashGenerate
+{
+    
+    public override init(){
+        
+        super.init()
+        initElements()
+        
+        // 検索条件指定のために指定する
+        derived = self
+    }
+    
+    private func initElements(){
+        
+        // -- -- --
+        // Generator 自動生成項目
+
+            @* AttachmentsHashの出力定義 *@
+            @foreach (var item in Model.ClassifiedInterface.AttachmentsHash) {
+
+              <text>
+                // 現時点では未対応
+                //_@(item.VariableName)  = StringFindKey(  DescriptionName: "@(item.ColumnName)" )
+              </text>
+
+            }
+
+            @* CheckHashの出力定義 *@
+            @foreach (var item in Model.ClassifiedInterface.CheckHash) {
+
+              <text>
+                _@(item.VariableName)  = BoolFindKey (  DescriptionName: "@(item.ColumnName)" )
+              </text>
+
+            }
+
+            @* ClassHashの出力定義 *@
+            @foreach (var item in Model.ClassifiedInterface.ClassHash) {
+
+              <text>
+                _@(item.VariableName)  = StringFindKey(  DescriptionName: "@(item.ColumnName)" )
+              </text>
+
+            }
+
+            @* DateHashの出力定義 *@
+            @foreach (var item in Model.ClassifiedInterface.DateHash) {
+
+              <text>
+                _@(item.VariableName)  = DateFindKey (  DescriptionName: "@(item.ColumnName)" )
+              </text>
+
+            }
+
+            @* DescriptionHashの出力定義 *@
+            @foreach (var item in Model.ClassifiedInterface.DescriptionHash) {
+
+              <text>
+                _@(item.VariableName)  = StringFindKey(  DescriptionName: "@(item.ColumnName)" )
+              </text>
+
+            }
+
+            @* NumHashの出力定義 *@
+            @foreach (var item in Model.ClassifiedInterface.NumHash) {
+
+              <text>
+                _@(item.VariableName)  = NumberFindKey (  DescriptionName: "@(item.ColumnName)" )
+              </text>
+
+            }
+
+
+        // Generator 自動生成項目
+        // -- -- --
+        
+    }
+    
+    public func ColumnFilterHashGenerate() -> [String:String] {
+        
+        var ret = [String:String] ()
+        
+        // 各種設定の値を貼っていく
+
+
+            @* AttachmentsHashの出力定義 *@
+            @foreach (var item in Model.ClassifiedInterface.AttachmentsHash) {
+
+              <text>
+                // 現時点では未対応
+                //@(item.VariableName).Merge(hash: &ret)
+              </text>
+
+            }
+
+            @* CheckHashの出力定義 *@
+            @foreach (var item in Model.ClassifiedInterface.CheckHash) {
+
+              <text>
+                _@(item.VariableName).Merge(hash: &ret)
+              </text>
+
+            }
+
+            @* ClassHashの出力定義 *@
+            @foreach (var item in Model.ClassifiedInterface.ClassHash) {
+
+              <text>
+                _@(item.VariableName).Merge(hash: &ret)
+              </text>
+
+            }
+
+            @* DateHashの出力定義 *@
+            @foreach (var item in Model.ClassifiedInterface.DateHash) {
+
+              <text>
+                _@(item.VariableName).Merge(hash: &ret)
+              </text>
+
+            }
+
+            @* DescriptionHashの出力定義 *@
+            @foreach (var item in Model.ClassifiedInterface.DescriptionHash) {
+
+              <text>
+                _@(item.VariableName).Merge(hash: &ret)
+              </text>
+
+            }
+
+            @* NumHashの出力定義 *@
+            @foreach (var item in Model.ClassifiedInterface.NumHash) {
+
+              <text>
+                _@(item.VariableName).Merge(hash: &ret)
+              </text>
+
+            }
+
+
+        // Generator 自動生成項目
+        // -- -- --
+        
+        return ret
+    }
+
+    // -- 検索条件指定
+    
+    @* AttachmentsHashの出力定義 *@
+    @foreach (var item in Model.ClassifiedInterface.AttachmentsHash) {
+
+        <text>
+         // 未対応
+         //private _@(item.VariableName) : StringFindKey?
+
+         // @(item.LabelText) 項目 検索条件
+         //public var @(item.VariableName) : StringFindKey{
+         //   get{
+         //       _@(item.VariableName)!
+         //   }
+        //}
+        </text>
+
+    }
+
+    @* CheckHashの出力定義 *@
+    @foreach (var item in Model.ClassifiedInterface.CheckHash) {
+
+        <text>
+         private _@(item.VariableName) : BoolFindKey?
+
+         // @(item.LabelText) 項目 検索条件
+         public var @(item.VariableName) : BoolFindKey{
+            get{
+                _@(item.VariableName)!
+            }
+        }
+        </text>
+
+    }
+
+    @* ClassHashの出力定義 *@
+    @foreach (var item in Model.ClassifiedInterface.ClassHash) {
+
+        <text>
+         private _@(item.VariableName) : StringFindKey?
+
+         // @(item.LabelText) 項目 検索条件
+         public var @(item.VariableName) : StringFindKey{
+            get{
+                _@(item.VariableName)!
+            }
+        }
+        </text>
+
+    }
+
+    @* DateHashの出力定義 *@
+    @foreach (var item in Model.ClassifiedInterface.DateHash) {
+
+        <text>
+         private _@(item.VariableName) : DateFindKey?
+
+         // @(item.LabelText) 項目 検索条件
+         public var @(item.VariableName) : DateFindKey{
+            get{
+                _@(item.VariableName)!
+            }
+        }
+        </text>
+
+    }
+
+    @* DescriptionHashの出力定義 *@
+    @foreach (var item in Model.ClassifiedInterface.DescriptionHash) {
+
+        <text>
+         private _@(item.VariableName) : StringFindKey?
+
+         // @(item.LabelText) 項目 検索条件
+         public var @(item.VariableName) : StringFindKey{
+            get{
+                _@(item.VariableName)!
+            }
+        }
+        </text>
+
+    }
+
+    @* NumHashの出力定義 *@
+    @foreach (var item in Model.ClassifiedInterface.NumHash) {
+
+        <text>
+         private _@(item.VariableName) : NumberFindKey?
+
+         // @(item.LabelText) 項目 検索条件
+         public var @(item.VariableName) : NumberFindKey{
+            get{
+                _@(item.VariableName)!
+            }
+        }
+        </text>
+
+    }
+
+    // -- ソートオーダーの指定
+
+    // AttachmentsHash は未対応
+
+
+   @* CheckHashの出力定義 *@
+    @foreach (var item in Model.ClassifiedInterface.CheckHash) {
+
+        <text>
+            // @(item.VariableName)用のソート条件
+            public class @(item.VariableName)_ColumnSorterKey : ColumnSorterKey{
+        
+                public init( ColumnSorterType : ColumnSorterType) {
+                    super.init( DescriptionName : "@(item.ColumnName)", ColumnSorterType : ColumnSorterType )
+                }
+        
+            }
+        </text>
+
+    }
+
+    @* ClassHashの出力定義 *@
+    @foreach (var item in Model.ClassifiedInterface.ClassHash) {
+
+         <text>
+            // @(item.VariableName)用のソート条件
+            public class @(item.VariableName)_ColumnSorterKey : ColumnSorterKey{
+        
+                public init( ColumnSorterType : ColumnSorterType) {
+                    super.init( DescriptionName : "@(item.ColumnName)", ColumnSorterType : ColumnSorterType )
+                }
+        
+            }
+        </text>
+
+    }
+
+    @* DateHashの出力定義 *@
+    @foreach (var item in Model.ClassifiedInterface.DateHash) {
+
+        <text>
+            // @(item.VariableName)用のソート条件
+            public class @(item.VariableName)_ColumnSorterKey : ColumnSorterKey{
+        
+                public init( ColumnSorterType : ColumnSorterType) {
+                    super.init( DescriptionName : "@(item.ColumnName)", ColumnSorterType : ColumnSorterType )
+                }
+        
+            }
+        </text>
+
+    }
+
+    @* DescriptionHashの出力定義 *@
+    @foreach (var item in Model.ClassifiedInterface.DescriptionHash) {
+
+        <text>
+            // @(item.VariableName)用のソート条件
+            public class @(item.VariableName)_ColumnSorterKey : ColumnSorterKey{
+        
+                public init( ColumnSorterType : ColumnSorterType) {
+                    super.init( DescriptionName : "@(item.ColumnName)", ColumnSorterType : ColumnSorterType )
+                }
+        
+            }
+        </text>
+
+    }
+
+    @* NumHashの出力定義 *@
+    @foreach (var item in Model.ClassifiedInterface.NumHash) {
+
+         <text>
+            // @(item.VariableName)用のソート条件
+            public class @(item.VariableName)_ColumnSorterKey : ColumnSorterKey{
+        
+                public init( ColumnSorterType : ColumnSorterType) {
+                    super.init( DescriptionName : "@(item.ColumnName)", ColumnSorterType : ColumnSorterType )
+                }
+        
+            }
+        </text>
+    }   
+    
+}
+
+
+/// サービスオブジェクト
+public class @(ServiceClass) : ItmeServiceBase< @(TargetDataClass) , @(ResponseClass) >{
+    
+    //イニシャライザ
+    public init(ServiceConfig : ServiceConfig ){
+        super.init(ServiceConfig: ServiceConfig, SiteId: 95)
+    }
+    
+    // 単体アイテム取得結果の戻り値の型を指定する
+    public typealias GetItem_@(ResponseClass) = ItemApiResults< @(TargetDataClass),SingleItemResponse<@(TargetDataClass)> >
+    
+    // 複数アイテムの検索結果
+    public typealias FindItem_@(ResponseClass) = ItemApiResults< @(TargetDataClass),MultipleItemResponse<@(TargetDataClass)> >
+    
+    
+}

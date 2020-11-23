@@ -1,0 +1,227 @@
+@{
+//コード生成に必要な一時変数をまとめて定義する
+
+  // クラス名
+  string TargetClassName = Model.SiteDefinition.SiteVariableName;
+
+}
+
+//
+//  @(Model.SiteDefinition.SiteVariableName).swift
+//  
+//  [注意]
+//  自動生成されたコードです。
+//  手動で変更しないように注意してください。
+//　　
+//  Created on @(Model.GeneratedDate)
+//
+
+import Foundation
+import Alamofire
+import Combine
+
+// 
+public class @(TargetClassName)_ItemElement : PleasanterItem
+{
+    // API経由で実行されて指定されるタイプ
+    required init(rawItem : ItemRawData){
+        
+        super.init(rawItem : rawItem)
+        
+    }
+    
+    // クライアントサイドで値を初期化した場合、
+    // 生データを保持する保有者が変えてしまう。
+    // そこで、このポインタに一時的に保持しておく
+    private var itemRawData_HoldPtr : ItemRawData?
+    
+    // クライアントで初期化されるタイプ
+    public required init(){
+        itemRawData_HoldPtr = ItemRawData()
+        super.init(rawItem : itemRawData_HoldPtr!)
+    }
+    
+    
+    // -- -- --
+    // Generator 自動生成項目
+    
+
+    @* AttachmentsHashの出力定義 *@
+    @foreach (var item in Model.ClassifiedInterface.AttachmentsHash) {
+
+        <text>
+        // @(item.LabelText) 項目
+        public var @item.VariableName: AttachmentsHashType? {
+         get {
+                // 値の返却
+                if let d = rawItem.AttachmentsHash {
+                    if let v = d.@item.ColumnName{
+                        return v
+                    }
+                }
+                return nil
+            }
+         set {
+                // 値の設定
+                if let d = rawItem.AttachmentsHash {
+                    d.@item.VariableName = newValue
+                }else{
+                    rawItem.AttachmentsHash = AttachmentsHashType()
+                    rawItem.AttachmentsHash?.@item.ColumnName = newValue
+                }
+             }
+
+         </text>
+
+   }
+
+    @* CheckHashの出力定義 *@
+    @foreach (var item in Model.ClassifiedInterface.CheckHash) {
+
+        <text>
+        // @(item.LabelText) 項目
+        public var @item.VariableName: Bool? {
+         get {
+                // 値の返却
+                if let d = rawItem.CheckHash {
+                    if let v = d.@item.ColumnName{
+                        return v
+                    }
+                }
+                return nil
+            }
+         set {
+                // 値の設定
+                if let d = rawItem.CheckHash {
+                    d.@item.ColumnName = newValue
+                }else{
+                    rawItem.CheckHash = CheckHashType()
+                    rawItem.CheckHash?.@item.ColumnName = newValue
+                }
+             }
+
+         </text>
+
+   }
+
+    @* ClassHashの出力定義 *@
+    @foreach (var item in Model.ClassifiedInterface.ClassHash) {
+
+        <text>
+        // @(item.LabelText) 項目
+        public var @item.VariableName: String? {
+         get {
+                // 値の返却
+                if let d = rawItem.DescriptionHash {
+                    if let v = d.@item.ColumnName{
+                        return v
+                    }
+                }
+                return nil
+            }
+         set {
+                // 値の設定
+                if let d = rawItem.DescriptionHash {
+                    d.@item.ColumnName = newValue
+                }else{
+                    rawItem.DescriptionHash = DescriptionHashType()
+                    rawItem.DescriptionHash?.@item.ColumnName = newValue
+                }
+         }
+       </text>
+
+    }
+
+    @* DateHashの出力定義 *@
+    @foreach (var item in Model.ClassifiedInterface.DateHash) {
+
+        <text>
+        // @(item.LabelText) 項目
+        public var @item.VariableName: Date? {
+         get {
+                // 値の返却
+                if let d = rawItem.DateHash {
+                    if let v = d.@item.ColumnName{
+                        return v
+                    }
+                }
+                return nil
+            }
+         set {
+                // 値の設定
+                if let d = rawItem.DateHash {
+                    d.@item.ColumnName = newValue
+                }else{
+                    rawItem.DateHash = DateHashType()
+                    rawItem.DateHash?.@item.ColumnName = newValue
+                }
+         }
+       </text>
+
+    }
+
+
+    @* DescriptionHashの出力定義 *@
+    @foreach (var item in Model.ClassifiedInterface.DescriptionHash) {
+
+        <text>
+        // @(item.LabelText) 項目
+        public var @item.VariableName: String? {
+         get {
+                // 値の返却
+                if let d = rawItem.DescriptionHash {
+                    if let v = d.@item.ColumnName{
+                        return v
+                    }
+                }
+                return nil
+            }
+         set {
+                // 値の設定
+                if let d = rawItem.DescriptionHash {
+                    d.@item.ColumnName = newValue
+                }else{
+                    rawItem.DescriptionHash = DescriptionHashType()
+                    rawItem.DescriptionHash?.@item.ColumnName = newValue
+                }
+         }
+       </text>
+
+    }
+
+    @* NumHashの出力定義 *@
+    @foreach (var item in Model.ClassifiedInterface.NumHash) {
+
+        <text>
+        // @(item.LabelText) 項目
+        public var @item.VariableName: Decimal? {
+         get {
+                // 値の返却
+                if let d = rawItem.NumHash {
+                    if let v = d.@item.ColumnName{
+                        return v
+                    }
+                }
+                return nil
+            }
+         set {
+                // 値の設定
+                if let d = rawItem.NumHash {
+                    d.@item.VariableName = newValue
+                }else{
+                    rawItem.ColumnName = NumHashType()
+                    rawItem.NumHash?.@item.ColumnName = newValue
+                }
+         }
+       </text>
+
+    }
+
+
+    
+    // Generator 自動生成項目
+    // -- -- --
+    
+}
+
+

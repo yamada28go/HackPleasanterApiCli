@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "HackPleasanterApi.Generator.JsonDefinitionExtractor": {
+      "commandName": "Project",
+      "commandLineArgs": "Export"
+    }
+  }
+}
