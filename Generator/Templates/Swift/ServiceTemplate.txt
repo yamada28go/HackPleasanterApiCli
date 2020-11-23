@@ -1,0 +1,158 @@
+@{
+//コード生成に必要な一時変数をまとめて定義する
+
+  // クラス名
+  string TargetClassName = Model.SiteDefinition.SiteVariableName;
+
+  // データクラス名称
+  string TargetDataClass = TargetClassName + "_ItemElement";
+
+  // 検索定義用データクラス名
+  string ViewRequestClass = TargetClassName + "_ViewRequest";
+
+  // レスポンスクラス名定義
+  string ResponseClass = TargetClassName + "_Response";
+
+  // サービスクラス名定義
+  string ServiceClass = TargetClassName + "_Service";
+
+}
+
+//
+//  @(Model.SiteDefinition.SiteVariableName)Service.swift
+//  
+//  [注意]
+//  自動生成されたコードです。
+//  手動で変更しないように注意してください。
+//　　
+//  Created on @(Model.GeneratedDate)
+//
+
+import Foundation
+import Alamofire
+import Combine
+
+// 検索処理応答結果
+public class @(ResponseClass) : ItemResponseBase< @(TargetDataClass) > , Equatable
+{
+    // 要素比較
+    public static func == (lhs: @(ResponseClass), rhs: @(ResponseClass) ) -> Bool {
+        return true;
+    }
+}
+
+// 検索リクエストクエリ
+public class @(ViewRequestClass) : ViewRequest, ColumnFilterHashGenerate
+{
+    
+    public override init(){
+        
+        super.init()
+        initElements()
+        
+        // 検索条件指定のために指定する
+        derived = self
+    }
+    
+    private func initElements(){
+        
+        // -- -- --
+        // Generator 自動生成項目
+
+        // 以下自動手生成
+        _DescriptionA  = StringFindKey(  DescriptionName: "DescriptionA" )
+        
+        _ClassA  = StringFindKey(  DescriptionName: "ClassA" )
+        _NumA  = NumberFindKey(  DescriptionName: "NumA" )
+        _CheckA  = BoolFindKey(  DescriptionName: "CheckA" )
+        _DateA  = DateFindKey(  DescriptionName: "DateA" )
+
+
+        // Generator 自動生成項目
+        // -- -- --
+        
+    }
+    
+    public func ColumnFilterHashGenerate() -> [String:String] {
+        
+        var ret = [String:String] ()
+        
+        // 各種設定の値を貼っていく
+        //        DescriptionA.Merge(hash: &ret)
+        ClassA.Merge(hash: &ret)
+        NumA.Merge(hash: &ret)
+        CheckA.Merge(hash: &ret)
+        DateA.Merge(hash: &ret)
+        
+        return ret
+    }
+    
+    
+    // 初期化の順序の関係で内部的にはnilの状態を許容する
+    private var _DescriptionA : StringFindKey?
+    public var DescriptionA : StringFindKey{
+        get{
+            _DescriptionA!
+        }
+    }
+    
+    private var _ClassA : StringFindKey?
+    public var ClassA : StringFindKey{
+        get{
+            _ClassA!
+        }
+    }
+    
+    private var _NumA : NumberFindKey?
+    public var NumA : NumberFindKey{
+        get{
+            _NumA!
+        }
+    }
+    
+    private var _CheckA : BoolFindKey?
+    public var CheckA : BoolFindKey{
+        get{
+            _CheckA!
+        }
+    }
+    
+    private var _DateA : DateFindKey?
+    public var DateA : DateFindKey{
+        get{
+            _DateA!
+        }
+    }
+    
+    
+    // 要素A用のソートキー
+    public class DescriptionA_ColumnSorterKey : ColumnSorterKey{
+        
+        public init(        // 対象ソート種別
+            ColumnSorterType : ColumnSorterType
+        ) {
+            super.init( DescriptionName : "DescriptionA", ColumnSorterType : ColumnSorterType )
+        }
+        
+    }
+    
+    
+}
+
+
+/// サービスオブジェクト
+public class @(ServiceClass) : ItmeServiceBase< @(TargetDataClass) , @(ResponseClass) >{
+    
+    //イニシャライザ
+    public init(ServiceConfig : ServiceConfig ){
+        super.init(ServiceConfig: ServiceConfig, SiteId: 95)
+    }
+    
+    // 単体アイテム取得結果の戻り値の型を指定する
+    public typealias GetItem_@(ResponseClass) = ItemApiResults< @(TargetDataClass),SingleItemResponse<@(TargetDataClass)> >
+    
+    // 複数アイテムの検索結果
+    public typealias FindItem_@(ResponseClass) = ItemApiResults< @(TargetDataClass),MultipleItemResponse<@(TargetDataClass)> >
+    
+    
+}

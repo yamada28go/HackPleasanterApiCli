@@ -94,6 +94,11 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Models
         /// </summary>
         public ClassifiedInterface ClassifiedInterface;
 
+        /// <summary>
+        /// コード生成日
+        /// </summary>
+        public string GeneratedDate = DateTime.Now.ToShortDateString();
+
 
     }
 }
