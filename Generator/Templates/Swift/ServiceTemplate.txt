@@ -5,7 +5,7 @@
   string TargetClassName = Model.SiteDefinition.SiteVariableName;
 
   // データクラス名称
-  string TargetDataClass = TargetClassName + "_ItemElement";
+  string TargetDataClass = TargetClassName + "_Model";
 
   // 検索定義用データクラス名
   string ViewRequestClass = TargetClassName + "_ViewRequest";

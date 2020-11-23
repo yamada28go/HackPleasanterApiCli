@@ -21,7 +21,7 @@ import Alamofire
 import Combine
 
 // 
-public class @(TargetClassName)_ItemElement : PleasanterItem
+public class @(TargetClassName)_Model : PleasanterItem
 {
     // API経由で実行されて指定されるタイプ
     required init(rawItem : ItemRawData){
