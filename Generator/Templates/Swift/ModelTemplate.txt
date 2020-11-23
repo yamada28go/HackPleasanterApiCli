@@ -50,11 +50,12 @@ public class @(TargetClassName)_ItemElement : PleasanterItem
     @foreach (var item in Model.ClassifiedInterface.AttachmentsHash) {
 
         <text>
+        // @(item.LabelText) 項目
         public var @item.VariableName: AttachmentsHashType? {
          get {
                 // 値の返却
                 if let d = rawItem.AttachmentsHash {
-                    if let v = d.@item.VariableName{
+                    if let v = d.@item.ColumnName{
                         return v
                     }
                 }
@@ -66,7 +67,7 @@ public class @(TargetClassName)_ItemElement : PleasanterItem
                     d.@item.VariableName = newValue
                 }else{
                     rawItem.AttachmentsHash = AttachmentsHashType()
-                    rawItem.AttachmentsHash?.@item.VariableName = newValue
+                    rawItem.AttachmentsHash?.@item.ColumnName = newValue
                 }
              }
 
@@ -78,11 +79,12 @@ public class @(TargetClassName)_ItemElement : PleasanterItem
     @foreach (var item in Model.ClassifiedInterface.CheckHash) {
 
         <text>
+        // @(item.LabelText) 項目
         public var @item.VariableName: Bool? {
          get {
                 // 値の返却
                 if let d = rawItem.CheckHash {
-                    if let v = d.@item.VariableName{
+                    if let v = d.@item.ColumnName{
                         return v
                     }
                 }
@@ -91,10 +93,10 @@ public class @(TargetClassName)_ItemElement : PleasanterItem
          set {
                 // 値の設定
                 if let d = rawItem.CheckHash {
-                    d.@item.VariableName = newValue
+                    d.@item.ColumnName = newValue
                 }else{
                     rawItem.CheckHash = CheckHashType()
-                    rawItem.CheckHash?.@item.VariableName = newValue
+                    rawItem.CheckHash?.@item.ColumnName = newValue
                 }
              }
 
@@ -106,11 +108,12 @@ public class @(TargetClassName)_ItemElement : PleasanterItem
     @foreach (var item in Model.ClassifiedInterface.ClassHash) {
 
         <text>
+        // @(item.LabelText) 項目
         public var @item.VariableName: String? {
          get {
                 // 値の返却
                 if let d = rawItem.DescriptionHash {
-                    if let v = d.@item.VariableName{
+                    if let v = d.@item.ColumnName{
                         return v
                     }
                 }
@@ -119,10 +122,10 @@ public class @(TargetClassName)_ItemElement : PleasanterItem
          set {
                 // 値の設定
                 if let d = rawItem.DescriptionHash {
-                    d.@item.VariableName = newValue
+                    d.@item.ColumnName = newValue
                 }else{
                     rawItem.DescriptionHash = DescriptionHashType()
-                    rawItem.DescriptionHash?.@item.VariableName = newValue
+                    rawItem.DescriptionHash?.@item.ColumnName = newValue
                 }
          }
        </text>
@@ -133,11 +136,12 @@ public class @(TargetClassName)_ItemElement : PleasanterItem
     @foreach (var item in Model.ClassifiedInterface.DateHash) {
 
         <text>
+        // @(item.LabelText) 項目
         public var @item.VariableName: Date? {
          get {
                 // 値の返却
                 if let d = rawItem.DateHash {
-                    if let v = d.@item.VariableName{
+                    if let v = d.@item.ColumnName{
                         return v
                     }
                 }
@@ -146,10 +150,10 @@ public class @(TargetClassName)_ItemElement : PleasanterItem
          set {
                 // 値の設定
                 if let d = rawItem.DateHash {
-                    d.@item.VariableName = newValue
+                    d.@item.ColumnName = newValue
                 }else{
                     rawItem.DateHash = DateHashType()
-                    rawItem.DateHash?.@item.VariableName = newValue
+                    rawItem.DateHash?.@item.ColumnName = newValue
                 }
          }
        </text>
@@ -161,11 +165,12 @@ public class @(TargetClassName)_ItemElement : PleasanterItem
     @foreach (var item in Model.ClassifiedInterface.DescriptionHash) {
 
         <text>
+        // @(item.LabelText) 項目
         public var @item.VariableName: String? {
          get {
                 // 値の返却
                 if let d = rawItem.DescriptionHash {
-                    if let v = d.@item.VariableName{
+                    if let v = d.@item.ColumnName{
                         return v
                     }
                 }
@@ -174,10 +179,10 @@ public class @(TargetClassName)_ItemElement : PleasanterItem
          set {
                 // 値の設定
                 if let d = rawItem.DescriptionHash {
-                    d.@item.VariableName = newValue
+                    d.@item.ColumnName = newValue
                 }else{
                     rawItem.DescriptionHash = DescriptionHashType()
-                    rawItem.DescriptionHash?.@item.VariableName = newValue
+                    rawItem.DescriptionHash?.@item.ColumnName = newValue
                 }
          }
        </text>
@@ -188,11 +193,12 @@ public class @(TargetClassName)_ItemElement : PleasanterItem
     @foreach (var item in Model.ClassifiedInterface.NumHash) {
 
         <text>
+        // @(item.LabelText) 項目
         public var @item.VariableName: Decimal? {
          get {
                 // 値の返却
                 if let d = rawItem.NumHash {
-                    if let v = d.@item.VariableName{
+                    if let v = d.@item.ColumnName{
                         return v
                     }
                 }
@@ -203,8 +209,8 @@ public class @(TargetClassName)_ItemElement : PleasanterItem
                 if let d = rawItem.NumHash {
                     d.@item.VariableName = newValue
                 }else{
-                    rawItem.NumHash = NumHashType()
-                    rawItem.NumHash?.@item.VariableName = newValue
+                    rawItem.ColumnName = NumHashType()
+                    rawItem.NumHash?.@item.ColumnName = newValue
                 }
          }
        </text>
