@@ -39,11 +39,6 @@ namespace HackPleasanterApi.Generator.Library.Models.CSV
         #region ユーザーがTSV上で指定する項目
 
         /// <summary>
-        /// API変換した後のオブジェクト名
-        /// </summary>
-        public string ObjectName { get; set; }
-
-        /// <summary>
         /// 新たに指定する変数名
         /// </summary>
         public string VariableName { get; set; }
