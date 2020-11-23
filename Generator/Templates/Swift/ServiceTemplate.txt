@@ -198,7 +198,7 @@ public class @(ViewRequestClass) : ViewRequest, ColumnFilterHashGenerate
          // 未対応
          //private _@(item.VariableName) : StringFindKey?
 
-         // @(item.LabelText) 項目 検索条件
+         // @Raw(item.LabelText) 項目 検索条件
          //public var @(item.VariableName) : StringFindKey{
          //   get{
          //       _@(item.VariableName)!
@@ -214,7 +214,7 @@ public class @(ViewRequestClass) : ViewRequest, ColumnFilterHashGenerate
         <text>
          private _@(item.VariableName) : BoolFindKey?
 
-         // @(item.LabelText) 項目 検索条件
+         // @Raw(item.LabelText) 項目 検索条件
          public var @(item.VariableName) : BoolFindKey{
             get{
                 _@(item.VariableName)!
@@ -230,7 +230,7 @@ public class @(ViewRequestClass) : ViewRequest, ColumnFilterHashGenerate
         <text>
          private _@(item.VariableName) : StringFindKey?
 
-         // @(item.LabelText) 項目 検索条件
+         // @Raw(item.LabelText) 項目 検索条件
          public var @(item.VariableName) : StringFindKey{
             get{
                 _@(item.VariableName)!
@@ -246,7 +246,7 @@ public class @(ViewRequestClass) : ViewRequest, ColumnFilterHashGenerate
         <text>
          private _@(item.VariableName) : DateFindKey?
 
-         // @(item.LabelText) 項目 検索条件
+         // @Raw(item.LabelText) 項目 検索条件
          public var @(item.VariableName) : DateFindKey{
             get{
                 _@(item.VariableName)!
@@ -262,7 +262,7 @@ public class @(ViewRequestClass) : ViewRequest, ColumnFilterHashGenerate
         <text>
          private _@(item.VariableName) : StringFindKey?
 
-         // @(item.LabelText) 項目 検索条件
+         // @Raw(item.LabelText) 項目 検索条件
          public var @(item.VariableName) : StringFindKey{
             get{
                 _@(item.VariableName)!
@@ -278,7 +278,7 @@ public class @(ViewRequestClass) : ViewRequest, ColumnFilterHashGenerate
         <text>
          private _@(item.VariableName) : NumberFindKey?
 
-         // @(item.LabelText) 項目 検索条件
+         // @Raw(item.LabelText) 項目 検索条件
          public var @(item.VariableName) : NumberFindKey{
             get{
                 _@(item.VariableName)!

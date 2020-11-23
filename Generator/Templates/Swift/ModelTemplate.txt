@@ -50,7 +50,7 @@ public class @(TargetClassName)_ItemElement : PleasanterItem
     @foreach (var item in Model.ClassifiedInterface.AttachmentsHash) {
 
         <text>
-        // @(item.LabelText) 項目
+        // @Raw(item.LabelText) 項目
         public var @item.VariableName: AttachmentsHashType? {
          get {
                 // 値の返却
@@ -79,7 +79,7 @@ public class @(TargetClassName)_ItemElement : PleasanterItem
     @foreach (var item in Model.ClassifiedInterface.CheckHash) {
 
         <text>
-        // @(item.LabelText) 項目
+        // @Raw(item.LabelText) 項目
         public var @item.VariableName: Bool? {
          get {
                 // 値の返却
@@ -108,7 +108,7 @@ public class @(TargetClassName)_ItemElement : PleasanterItem
     @foreach (var item in Model.ClassifiedInterface.ClassHash) {
 
         <text>
-        // @(item.LabelText) 項目
+        // @Raw(item.LabelText)  項目
         public var @item.VariableName: String? {
          get {
                 // 値の返却
@@ -136,7 +136,7 @@ public class @(TargetClassName)_ItemElement : PleasanterItem
     @foreach (var item in Model.ClassifiedInterface.DateHash) {
 
         <text>
-        // @(item.LabelText) 項目
+        // @Raw(item.LabelText)  項目
         public var @item.VariableName: Date? {
          get {
                 // 値の返却
@@ -165,7 +165,7 @@ public class @(TargetClassName)_ItemElement : PleasanterItem
     @foreach (var item in Model.ClassifiedInterface.DescriptionHash) {
 
         <text>
-        // @(item.LabelText) 項目
+        // @Raw(item.LabelText) 項目
         public var @item.VariableName: String? {
          get {
                 // 値の返却
@@ -193,7 +193,7 @@ public class @(TargetClassName)_ItemElement : PleasanterItem
     @foreach (var item in Model.ClassifiedInterface.NumHash) {
 
         <text>
-        // @(item.LabelText) 項目
+        // @Raw(item.LabelText) 項目
         public var @item.VariableName: Decimal? {
          get {
                 // 値の返却
