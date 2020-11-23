@@ -1,7 +1,6 @@
 ﻿using HackPleasanterApi.Generator.CodeGenerator.Configs;
 using HackPleasanterApi.Generator.CodeGenerator.Models;
-using RazorEngine;
-using RazorEngine.Templating;
+using RazorLight;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -101,6 +100,55 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Generators
             /// </summary>
             public class Generation
             {
+
+                /// <summary>
+                /// テンプレートファイル展開を行う
+                /// </summary>
+                /// <param name="TemplateString"></param>
+                /// <param name="info"></param>
+                /// <returns></returns>
+                public static string TemplateExpansion(
+                    string TemplateKey,
+                    string TemplateString,
+                    SiteInfos info)
+                {
+                    // NetCoreへの対応状況により
+                    // 以下ライブラリに差し替えする
+                    // https://github.com/toddams/RazorLight
+
+
+                    // ToDo 
+                    // 暫定で一番簡単な方法で実装する。
+                    // 別途パフォーマンス調整の方法があるハズ
+                    var engine = new RazorLightEngineBuilder()
+                        // required to have a default RazorLightProject type,
+                        // but not required to create a template from string.
+                        .UseEmbeddedResourcesProject(typeof(Program))
+                        .UseMemoryCachingProvider()
+                        .Build();
+
+                    var result = engine.CompileRenderStringAsync(TemplateKey, TemplateString, info);
+
+                    result.Wait();
+
+                    var cacheResult = engine.Handler.Cache.RetrieveTemplate(TemplateKey);
+                    if (cacheResult.Success)
+                    {
+                        var templatePage = cacheResult.Template.TemplatePageFactory();
+                        var tresult = engine.RenderTemplateAsync(templatePage, info);
+
+                        tresult.Wait();
+
+                        var v = tresult.Result;
+
+                        return v;
+
+                    }
+
+                    return "";
+                }
+
+
                 /// <summary>
                 /// サービス定義を生成する
                 /// </summary>
@@ -113,8 +161,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Generators
                     OutputPathInfo outPath,
                     SiteInfos s)
                 {
-                    var result =
-                        Engine.Razor.RunCompile(ServiceTemplate, "ServiceTemplate", typeof(SiteInfos), s);
+                    var result = TemplateExpansion("ServiceTemplate",ServiceTemplate,s);
                     {
                         // 文字コードを指定
                         System.Text.Encoding enc = System.Text.Encoding.GetEncoding(config.OutputConfig.Encoding);
@@ -144,8 +191,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Generators
                     OutputPathInfo outPath,
                     SiteInfos s)
                 {
-                    var result =
-                        Engine.Razor.RunCompile(ModelTemplate, "ModelTemplateKey", typeof(SiteInfos), s);
+                    var result = TemplateExpansion("ModelTemplateKey", ModelTemplate, s);
                     {
                         // 文字コードを指定
                         System.Text.Encoding enc = System.Text.Encoding.GetEncoding(config.OutputConfig.Encoding);
