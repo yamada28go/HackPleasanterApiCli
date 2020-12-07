@@ -5,7 +5,6 @@
   string TargetClassName = Model.SiteDefinition.SiteVariableName;
 
 }
-
 //
 //  @(Model.SiteDefinition.SiteVariableName).swift
 //  
@@ -70,6 +69,7 @@ public class @(TargetClassName)_Model : PleasanterItem
                     rawItem.AttachmentsHash?.@item.ColumnName = newValue
                 }
              }
+         }
 
          </text>
 
@@ -99,6 +99,7 @@ public class @(TargetClassName)_Model : PleasanterItem
                     rawItem.CheckHash?.@item.ColumnName = newValue
                 }
              }
+         }
 
          </text>
 
@@ -112,7 +113,7 @@ public class @(TargetClassName)_Model : PleasanterItem
         public var @item.VariableName: String? {
          get {
                 // 値の返却
-                if let d = rawItem.DescriptionHash {
+                if let d = rawItem.ClassHash {
                     if let v = d.@item.ColumnName{
                         return v
                     }
@@ -121,12 +122,13 @@ public class @(TargetClassName)_Model : PleasanterItem
             }
          set {
                 // 値の設定
-                if let d = rawItem.DescriptionHash {
+                if let d = rawItem.ClassHash {
                     d.@item.ColumnName = newValue
                 }else{
-                    rawItem.DescriptionHash = DescriptionHashType()
-                    rawItem.DescriptionHash?.@item.ColumnName = newValue
+                    rawItem.ClassHash = ClassHashType()
+                    rawItem.ClassHash?.@item.ColumnName = newValue
                 }
+            }
          }
        </text>
 
@@ -155,6 +157,7 @@ public class @(TargetClassName)_Model : PleasanterItem
                     rawItem.DateHash = DateHashType()
                     rawItem.DateHash?.@item.ColumnName = newValue
                 }
+            }
          }
        </text>
 
@@ -184,6 +187,7 @@ public class @(TargetClassName)_Model : PleasanterItem
                     rawItem.DescriptionHash = DescriptionHashType()
                     rawItem.DescriptionHash?.@item.ColumnName = newValue
                 }
+            }
          }
        </text>
 
@@ -207,11 +211,12 @@ public class @(TargetClassName)_Model : PleasanterItem
          set {
                 // 値の設定
                 if let d = rawItem.NumHash {
-                    d.@item.VariableName = newValue
+                    d.@item.ColumnName = newValue
                 }else{
-                    rawItem.ColumnName = NumHashType()
+                    rawItem.NumHash = NumHashType()
                     rawItem.NumHash?.@item.ColumnName = newValue
                 }
+            }
          }
        </text>
 

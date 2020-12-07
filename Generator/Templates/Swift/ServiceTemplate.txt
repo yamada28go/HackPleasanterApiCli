@@ -17,7 +17,6 @@
   string ServiceClass = TargetClassName + "_Service";
 
 }
-
 //
 //  @(Model.SiteDefinition.SiteVariableName)Service.swift
 //  
@@ -141,7 +140,7 @@ public class @(ViewRequestClass) : ViewRequest, ColumnFilterHashGenerate
             @foreach (var item in Model.ClassifiedInterface.CheckHash) {
 
               <text>
-                _@(item.VariableName).Merge(hash: &ret)
+                @(item.VariableName).Merge(hash: &ret)
               </text>
 
             }
@@ -150,7 +149,7 @@ public class @(ViewRequestClass) : ViewRequest, ColumnFilterHashGenerate
             @foreach (var item in Model.ClassifiedInterface.ClassHash) {
 
               <text>
-                _@(item.VariableName).Merge(hash: &ret)
+                @(item.VariableName).Merge(hash: &ret)
               </text>
 
             }
@@ -159,7 +158,7 @@ public class @(ViewRequestClass) : ViewRequest, ColumnFilterHashGenerate
             @foreach (var item in Model.ClassifiedInterface.DateHash) {
 
               <text>
-                _@(item.VariableName).Merge(hash: &ret)
+                @(item.VariableName).Merge(hash: &ret)
               </text>
 
             }
@@ -168,7 +167,7 @@ public class @(ViewRequestClass) : ViewRequest, ColumnFilterHashGenerate
             @foreach (var item in Model.ClassifiedInterface.DescriptionHash) {
 
               <text>
-                _@(item.VariableName).Merge(hash: &ret)
+                @(item.VariableName).Merge(hash: &ret)
               </text>
 
             }
@@ -177,7 +176,7 @@ public class @(ViewRequestClass) : ViewRequest, ColumnFilterHashGenerate
             @foreach (var item in Model.ClassifiedInterface.NumHash) {
 
               <text>
-                _@(item.VariableName).Merge(hash: &ret)
+                @(item.VariableName).Merge(hash: &ret)
               </text>
 
             }
@@ -196,7 +195,7 @@ public class @(ViewRequestClass) : ViewRequest, ColumnFilterHashGenerate
 
         <text>
          // 未対応
-         //private _@(item.VariableName) : StringFindKey?
+         //private var _@(item.VariableName) : StringFindKey?
 
          // @Raw(item.LabelText) 項目 検索条件
          //public var @(item.VariableName) : StringFindKey{
@@ -212,7 +211,7 @@ public class @(ViewRequestClass) : ViewRequest, ColumnFilterHashGenerate
     @foreach (var item in Model.ClassifiedInterface.CheckHash) {
 
         <text>
-         private _@(item.VariableName) : BoolFindKey?
+         private var _@(item.VariableName) : BoolFindKey?
 
          // @Raw(item.LabelText) 項目 検索条件
          public var @(item.VariableName) : BoolFindKey{
@@ -228,7 +227,7 @@ public class @(ViewRequestClass) : ViewRequest, ColumnFilterHashGenerate
     @foreach (var item in Model.ClassifiedInterface.ClassHash) {
 
         <text>
-         private _@(item.VariableName) : StringFindKey?
+         private  var _@(item.VariableName) : StringFindKey?
 
          // @Raw(item.LabelText) 項目 検索条件
          public var @(item.VariableName) : StringFindKey{
@@ -244,7 +243,7 @@ public class @(ViewRequestClass) : ViewRequest, ColumnFilterHashGenerate
     @foreach (var item in Model.ClassifiedInterface.DateHash) {
 
         <text>
-         private _@(item.VariableName) : DateFindKey?
+         private  var _@(item.VariableName) : DateFindKey?
 
          // @Raw(item.LabelText) 項目 検索条件
          public var @(item.VariableName) : DateFindKey{
@@ -260,7 +259,7 @@ public class @(ViewRequestClass) : ViewRequest, ColumnFilterHashGenerate
     @foreach (var item in Model.ClassifiedInterface.DescriptionHash) {
 
         <text>
-         private _@(item.VariableName) : StringFindKey?
+         private  var _@(item.VariableName) : StringFindKey?
 
          // @Raw(item.LabelText) 項目 検索条件
          public var @(item.VariableName) : StringFindKey{
@@ -276,7 +275,7 @@ public class @(ViewRequestClass) : ViewRequest, ColumnFilterHashGenerate
     @foreach (var item in Model.ClassifiedInterface.NumHash) {
 
         <text>
-         private _@(item.VariableName) : NumberFindKey?
+         private  var _@(item.VariableName) : NumberFindKey?
 
          // @Raw(item.LabelText) 項目 検索条件
          public var @(item.VariableName) : NumberFindKey{
@@ -380,7 +379,7 @@ public class @(ServiceClass) : ItmeServiceBase< @(TargetDataClass) , @(ResponseC
     
     //イニシャライザ
     public init(ServiceConfig : ServiceConfig ){
-        super.init(ServiceConfig: ServiceConfig, SiteId: 95)
+        super.init(ServiceConfig: ServiceConfig, SiteId: @(Model.SiteDefinition.SiteId))
     }
     
     // 単体アイテム取得結果の戻り値の型を指定する
