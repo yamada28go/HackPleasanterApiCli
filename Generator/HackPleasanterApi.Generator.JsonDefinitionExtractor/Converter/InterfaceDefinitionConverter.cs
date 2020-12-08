@@ -37,7 +37,9 @@ namespace HackPleasanterApi.Generator.JsonDefinitionExtractor.Converter
                         SiteId = x.SiteId,
                         Title = x.Title,
                         ColumnName = e.ColumnName,
-                        LabelText = e.LabelText
+                        LabelText = e.LabelText,
+                        Description = e.Description,
+                        ValidateRequired = e.ValidateRequired                        
                     };
                 });
             })
