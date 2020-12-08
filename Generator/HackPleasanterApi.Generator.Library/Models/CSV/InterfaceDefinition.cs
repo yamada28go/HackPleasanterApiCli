@@ -18,6 +18,18 @@ namespace HackPleasanterApi.Generator.Library.Models.CSV
         public long ParentId { get; set; }
         public long InheritPermission { get; set; }
 
+        /// <summary>
+        /// 説明文字列
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
+        /// 必須レコード
+        /// </summary>
+        public bool? ValidateRequired { get; set; }
+
+
+
         #endregion
 
         #region カラム毎の値

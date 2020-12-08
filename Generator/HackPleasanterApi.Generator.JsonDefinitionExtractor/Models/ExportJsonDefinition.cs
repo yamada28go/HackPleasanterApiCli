@@ -86,6 +86,16 @@ namespace HackPleasanterApi.Generator.JsonDefinitionExtractor.Models
         {
             public string ColumnName { get; set; }
             public string LabelText { get; set; }
+
+            /// <summary>
+            /// 説明文字列
+            /// </summary>
+            public string Description { get; set; }
+
+            /// <summary>
+            /// 必須レコード
+            /// </summary>
+            public bool? ValidateRequired { get; set; }
         }
 
         public class Permission
