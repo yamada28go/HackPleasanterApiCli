@@ -113,21 +113,83 @@ namespace HackPleasanterApi.Client.Api.Service
                 // API呼び出しを実行
                 var targetData = await response.Content.ReadAsAsync<ItemApiResults<SingleItemResponse>>();
 
-                var ps = targetData.Response.Data.Select(e =>
-                {
-                    var t = new DataType();
-                    t.rawData = e;
-                    return t;
-                });
-
-                // 取れてくるのは1個だけなので
-                return ps.FirstOrDefault();
+                return null;
 
             }
 
             return null;
 
+
         }
+
+        /// <summary>
+        /// アイテムを一括削除する
+        /// </summary>
+        /// <param name="itemID"></param>
+        /// <returns></returns>
+        public async Task<DeleteAllItemsResponse> DeleteALL(DeleteAllItemsRequest req = null)
+        {
+            var r = new DeleteAllItemsRequest();
+            r.ApiKey = serviceConfig.ApiKey;
+            r.ApiVersion = serviceConfig.ApiVersion;
+
+            r.View = new View();
+
+            HttpResponseMessage response = await client.PostAsJsonAsync($"/api/items/{SiteId}/bulkdelete", r);
+            if (response.IsSuccessStatusCode)
+            {
+                // API呼び出しを実行
+                var targetData = await response.Content.ReadAsAsync<DeleteAllItemsResponse>();
+                return targetData;
+            }
+
+            return null;
+
+
+        }
+
+        public async Task<CreateItemResponse> CreateItem(DataType data)
+        {
+            var r = this.Mapper.Map<CreateItemRequest>(data.rawData);
+            r.ApiKey = this.serviceConfig.ApiKey;
+
+            HttpResponseMessage response = await client.PostAsJsonAsync($"pleasanter/api/items/{SiteId}/create", r);
+            if (response.IsSuccessStatusCode)
+            {
+                // API呼び出しを実行
+                var targetData = await response.Content.ReadAsAsync<CreateItemResponse>();
+
+                return targetData;
+            }
+
+            return null;
+
+        }
+
+        /// <summary>
+        /// アイテム情報更新
+        /// </summary>
+        /// <param name="itemID"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public async Task<CreateItemResponse> UpdateItem(long itemID, DataType data)
+        {
+            var r = this.Mapper.Map<CreateItemRequest>(data.rawData);
+            r.ApiKey = this.serviceConfig.ApiKey;
+
+            HttpResponseMessage response = await client.PostAsJsonAsync($"pleasanter/api/items/{itemID}/update", r);
+            if (response.IsSuccessStatusCode)
+            {
+                // API呼び出しを実行
+                var targetData = await response.Content.ReadAsAsync<CreateItemResponse>();
+
+                return targetData;
+            }
+
+            return null;
+
+        }
+
 
 
     }
