@@ -21,22 +21,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace HackPleasanterApi.Client.Api.Service
+namespace HackPleasanterApi.Client.Api.Response.ResponseData.Item
 {
-    public class ServiceConfig
+    public class DeleteAllItemsResponse
     {
-        /// <summary>
-        /// 対象となるAPI
-        /// </summary>
-        public Uri uri;
+        public int Id { get; set; }
+        public int StatusCode { get; set; }
+        public string Message { get; set; }
 
-        /// <summary>
-        /// APIバージョン
-        /// </summary>
-        public string ApiVersion;
-        /// <summary>
-        /// アクセス用APIキー
-        /// </summary>
-        public string ApiKey;
     }
 }

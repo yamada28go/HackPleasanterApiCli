@@ -17,26 +17,24 @@
  * under the License.
  * */
 
+using HackPleasanterApi.Client.Api.Models.ItemModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace HackPleasanterApi.Client.Api.Service
+namespace HackPleasanterApi.Client.Api.Response.ResponseData.Item
 {
-    public class ServiceConfig
-    {
-        /// <summary>
-        /// 対象となるAPI
-        /// </summary>
-        public Uri uri;
+    /// <summary>
+    /// 生成結果オブジェクト
+    /// </summary>
 
-        /// <summary>
-        /// APIバージョン
-        /// </summary>
-        public string ApiVersion;
-        /// <summary>
-        /// アクセス用APIキー
-        /// </summary>
-        public string ApiKey;
+    public class CreateItemResponse
+    {
+        public long Id { get; set; }
+        public int StatusCode { get; set; }
+        public int LimitPerDate { get; set; }
+        public int LimitRemaining { get; set; }
+        public string Message { get; set; }
     }
+
 }

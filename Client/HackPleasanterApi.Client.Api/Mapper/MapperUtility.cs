@@ -17,26 +17,33 @@
  * under the License.
  * */
 
+using AutoMapper;
+using HackPleasanterApi.Client.Api.Models.ItemModel;
+using HackPleasanterApi.Client.Api.Request;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace HackPleasanterApi.Client.Api.Service
+namespace HackPleasanterApi.Client.Api.Mapper
 {
-    public class ServiceConfig
+    class MapperUtility
     {
-        /// <summary>
-        /// 対象となるAPI
-        /// </summary>
-        public Uri uri;
 
         /// <summary>
-        /// APIバージョン
+        /// データ変換用のマッパーを生成する
         /// </summary>
-        public string ApiVersion;
-        /// <summary>
-        /// アクセス用APIキー
-        /// </summary>
-        public string ApiKey;
+        /// <returns></returns>
+        public static IMapper GetMapper()
+        {
+            // Mapするモデルの設定
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<ItemRawData, CreateItemRequest>();
+            });
+            // Mapperを作成
+            var mapper = config.CreateMapper();
+            return mapper;
+        }
+
     }
 }

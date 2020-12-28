@@ -21,22 +21,19 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace HackPleasanterApi.Client.Api.Service
+namespace HackPleasanterApi.Client.Api.Request
 {
-    public class ServiceConfig
+    /// <summary>
+    /// 全データ削除リクエスト
+    /// </summary>
+    public class DeleteAllItemsRequest : RequestBase
     {
         /// <summary>
-        /// 対象となるAPI
+        /// 物理消去する
         /// </summary>
-        public Uri uri;
+        public bool PhysicalDelete = false;
 
-        /// <summary>
-        /// APIバージョン
-        /// </summary>
-        public string ApiVersion;
-        /// <summary>
-        /// アクセス用APIキー
-        /// </summary>
-        public string ApiKey;
+
+        public View View;
     }
 }

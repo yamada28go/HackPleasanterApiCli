@@ -21,8 +21,24 @@ namespace CsharpSamples.Generated.Service
     /// </summary>
     class @(Model.SiteDefinition.SiteVariableName+"Service") : ItmeServiceBase<@(TargetClassName),@(TargetClassName).@(ExtensionElementsClassName)>
     {
-        public @(Model.SiteDefinition.SiteVariableName+"Service")(ServiceConfig config) : base(config, @Model.SiteDefinition.SiteId )
+        /// <summary>
+        /// サイトID
+        /// </summary>
+        private static readonly long SITE_ID_CONSTANT = @(Model.SiteDefinition.SiteId);
+
+
+        public @(Model.SiteDefinition.SiteVariableName+"Service")(ServiceConfig config) : base(config, SITE_ID_CONSTANT )
         {
+        }
+
+
+        /// <summary>
+        /// サイトIdを取得する
+        /// </summary>
+        /// <returns></returns>
+        public static long GetSiteId()
+        {
+            return SITE_ID_CONSTANT ;
         }
 
     }
