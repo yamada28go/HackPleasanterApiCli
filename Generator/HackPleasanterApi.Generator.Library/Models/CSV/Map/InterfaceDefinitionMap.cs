@@ -34,11 +34,12 @@ namespace HackPleasanterApi.Generator.Library.Models.CSV.Map
             Map(c => c.ParentId).Index(2);
             Map(c => c.InheritPermission).Index(3);
             Map(c => c.ColumnName).Index(4);
-            Map(c => c.LabelText).Index(5);
-            Map(c => c.VariableName).Index(6);
-            Map(c => c.IsTarget).Index(7);
-            Map(c => c.Description).Index(8);
-            Map(c => c.ValidateRequired).Index(8);
+            Map(c => c.ValidateRequired).Index(5);
+            Map(c => c.Description).Index(6);
+            Map(c => c.LabelText).Index(7);
+            Map(c => c.VariableName).Index(8);
+            Map(c => c.IsTarget).Index(9);
+
         }
 
 
