@@ -1,4 +1,4 @@
-@{
+﻿@{
 //コード生成に必要な一時変数をまとめて定義する
 
   // クラス名
@@ -14,6 +14,8 @@
 //　　
 //  Created on @(Model.GeneratedDate)
 //
+import HackPleasanterApi_Swift
+
 
 import Foundation
 import Alamofire
