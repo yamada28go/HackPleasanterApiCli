@@ -19,6 +19,7 @@ SELECT
   "SiteId"
   , "UpdatedTime"
   , "ResultId"
+  , "ResultId" as "@(TargetViewName)Id"
   , "Ver"
   , "Title"
   , "Body"
