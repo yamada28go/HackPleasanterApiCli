@@ -39,6 +39,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Swift", "Swift", "{D895C6AF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PostgreSQLView", "PostgreSQLView", "{49C9C5FC-2CB1-4164-B47B-6D0717C7787E}"
 	ProjectSection(SolutionItems) = preProject
+		Generator\Templates\PostgreSQLView\CodeGeneratorConfig.xml = Generator\Templates\PostgreSQLView\CodeGeneratorConfig.xml
 		Generator\Templates\PostgreSQLView\CreateViewTemplate.txt = Generator\Templates\PostgreSQLView\CreateViewTemplate.txt
 		Generator\Templates\PostgreSQLView\DropViewTemplate.txt = Generator\Templates\PostgreSQLView\DropViewTemplate.txt
 	EndProjectSection

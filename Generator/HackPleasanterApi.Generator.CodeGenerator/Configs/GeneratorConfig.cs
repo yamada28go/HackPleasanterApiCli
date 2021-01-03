@@ -76,9 +76,14 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Configs
                 public string OutputSubdirectoryName { get; set; }
 
                 /// <summary>
-                /// 出力プレフィックス名
+                /// 出力プレフィックス　先頭部分
                 /// </summary>
-                public string PrefixName { get; set; }
+                public string HeadPrefix { get; set; }
+
+                /// <summary>
+                /// 出力プレフィックス　末尾部分
+                /// </summary>
+                public string EndPrefix { get; set; }
 
                 /// <summary>
                 /// 出力ファイル拡張子

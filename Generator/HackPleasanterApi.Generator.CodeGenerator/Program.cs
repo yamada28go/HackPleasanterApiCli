@@ -142,7 +142,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator
                             new GeneratorConfig.Definition.TemplateFiles
                             {
                                 OutputSubdirectoryName = "Services",
-                                PrefixName ="Service",
+                                HeadPrefix ="Service",
                                 TemplateFileName = @"..\Generator\Templates\CSharp\ServiceTemplate.txt",
                                 Encoding = "Shift_JIS",
                                 OutputExtension = @"cs",
@@ -150,7 +150,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator
                             new GeneratorConfig.Definition.TemplateFiles
                             {
                                 OutputSubdirectoryName = "Models",
-                                PrefixName ="Model",
+                                HeadPrefix ="Model",
                                 TemplateFileName = @"..\Generator\Templates\CSharp\ModelTemplate.txt",
                                 Encoding = "Shift_JIS",
                                 OutputExtension = @"cs",

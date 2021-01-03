@@ -169,6 +169,8 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Generators
                     OutputPathInfo outPath,
                     SiteInfos s)
                 {
+                    // 内部でテンプレートの出力設定を参照できるように書き換える
+                    s.TemplateFilesConfig = config;
                     var result = TemplateExpansion(config.TemplateFileName, templateSteing, s);
                     {
                         // 文字コードを指定
@@ -176,7 +178,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Generators
 
                         // 出力ファイル名
                         var outFileName = Path.Combine(outPath.ServicePath,
-                            $"{s.SiteDefinition.SiteVariableName}{config.PrefixName}.{config.OutputExtension}");
+                            $"{config.HeadPrefix}{s.SiteDefinition.SiteVariableName}{config.EndPrefix}.{config.OutputExtension}");
                         // ファイルを開く
                         using (StreamWriter writer = new StreamWriter(outFileName, false, enc))
                         {

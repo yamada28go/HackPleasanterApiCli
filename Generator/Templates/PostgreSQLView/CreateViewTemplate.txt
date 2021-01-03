@@ -2,7 +2,7 @@
 //コード生成に必要な一時変数をまとめて定義する
 
   // VIEW名称
-  string TargetViewName = Model.SiteDefinition.SiteVariableName;
+  string TargetViewName = Model.TemplateFilesConfig.HeadPrefix + Model.SiteDefinition.SiteVariableName + Model.TemplateFilesConfig.EndPrefix;
 }
 
 --  [注意]

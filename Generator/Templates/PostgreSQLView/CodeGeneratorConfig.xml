@@ -12,15 +12,17 @@
     <TemplateFiles>
       <TemplateFileName>..\Generator\Templates\PostgreSQLView\CreateViewTemplate.txt</TemplateFileName>
       <OutputSubdirectoryName>CreateView</OutputSubdirectoryName>
-      <PrefixName>CreateView</PrefixName>
-      <OutputExtension>text</OutputExtension>
+      <HeadPrefix>_</HeadPrefix>
+      <EndPrefix>_TempView</EndPrefix>
+      <OutputExtension>txt</OutputExtension>
       <Encoding>Shift_JIS</Encoding>
     </TemplateFiles>
     <TemplateFiles>
       <TemplateFileName>..\Generator\Templates\PostgreSQLView\DropViewTemplate.txt</TemplateFileName>
       <OutputSubdirectoryName>DropView</OutputSubdirectoryName>
-      <PrefixName>DropView</PrefixName>
-      <OutputExtension>text</OutputExtension>
+      <HeadPrefix>_</HeadPrefix>
+      <EndPrefix>_TempView</EndPrefix>
+      <OutputExtension>txt</OutputExtension>
       <Encoding>Shift_JIS</Encoding>
     </TemplateFiles>
   </TemplateFiles>
