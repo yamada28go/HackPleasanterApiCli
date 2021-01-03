@@ -8,10 +8,10 @@
 --  [注意]
 --  自動生成されたコードです。
 --  変更時には十分注意して変更してください。
---　　
+--
 --  Created on @(Model.GeneratedDate)
 
--- @(Model.SiteDefinition.Title) ビュー
+-- @Raw(Model.SiteDefinition.Title) ビュー
 DROP VIEW IF EXISTS @(TargetViewName); 
 
 CREATE VIEW @(TargetViewName) as 
@@ -31,28 +31,28 @@ SELECT
     @* AttachmentsHashの出力定義 *@
     @foreach (var item in Model.ClassifiedInterface.AttachmentsHash) {
         <text>
-              , "@item.ColumnName" as "@item.VariableName" -- @item.LabelText
+              , "@item.ColumnName" as "@item.VariableName" -- @Raw(item.LabelText)
          </text>
    }
 
     @* CheckHashの出力定義 *@
     @foreach (var item in Model.ClassifiedInterface.CheckHash) {
         <text>
-              , "@item.ColumnName" as "@item.VariableName" -- @item.LabelText 
+              , "@item.ColumnName" as "@item.VariableName" -- @Raw(item.LabelText)
          </text>
    }
 
     @* ClassHashの出力定義 *@
     @foreach (var item in Model.ClassifiedInterface.ClassHash) {
          <text>
-              , "@item.ColumnName" as "@item.VariableName" -- @item.LabelText
+              , "@item.ColumnName" as "@item.VariableName" -- @Raw(item.LabelText)
          </text>
     }
 
     @* DateHashの出力定義 *@
     @foreach (var item in Model.ClassifiedInterface.DateHash) {
          <text>
-              , "@item.ColumnName" as "@item.VariableName" -- @item.LabelText
+              , "@item.ColumnName" as "@item.VariableName" -- @Raw(item.LabelText)
          </text>
     }
 
@@ -60,14 +60,14 @@ SELECT
     @* DescriptionHashの出力定義 *@
     @foreach (var item in Model.ClassifiedInterface.DescriptionHash) {
          <text>
-              , "@item.ColumnName" as "@item.VariableName" -- @item.LabelText
+              , "@item.ColumnName" as "@item.VariableName" -- @Raw(item.LabelText)
          </text>
     }
 
     @* NumHashの出力定義 *@
     @foreach (var item in Model.ClassifiedInterface.NumHash) {
          <text>
-              , "@item.ColumnName" as "@item.VariableName" -- @item.LabelText
+              , "@item.ColumnName" as "@item.VariableName" -- @Raw(item.LabelText)
          </text>
     }
 

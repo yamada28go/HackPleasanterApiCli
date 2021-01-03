@@ -8,9 +8,9 @@
 --  [注意]
 --  自動生成されたコードです。
 --  変更時には十分注意して変更してください。
---　　
+--
 --  Created on @(Model.GeneratedDate)
 
--- @(Model.SiteDefinition.Title) ビュー
+-- @Raw(Model.SiteDefinition.Title) ビュー
 DROP VIEW IF EXISTS @(TargetViewName); 
 
