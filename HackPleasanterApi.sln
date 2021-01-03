@@ -23,6 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSharp", "CSharp", "{A4D31250-884E-4BED-B184-9BFC005D5FE5}"
 	ProjectSection(SolutionItems) = preProject
+		Generator\Templates\CSharp\CodeGeneratorConfig.xml = Generator\Templates\CSharp\CodeGeneratorConfig.xml
 		Generator\Templates\CSharp\ModelTemplate.txt = Generator\Templates\CSharp\ModelTemplate.txt
 		Generator\Templates\CSharp\ServiceTemplate.txt = Generator\Templates\CSharp\ServiceTemplate.txt
 	EndProjectSection
@@ -33,6 +34,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HackPleasanterApi.Generator
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Swift", "Swift", "{D895C6AF-A61D-4886-8869-37B46386B945}"
 	ProjectSection(SolutionItems) = preProject
+		Generator\Templates\Swift\CodeGeneratorConfig.xml = Generator\Templates\Swift\CodeGeneratorConfig.xml
 		Generator\Templates\Swift\ModelTemplate.txt = Generator\Templates\Swift\ModelTemplate.txt
 		Generator\Templates\Swift\ServiceTemplate.txt = Generator\Templates\Swift\ServiceTemplate.txt
 	EndProjectSection
