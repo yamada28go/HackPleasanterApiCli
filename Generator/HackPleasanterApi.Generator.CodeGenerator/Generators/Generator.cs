@@ -137,7 +137,6 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Generators
                         .Build();
 
                     var result = engine.CompileRenderStringAsync(TemplateKey, TemplateString, info);
-
                     result.Wait();
 
                     var cacheResult = engine.Handler.Cache.RetrieveTemplate(TemplateKey);
@@ -159,17 +158,18 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Generators
 
 
                 /// <summary>
-                /// サービス定義を生成する
+                /// コード定義を生成する
                 /// </summary>
                 /// <param name="config"></param>
                 /// <param name="ServiceTemplate"></param>
                 /// <param name="outPath"></param>
                 /// <param name="s"></param>
-                public static void Service(GeneratorConfig.Definition.TemplateFiles config,
+                public static void DoCodeGeneration(GeneratorConfig.Definition.TemplateFiles config,
+                    string templateSteing ,
                     OutputPathInfo outPath,
                     SiteInfos s)
                 {
-                    var result = TemplateExpansion("ServiceTemplate", config.TemplateFileName, s);
+                    var result = TemplateExpansion("ServiceTemplate", templateSteing, s);
                     {
                         // 文字コードを指定
                         System.Text.Encoding enc = System.Text.Encoding.GetEncoding(config.Encoding);
@@ -202,7 +202,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Generators
             foreach (var templateConfig in config.TemplateFiles)
             {
                 // テンプレート用文字列
-                var ServiceTemplate = Helper.General.ReadTemplate(templateConfig);
+                var templateString = Helper.General.ReadTemplate(templateConfig);
 
                 // コードの出力対象パスを生成する
                 var outPath = MakeOutputDirectory(config , templateConfig);
@@ -211,7 +211,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Generators
                 foreach (var s in context.Sites)
                 {
                     // サービス用定義を生成
-                    Helper.Generation.Service(templateConfig, outPath, s);
+                    Helper.Generation.DoCodeGeneration(templateConfig, templateString, outPath, s);
                 }
             }
 

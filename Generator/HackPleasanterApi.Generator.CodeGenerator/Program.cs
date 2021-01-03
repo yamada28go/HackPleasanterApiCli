@@ -84,13 +84,13 @@ namespace HackPleasanterApi.Generator.CodeGenerator
                 {
                     //設定を読み込む
                     var c = HackPleasanterApi.Generator.Library.Utility.XMLSerialize.Deserialize<GeneratorConfig>(cfgName);
-
                     var l = (new CSVLoader()).DoLoad(c);
                     var ct = new GenerationContext
                     {
                         Sites = l
                     };
 
+                    // コード定義を生成する
                     (new Generators.Generator()).DoGenerae(c, ct);
                 }
 
@@ -141,7 +141,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator
                         TemplateFiles = new List<GeneratorConfig.Definition.TemplateFiles> {
                             new GeneratorConfig.Definition.TemplateFiles
                             {
-                                OutputSubdirectoryName = "Service",
+                                OutputSubdirectoryName = "Services",
                                 PrefixName ="Service",
                                 TemplateFileName = @"..\Generator\Templates\CSharp\ServiceTemplate.txt",
                                 Encoding = "Shift_JIS",
@@ -149,7 +149,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator
                             },
                             new GeneratorConfig.Definition.TemplateFiles
                             {
-                                OutputSubdirectoryName = "Model",
+                                OutputSubdirectoryName = "Models",
                                 PrefixName ="Model",
                                 TemplateFileName = @"..\Generator\Templates\CSharp\ModelTemplate.txt",
                                 Encoding = "Shift_JIS",
