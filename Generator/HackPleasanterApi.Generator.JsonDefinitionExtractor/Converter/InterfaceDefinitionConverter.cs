@@ -115,7 +115,7 @@ namespace HackPleasanterApi.Generator.JsonDefinitionExtractor.Converter
 
                         var t = e.ChoicesText;
                         t = t.Replace(",", CSVConstant.ChoicesText_ColumnSeparator);
-                        t = t.Replace("\r", "").Replace("\n", CSVConstant.ChoicesText_ColumnSeparator);
+                        t = t.Replace("\r", "").Replace("\n", CSVConstant.ChoicesText_NewLine);
                         e.ChoicesText = t;
 
                     }

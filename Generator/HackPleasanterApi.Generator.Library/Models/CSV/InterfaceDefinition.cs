@@ -52,6 +52,41 @@ namespace HackPleasanterApi.Generator.Library.Models.CSV
         /// </summary>
         public string ChoicesText { get; set; }
 
+        /// <summary>
+        /// 選択項目定義
+        /// </summary>
+        public List<Definition.ChoicesTextInfo> ChoicesTextInfos { get; set; }
+
+        /// <summary>
+        /// 定義
+        /// </summary>
+        public class Definition
+        {
+            /// <summary>
+            /// 選択項目の特別定義
+            /// </summary>
+            public class ChoicesTextInfo
+            {
+
+                /// <summary>
+                /// 変数名
+                /// </summary>
+                public string VariableName { get; set; }
+
+                /// <summary>
+                /// 説明文字列
+                /// </summary>
+                public string Description { get; set; }
+
+                /// <summary>
+                /// 値
+                /// </summary>
+                public string Value { get; set; }
+
+            }
+
+        }
+
         #endregion
 
         #region カラム毎の値
