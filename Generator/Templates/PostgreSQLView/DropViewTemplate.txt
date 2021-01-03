@@ -1,0 +1,16 @@
+﻿@{
+//コード生成に必要な一時変数をまとめて定義する
+
+  // VIEW名称
+  string TargetViewName = Model.SiteDefinition.SiteVariableName;
+
+}
+--  [注意]
+--  自動生成されたコードです。
+--  変更時には十分注意して変更してください。
+--　　
+--  Created on @(Model.GeneratedDate)
+
+-- @(Model.SiteDefinition.Title) ビュー
+DROP VIEW IF EXISTS @(TargetViewName); 
+
