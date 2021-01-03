@@ -20,6 +20,7 @@
 using HackPleasanterApi.Generator.CodeGenerator.Configs;
 using HackPleasanterApi.Generator.CodeGenerator.Loder;
 using Microsoft.Extensions.CommandLineUtils;
+using System.Collections.Generic;
 
 namespace HackPleasanterApi.Generator.CodeGenerator
 {
@@ -50,7 +51,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator
                 {
 
                     // 説明（ヘルプの出力で使用される）
-                    command.Description = "Pleasanter APIアクセス用の定義を生成する";
+                    command.Description = "Pleasanter用の各種定義を自動生成する";
 
                     // コマンドについてのヘルプ出力のトリガーとなるオプションを指定
                     command.HelpOption("-?|-h|--help");
@@ -137,19 +138,27 @@ namespace HackPleasanterApi.Generator.CodeGenerator
                             Encoding = "Shift_JIS"
 
                         },
-                        TemplateFiles = new GeneratorConfig.Definition.TemplateFiles
-                        {
-                            TemplateService = @"..\Generator\Templates\CSharp\ServiceTemplate.txt",
-                            TemplateModel = @"..\Generator\Templates\CSharp\ModelTemplate.txt",
-                            Encoding = "Shift_JIS"
-
+                        TemplateFiles = new List<GeneratorConfig.Definition.TemplateFiles> {
+                            new GeneratorConfig.Definition.TemplateFiles
+                            {
+                                OutputSubdirectoryName = "Service",
+                                PrefixName ="Service",
+                                TemplateFileName = @"..\Generator\Templates\CSharp\ServiceTemplate.txt",
+                                Encoding = "Shift_JIS",
+                                OutputExtension = @"cs",
+                            },
+                            new GeneratorConfig.Definition.TemplateFiles
+                            {
+                                OutputSubdirectoryName = "Model",
+                                PrefixName ="Model",
+                                TemplateFileName = @"..\Generator\Templates\CSharp\ModelTemplate.txt",
+                                Encoding = "Shift_JIS",
+                                OutputExtension = @"cs",
+                            }
                         },
                         OutputConfig = new GeneratorConfig.Definition.OutputConfig
                         {
-                            OutputDirectory = @".\Generated",
-                            OutputExtension = @"cs",
-                            Encoding = "Shift_JIS"
-
+                            OutputDirectory = @".\Generated"
                         },
                         CodeConfig = new GeneratorConfig.Definition.CodeConfig
                         {
@@ -169,10 +178,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator
 
                 }
             }
-
         }
-
-
 
         static void Main(string[] args)
         {
@@ -187,12 +193,13 @@ namespace HackPleasanterApi.Generator.CodeGenerator
 
             app.OnExecute(() =>
             {
+                app.ShowHelp();
                 return 0;
             });
 
             // 追加コマンド
 
-            // エクスポート
+            // 定義生成コマンド
             app.Command(Helper.Generate.GetCommandName(), (command) =>
             {
                 new Helper.Generate(command);
