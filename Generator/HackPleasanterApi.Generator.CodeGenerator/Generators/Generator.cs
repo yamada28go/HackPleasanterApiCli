@@ -169,7 +169,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Generators
                     OutputPathInfo outPath,
                     SiteInfos s)
                 {
-                    var result = TemplateExpansion("ServiceTemplate", templateSteing, s);
+                    var result = TemplateExpansion(config.TemplateFileName, templateSteing, s);
                     {
                         // 文字コードを指定
                         System.Text.Encoding enc = System.Text.Encoding.GetEncoding(config.Encoding);
