@@ -69,7 +69,7 @@ docker run --rm -v $(pwd)/Working:/local example /local CodeGenerator Generate C
 | No | 名称 | 概要 | URL|
 | --- | --- | --- |--- | 
 |1| HackPleasanterApi.Csharp | C#用ライブラリ | https://github.com/yamada28go/HackPleasanterApi.Csharp|
-
+|2| HackPleasanterApi.PostgreSQL | PostgreSQL用 View生成ライブラリ | https://github.com/yamada28go/HackPleasanterApi.PostgreSQL|
 
 ---
 ## JsonDefinitionExtractor
