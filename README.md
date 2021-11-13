@@ -2,7 +2,7 @@
 
 ## これは何?
 
-Pleasanter のサイトパッケージから、
+(Pleasanter)[https://pleasanter.org/] のサイトパッケージから、
 api 通信定義や、sql 用の view を生成する補助プログラム郡です。
 このプログラムは以下 2 種類の大きな機能より構成されています。
 
@@ -56,6 +56,20 @@ Commands:
 docker run --rm -v $(pwd)/Working:/local example /local CodeGenerator Generate CodeGeneratorConfig.xml
 
 ```
+
+## テンプレート
+
+本コマンドは(Pleasanter)[https://pleasanter.org/]用のグルーコードを生成するアプリとなりますが、
+生成対象のテンプレートを切り替えることでいろいろな種別の処理に対応することができます。
+
+本コマンドを使用するためには、
+生成対象のテンプレートデータを準備する必要があります。
+テンプレートデータは以下サイトで取得する事ができます。
+
+| No | 名称 | 概要 | URL|
+| --- | --- | --- |--- | 
+|1| HackPleasanterApi.Csharp | C#用ライブラリ | https://github.com/yamada28go/HackPleasanterApi.Csharp|
+
 
 ---
 ## JsonDefinitionExtractor
@@ -219,6 +233,9 @@ docker --run -v $(pwd)/Working:/local yamada28go/hack-pleasanter-api-cli /local 
 
 なお、設定ファイルの中で指定される各種設定フアイルはコマンドの第一引数で指定されたパスを起点のディレクトリとして動作します。
 
+コード生成時の設定ファイルは生成対象のテンプレートに付属します。
+ユーザーが実際に調整が必要な項目はNameSpace程度となります。
+
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <GeneratorConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -260,8 +277,6 @@ docker --run -v $(pwd)/Working:/local yamada28go/hack-pleasanter-api-cli /local 
 </GeneratorConfig>
 ```
 
-設定ファイルに関して、コード生成を行うユーザーが設定する必要がある項目は、
-NameSpace程度であり、残りはテンプレートに添付する設定ファイルを使用する事で問題ないと考えられます。
 
 ### コード生成
 
