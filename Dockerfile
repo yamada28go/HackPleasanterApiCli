@@ -7,24 +7,20 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 COPY ["Generator/", "/Generator/"]
-WORKDIR /Generator
-RUN dotnet restore "HackPleasanterApi.Generator.CodeGenerator/HackPleasanterApi.Generator.CodeGenerator.csproj"
-RUN dotnet restore "HackPleasanterApi.Generator.JsonDefinitionExtractor/HackPleasanterApi.Generator.JsonDefinitionExtractor.csproj"
+WORKDIR /Generator/EntranceCommand
+RUN dotnet restore "EntranceCommand.csproj"
 
 # ビルド
-WORKDIR "/Generator/HackPleasanterApi.Generator.CodeGenerator"
-RUN dotnet build "HackPleasanterApi.Generator.CodeGenerator.csproj" -c Release -o /app/build
-WORKDIR "/Generator/HackPleasanterApi.Generator.JsonDefinitionExtractor"
-RUN dotnet build "HackPleasanterApi.Generator.JsonDefinitionExtractor.csproj" -c Release -o /app/build
+WORKDIR "/Generator/EntranceCommand"
+RUN dotnet build "EntranceCommand.csproj" -c Release -o /app/build
 
 
 FROM build AS publish
-WORKDIR "/Generator/HackPleasanterApi.Generator.CodeGenerator"
-RUN dotnet publish "HackPleasanterApi.Generator.CodeGenerator.csproj" -c Release -o /app/publish
-WORKDIR "/Generator/HackPleasanterApi.Generator.JsonDefinitionExtractor"
-RUN dotnet publish "HackPleasanterApi.Generator.JsonDefinitionExtractor.csproj" -c Release -o /app/publish
+WORKDIR "/Generator/EntranceCommand"
+RUN dotnet publish "EntranceCommand.csproj" -c Release -o /app/publish
 WORKDIR /app/publish
 
-ENTRYPOINT ["dotnet", "/app/publish/HackPleasanterApi.Generator.CodeGenerator.dll"]
+# 実行ファイルを指定
+ENTRYPOINT ["dotnet", "/app/publish/EntranceCommand.dll"]
 CMD ["--help"]
 
