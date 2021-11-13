@@ -17,203 +17,64 @@
  * under the License.
  * */
 
-using HackPleasanterApi.Generator.CodeGenerator.Configs;
-using HackPleasanterApi.Generator.CodeGenerator.Loder;
-using Microsoft.Extensions.CommandLineUtils;
-using System.Collections.Generic;
+using HackPleasanterApi.Generator.CodeGenerator.CallableCommand;
+using NLog;
+using System.CommandLine;
+using System.IO;
+using System.Linq;
 
 namespace HackPleasanterApi.Generator.CodeGenerator
 {
     class Program
     {
         /// <summary>
-        /// 実装補助関数
+        /// ロガー
         /// </summary>
-        private class Helper
-        {
-            /// <summary>
-            /// デフォルト設定名
-            /// </summary>
-            private static readonly string DefaultConfigurationName = "CodeGeneratorConfig.xml";
-
-            /// <summary>
-            /// 定義出力を行う
-            /// </summary>
-            public class Generate
-            {
-
-                public static string GetCommandName()
-                {
-                    return "Generate";
-                }
-
-                public Generate(CommandLineApplication command)
-                {
-
-                    // 説明（ヘルプの出力で使用される）
-                    command.Description = "Pleasanter用の各種定義を自動生成する";
-
-                    // コマンドについてのヘルプ出力のトリガーとなるオプションを指定
-                    command.HelpOption("-?|-h|--help");
-
-                    // コマンドの引数（名前と説明を引数で渡しているが、これはヘルプ出力で使用される）
-                    var tArgs = command.Argument("[ConfigFileName]", "設定ファイル名");
-
-                    command.OnExecute(() =>
-                    {
-                        return On(tArgs);
-                    });
-
-                }
-
-                private int On(CommandArgument arg)
-                {
-                    var cfgName = DefaultConfigurationName;
-                    if (0 != arg.Values.Count)
-                    {
-                        cfgName = arg.Value;
-                    }
-
-                    // テンプレートコードを生成する
-                    DoGenerate(cfgName);
-
-                    return 0;
-                }
-
-                private void DoGenerate(string cfgName)
-                {
-                    //設定を読み込む
-                    var c = HackPleasanterApi.Generator.Library.Utility.XMLSerialize.Deserialize<GeneratorConfig>(cfgName);
-                    var l = (new CSVLoader()).DoLoad(c);
-                    var ct = new GenerationContext
-                    {
-                        Sites = l
-                    };
-
-                    // コード定義を生成する
-                    (new Generators.Generator()).DoGenerae(c, ct);
-                }
-
-            }
-
-            /// <summary>
-            /// デフォルト設定を生成するクラス
-            /// </summary>
-            public class OnDefaultConfiguration
-            {
-                public static string GetCommandName()
-                {
-                    return "GetConfiguration";
-                }
-
-                public OnDefaultConfiguration(CommandLineApplication command)
-                {
-
-                    // 説明（ヘルプの出力で使用される）
-                    command.Description = "デフォルト設定を生成する";
-
-                    // コマンドについてのヘルプ出力のトリガーとなるオプションを指定
-                    command.HelpOption("-?|-h|--help");
-
-                    // コマンドの引数（名前と説明を引数で渡しているが、これはヘルプ出力で使用される）
-                    var tArgs = command.Argument("[Hogeの引数]", "Hogeの引数の説明");
-
-                    command.OnExecute(() =>
-                    {
-                        return On(tArgs);
-                    });
-
-                }
-
-                private int On(CommandArgument arg)
-                {
-                    // デフォルト設定
-                    var c = new GeneratorConfig
-                    {
-                        InputFiles = new GeneratorConfig.Definition.InputFiles
-                        {
-
-                            InterfaceDefinitionFile = @"Interface.csv",
-                            SiteDefinitionFile = @"Sites.csv",
-                            Encoding = "Shift_JIS"
-
-                        },
-                        TemplateFiles = new List<GeneratorConfig.Definition.TemplateFiles> {
-                            new GeneratorConfig.Definition.TemplateFiles
-                            {
-                                OutputSubdirectoryName = "Services",
-                                TemplateFileName = @"..\Generator\Templates\CSharp\ServiceTemplate.txt",
-                                Encoding = "Shift_JIS",
-                                OutputExtension = @"cs",
-                                HeadPrefix ="",
-                                EndPrefix = "Service"
-                            },
-                            new GeneratorConfig.Definition.TemplateFiles
-                            {
-                                OutputSubdirectoryName = "Models",
-                                TemplateFileName = @"..\Generator\Templates\CSharp\ModelTemplate.txt",
-                                Encoding = "Shift_JIS",
-                                OutputExtension = @"cs",    
-                                HeadPrefix ="",
-                                EndPrefix = "Model"
-                            }
-                        },
-                        OutputConfig = new GeneratorConfig.Definition.OutputConfig
-                        {
-                            OutputDirectory = @".\Generated"
-                        },
-                        CodeConfig = new GeneratorConfig.Definition.CodeConfig
-                        {
-                            NameSpace = "",
-                        }
-                    };
-
-                    // XML形式としてデフォルト設定を生成する
-                    var cfgName = DefaultConfigurationName;
-                    if (0 != arg.Values.Count)
-                    {
-                        cfgName = arg.Value;
-                    }
-                    HackPleasanterApi.Generator.Library.Utility.XMLSerialize.Serialize(c, cfgName);
-
-                    return 0;
-
-                }
-            }
-        }
+        private static Logger logger = LogManager.GetCurrentClassLogger();
 
         static void Main(string[] args)
         {
-            var app = new CommandLineApplication(throwOnUnexpectedArg: false)
+            logger.Info($"Pleasanter インターフェースコード生成 コマンド　起動!!! ");
+            logger.Debug("Start CodeGenerator!");
+            if (null != args && 0 != args.Length)
             {
-                // アプリケーション名（ヘルプの出力で使用される）
-                Name = "CodeGenerator",
+                logger.Debug($"arg : {args?.Aggregate((x, y) => x + ", " + y)}");
+            }
+
+            // [Memo]
+            // Argument , Optionの引数名とCommandHandler.Create関数で指定する
+            // 関数パラメータの引数名は合致していないと正しく動作しないので、
+            // 注意が必要
+            //
+            // 参考
+            // https://qiita.com/TsuyoshiUshio@github/items/02902f4f46f0aa37e4b1
+
+            // Create a root command with some options
+            var rootCommand = new RootCommand
+            {
+                        new Argument<DirectoryInfo>(
+                            "WorkingDirectory",
+                            description: "コマンドの作業ディレクトリ"
+                            ),
             };
 
-            // ヘルプ出力のトリガーとなるオプションを指定
-            app.HelpOption("-?|-h|--help");
+            rootCommand.Description = "Pleasanter インターフェースコード生成";
 
-            app.OnExecute(() =>
-            {
-                app.ShowHelp();
-                return 0;
-            });
+            // 生成コマンドを指定する
+            rootCommand.Add(OnGenerate.MakeCommand());
 
-            // 追加コマンド
+            // デフオルトの設定ファイルを生成する
+            rootCommand.Add(OnDefaultConfiguration.MakeCommand());
 
-            // 定義生成コマンド
-            app.Command(Helper.Generate.GetCommandName(), (command) =>
-            {
-                new Helper.Generate(command);
-            });
+            // 生成処理を開始
+            logger.Debug("Start Invoke!");
 
-            // デフォルト設定生成コマンド
-            app.Command(Helper.OnDefaultConfiguration.GetCommandName(), (command) =>
-            {
-                new Helper.OnDefaultConfiguration(command);
-            });
+            // Parse the incoming args and invoke the handler
+            var x = rootCommand.Invoke(args);
 
-            app.Execute(args);
+            logger.Debug("End Invoke!");
+
+            logger.Info($"Pleasanter インターフェースコード生成 コマンド　終了!!! ");
         }
     }
 }

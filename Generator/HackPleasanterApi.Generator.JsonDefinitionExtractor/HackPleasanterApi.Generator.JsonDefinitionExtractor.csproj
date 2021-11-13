@@ -8,10 +8,17 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.CommandLineUtils" Version="1.1.1" />
     <PackageReference Include="NLog" Version="4.7.6" />
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.21308.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\HackPleasanterApi.Generator.Library\HackPleasanterApi.Generator.Library.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="CallableCommand\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CallableCommand\" />
+  </ItemGroup>
 </Project>

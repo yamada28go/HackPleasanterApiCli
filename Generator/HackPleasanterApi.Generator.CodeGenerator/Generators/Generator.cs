@@ -19,6 +19,7 @@
 
 using HackPleasanterApi.Generator.CodeGenerator.Configs;
 using HackPleasanterApi.Generator.CodeGenerator.Models;
+using NLog;
 using RazorLight;
 using System;
 using System.Collections.Generic;
@@ -31,8 +32,13 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Generators
     /// <summary>
     /// コード生成機
     /// </summary>
-    class Generator
+    internal class Generator
     {
+        /// <summary>
+        /// ロガー
+        /// </summary>
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
         /// <summary>
         /// 出力パス情報
         /// </summary>
@@ -72,6 +78,8 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Generators
                 r.ServicePath = sp;
                 if (false == Directory.Exists(sp))
                 {
+                    logger.Info($"生成結果出力先パスを作成 : ${sp}");
+
                     // 出力パスが存在しなければディレクトを生成する
                     Directory.CreateDirectory(sp);
                 }
@@ -98,6 +106,8 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Generators
                     using (StreamReader sr = new StreamReader(config.TemplateFileName,
                         System.Text.Encoding.GetEncoding(config.Encoding)))
                     {
+                        logger.Info($"テンプレートファイルを読み込み : {config.TemplateFileName}");
+
                         //サービス用テンプレート文字列
                         string ServiceTemplate = sr.ReadToEnd();
                         return ServiceTemplate;
@@ -181,6 +191,8 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Generators
                         var outFileName = Path.Combine(outPath.ServicePath,
                             $"{config.HeadPrefix}{s.SiteDefinition.SiteVariableName}{config.EndPrefix}.{config.OutputExtension}");
 
+                        logger.Info($"生成結果コードを書き出し: {outFileName}");
+
                         string fullPath = System.IO.Path.GetFullPath(outFileName);
 
                         // ファイルを開く
@@ -204,9 +216,12 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Generators
         /// <param name="context"></param>
         public void DoGenerae(GeneratorConfig config, GenerationContext context)
         {
+            logger.Info($"コード生成開始");
 
             foreach (var templateConfig in config.TemplateFiles)
             {
+                logger.Info($"テンプレートファイルの準備を開始");
+
                 // テンプレート用文字列
                 var templateString = Helper.General.ReadTemplate(templateConfig);
 

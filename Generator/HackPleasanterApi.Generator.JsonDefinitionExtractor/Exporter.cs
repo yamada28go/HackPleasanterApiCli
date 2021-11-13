@@ -26,6 +26,8 @@ using HackPleasanterApi.Generator.JsonDefinitionExtractor.Reader;
 using HackPleasanterApi.Generator.Library.Models.CSV;
 using HackPleasanterApi.Generator.Library.Service;
 using HackPleasanterApi.Generator.JsonDefinitionExtractor.Config;
+using System.IO;
+using NLog;
 
 namespace HackPleasanterApi.Generator.JsonDefinitionExtractor
 {
@@ -35,6 +37,12 @@ namespace HackPleasanterApi.Generator.JsonDefinitionExtractor
     /// </summary>
     class Exporter
     {
+
+        /// <summary>
+        /// ロガー
+        /// </summary>
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
 
         private DefinitionExtractorConfig LoadConfig(string ConfgiPath)
         {
@@ -70,13 +78,15 @@ namespace HackPleasanterApi.Generator.JsonDefinitionExtractor
             };
         }
 
-        public void DoExporter(string configPath)
+        public void DoExporter(DirectoryInfo workDir, string configPath)
         {
             //設定ファイルを読み取る
             var config = LoadConfig(configPath);
 
             // サイト定義JSONを読み込む
-            var r = ReadJsonDefinition(config.Input.SiteExportDefinitionFile);
+            var readFileName = Path.Combine(workDir.FullName, config.Input.SiteExportDefinitionFile);
+            logger.Info($"読み込み対象のサイト構成ファイル名 : {readFileName}");
+            var r = ReadJsonDefinition(readFileName);
 
             // 変数名を説明で上書きするオプションを使っている場合
             // 変換を実行する
@@ -97,8 +107,16 @@ namespace HackPleasanterApi.Generator.JsonDefinitionExtractor
             }
 
             // 読み込み結果をCSVで出力する
-            (new CSVExport()).WriteSiteDefinition(r.SiteDefinitionConverter, config.Output.SiteDefinitionFile);
-            (new CSVExport()).WriteInterfaceDefinition(r.InterfaceDefinitionConverter, config.Output.InterfaceDefinitionFile);
+            {
+                var of = Path.Combine(workDir.FullName, config.Output.SiteDefinitionFile);
+                logger.Info($"出力対象のインターフェース定義名 : {of}");
+                (new CSVExport()).WriteSiteDefinition(r.SiteDefinitionConverter, of);
+            }
+            {
+                var of = Path.Combine(workDir.FullName, config.Output.InterfaceDefinitionFile);
+                logger.Info($"出力対象のサイト定義名 : {of}");
+                (new CSVExport()).WriteInterfaceDefinition(r.InterfaceDefinitionConverter, of);
+            }
         }
     }
 }

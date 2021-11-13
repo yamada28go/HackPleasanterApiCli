@@ -30,7 +30,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Models
     /// <summary>
     /// 分類済みのインターフェース定義一覧
     /// </summary>
-   public class ClassifiedInterface
+    public class ClassifiedInterface
     {
 
         private ClassifiedInterface() { }
@@ -127,7 +127,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Models
         /// <summary>
         /// 定義されている全テンプレートの設定項目
         /// </summary>
-        public Dictionary< string , GeneratorConfig.Definition.TemplateFiles> AllTemplateFilesConfig;
+        public Dictionary<string, GeneratorConfig.Definition.TemplateFiles> AllTemplateFilesConfig;
 
 
     }

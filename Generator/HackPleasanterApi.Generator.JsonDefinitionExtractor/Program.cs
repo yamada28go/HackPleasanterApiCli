@@ -35,6 +35,8 @@ namespace HackPleasanterApi.Generator.JsonDefinitionExtractor
 {
     class Program
     {
+#if false
+
         /// <summary>
         /// 実装補助関数
         /// </summary>
@@ -148,9 +150,13 @@ namespace HackPleasanterApi.Generator.JsonDefinitionExtractor
             }
         }
 
+#endif
+
 
         static void Main(string[] args)
         {
+#if false
+
             // 対象データを読み取る
 
             var app = new CommandLineApplication(throwOnUnexpectedArg: false)
@@ -183,7 +189,7 @@ namespace HackPleasanterApi.Generator.JsonDefinitionExtractor
             });
 
             app.Execute(args);
-
+#endif
         }
     }
 }

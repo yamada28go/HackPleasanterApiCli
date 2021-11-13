@@ -30,7 +30,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator
     /// <summary>
     /// コード生成に必要な情報セットを格納
     /// </summary>
-    class GenerationContext
+    internal class GenerationContext
     {
         public IEnumerable<SiteInfos> Sites;
     }
