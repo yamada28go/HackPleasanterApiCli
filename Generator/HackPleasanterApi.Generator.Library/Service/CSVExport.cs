@@ -96,7 +96,7 @@ namespace HackPleasanterApi.Generator.Library.Service
         }
 
         /// <summary>
-        /// DBから読んできた形式ほ内部形式に変換する
+        /// DBから読んできた形式を内部形式に変換する
         /// </summary>
         /// <param name="models"></param>
         /// <returns></returns>
