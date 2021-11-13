@@ -53,7 +53,7 @@ Commands:
 コマンドの実行例として以下を以下に示します。
 
 ```
-docker run --rm -v $(pwd)/Working2/CSharp:/local example /local CodeGenerator Generate CodeGeneratorConfig.xml
+docker run --rm -v $(pwd)/Working:/local example /local CodeGenerator Generate CodeGeneratorConfig.xml
 
 ```
 
@@ -68,7 +68,7 @@ docker run --rm -v $(pwd)/Working2/CSharp:/local example /local CodeGenerator Ge
 設定ファイル雛形はコマンドから生成させることができます。
 
 ```
-docker --run -v $(pwd)/Working2/CSharp:/local example /local JsonDefinitionExtractor Generate CodeGeneratorConfig.xml
+docker --run -v $(pwd)/Working:/local yamada28go/hack-pleasanter-api-cli /local JsonDefinitionExtractor Generate CodeGeneratorConfig.xml
 ```
 
 生成される設定ファイルの例を以下に示します。
@@ -109,7 +109,7 @@ docker --run -v $(pwd)/Working2/CSharp:/local example /local JsonDefinitionExtra
 実行に成功すると設定ファイルで指定した2個のcsvファイルが生成されます。
 
 ```
-docker --run -v $(pwd)/Working2/CSharp:/local example /local JsonDefinitionExtractor Generate CodeGeneratorConfig.xml
+docker --run -v $(pwd)/Working:/local yamada28go/hack-pleasanter-api-cli /local JsonDefinitionExtractor Generate CodeGeneratorConfig.xml
 ```
 
 
@@ -185,7 +185,7 @@ Title,SiteId,ParentId,InheritPermission,Description,ValidateRequired,ColumnName,
 設定ファイルの
 
 ```
-docker --run -v $(pwd)/Working2/CSharp:/local example /local CodeGenerator
+docker --run -v $(pwd)/Working:/local example /local CodeGenerator
 ```
 
 ```
@@ -212,7 +212,7 @@ Commands:
 設定ファイル雛形はコマンドから生成させることができます。
 
 ```
-docker --run -v $(pwd)/Working2/CSharp:/local example /local JsonDefinitionExtractor Generate CodeGeneratorConfig.xml
+docker --run -v $(pwd)/Working:/local yamada28go/hack-pleasanter-api-cli /local JsonDefinitionExtractor Generate CodeGeneratorConfig.xml
 ```
 生成される設定ファイルの例を以下に示します。
 コード生成処理では、これらの設定ファイルを用いてコマンドの動作を設定します。
@@ -270,6 +270,6 @@ CSVファイルからコードを生成します。
 コマンドが実行されるとXMLで指定されたディレクトリにコードが生成されます。
 
 ```
-docker run -v $(pwd)/Working2/CSharp:/local example /local CodeGenerator Generate CodeGeneratorConfig.xml
+docker run -v $(pwd)/Working:/local yamada28go/hack-pleasanter-api-cli /local CodeGenerator Generate CodeGeneratorConfig.xml
 ```
 
