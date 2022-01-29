@@ -231,6 +231,8 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Generators
                 // テンプレートの生成
                 foreach (var s in context.Sites)
                 {
+                    logger.Info($"テンプレート生成 : {s.SiteDefinition.SiteVariableName}");
+
                     // 全体のテンプレートデータを参照できるようにする
                     s.AllTemplateFilesConfig = config.TemplateFiles.ToDictionary(x => x.EndPrefix); 
 
