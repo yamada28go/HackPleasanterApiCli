@@ -24,8 +24,9 @@ using System.CommandLine.Invocation;
 using System.IO;
 using HackPleasanterApi.Generator.CodeGenerator.Configs;
 using HackPleasanterApi.Generator.CodeGenerator.Loder;
-using Microsoft.Extensions.Logging;
+using System.Linq;
 using NLog;
+using System.Text.Json;
 
 namespace HackPleasanterApi.Generator.CodeGenerator.CallableCommand
 {
@@ -108,6 +109,10 @@ namespace HackPleasanterApi.Generator.CodeGenerator.CallableCommand
             }
 
             var l = (new CSVLoader()).DoLoad(c);
+
+            logger.Info($"CSVから読み取られた対象とするサイト数 : ${l.Count()}");
+            logger.Debug($"読み取り対象データ ダンプ : ${JsonSerializer.Serialize(l)}");
+
             var ct = new GenerationContext
             {
                 Sites = l

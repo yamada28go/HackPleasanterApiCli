@@ -38,11 +38,11 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Loder
     /// </summary>
     internal class CSVLoader
     {
-        private IEnumerable<DataType> LoadCsv<DataType, MapType>(string path)
+        private IEnumerable<DataType> LoadCsv<DataType, MapType>(GeneratorConfig refConfig,string path)
         where MapType : ClassMap
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            var sjisEnc = Encoding.GetEncoding("Shift_JIS");
+            var sjisEnc = Encoding.GetEncoding(refConfig.InputFiles.Encoding);
             using (var reder = new StreamReader(path, sjisEnc))
             using (var csv = new CsvReader(reder, CultureInfo.InvariantCulture))
             {
@@ -59,12 +59,12 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Loder
         public IEnumerable<SiteInfos> DoLoad(GeneratorConfig config)
         {
             // サイト一覧定義を読み込む
-            var sites = LoadCsv<SiteDefinition, SiteDefinitionMap>(config.InputFiles.SiteDefinitionFile)
+            var sites = LoadCsv<SiteDefinition, SiteDefinitionMap>( config, config.InputFiles.SiteDefinitionFile)
                 .Where(e => e.IsTarget == true)
                 .ToList();
 
             // 項目名別一覧定義を読み込む
-            var interfaces = LoadCsv<InterfaceDefinition, InterfaceDefinitionMap>(config.InputFiles.InterfaceDefinitionFile)
+            var interfaces = LoadCsv<InterfaceDefinition, InterfaceDefinitionMap>(config, config.InputFiles.InterfaceDefinitionFile)
                 .Where(e => true == e.IsTarget)
                 .ToList();
 
