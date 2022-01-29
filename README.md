@@ -123,7 +123,7 @@ docker --run -v $(pwd)/Working:/local yamada28go/hack-pleasanter-api-cli /local 
 実行に成功すると設定ファイルで指定した2個のcsvファイルが生成されます。
 
 ```
-docker --run -v $(pwd)/Working:/local yamada28go/hack-pleasanter-api-cli /local JsonDefinitionExtractor Generate CodeGeneratorConfig.xml
+docker run -v $(pwd)/Working:/local yamada28go/hack-pleasanter-api-cli /local JsonDefinitionExtractor Generate CodeGeneratorConfig.xml
 ```
 
 
