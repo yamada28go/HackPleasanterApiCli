@@ -32,7 +32,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Generators
     /// <summary>
     /// コード生成機
     /// </summary>
-    internal class Generator
+    public class Generator
     {
         /// <summary>
         /// ロガー

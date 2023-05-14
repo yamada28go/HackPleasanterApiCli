@@ -28,6 +28,8 @@ using HackPleasanterApi.Generator.Library.Service;
 using HackPleasanterApi.Generator.JsonDefinitionExtractor.Config;
 using System.IO;
 using NLog;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace HackPleasanterApi.Generator.JsonDefinitionExtractor
 {
@@ -35,7 +37,7 @@ namespace HackPleasanterApi.Generator.JsonDefinitionExtractor
     /// 主要処理部分
     /// 
     /// </summary>
-    class Exporter
+    public  class Exporter
     {
 
         /// <summary>
@@ -83,6 +85,53 @@ namespace HackPleasanterApi.Generator.JsonDefinitionExtractor
             //設定ファイルを読み取る
             var config = LoadConfig(configPath);
 
+            DoExporter(workDir, config);
+        }
+
+        /// <summary>
+        /// 使用できない文字列を置換する
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string ReplaceInvalidChars(string input)
+        {
+
+            // C#で使用できない文字を表す正規表現
+            string pattern = @"[^\p{Ll}\p{Lu}\p{Lt}\p{Lo}\p{Nd}\p{Mn}\p{Pc}]";
+
+            // 不正な文字を_に置換する
+            string result = Regex.Replace(input, pattern, "_");
+
+            return result;
+
+#if false
+
+            // C#で使用できない文字を定義します。
+            // これには、空白、制御文字、ASCIIコード0～31、およびUnicodeカテゴリー"Other_Not_Assigned"の文字が含まれます。
+            var invalidChars = Enumerable.Range(0, 32).Concat(new int[] { 127 }).Concat(
+                Enumerable.Range(0xD800, 0xE000 - 0xD800)).Concat(
+                Enumerable.Range(0xFDD0, 0xFDF0 - 0xFDD0)).Concat(
+                Enumerable.Range(0xFFFE, 0x10000 - 0xFFFE))
+                .Select(c => (char)c).ToArray();
+
+            // 渡された文字列の中から使用できない文字を検索し、_に置換します。
+            var result = new StringBuilder(input.Length);
+            foreach (var c in input)
+            {
+                result.Append(invalidChars.Contains(c) ? '_' : c);
+            }
+
+
+            // その他、使えない文字を置換する
+
+            return result.ToString();
+
+#endif
+        }
+
+        public void DoExporter(DirectoryInfo workDir, DefinitionExtractorConfig config)
+        {
+
             // サイト定義JSONを読み込む
             var readFileName = Path.Combine(workDir.FullName, config.Input.SiteExportDefinitionFile);
             logger.Info($"読み込み対象のサイト構成ファイル名 : {readFileName}");
@@ -92,30 +141,57 @@ namespace HackPleasanterApi.Generator.JsonDefinitionExtractor
             // 変換を実行する
             if (true == config.Output.UseDescriptionAsVariableName)
             {
-                var tl = r.InterfaceDefinitionConverter.ToList();
-                foreach (var ele in
-                r.InterfaceDefinitionConverter
+                r.InterfaceDefinitionConverter = r.InterfaceDefinitionConverter
                     .Where(e => null != e)
-                    .Where(e => false == string.IsNullOrWhiteSpace(e.Description))
-                    )
-                {
+                    .Where(e => false == string.IsNullOrWhiteSpace(e.LabelText))
+                    .Select(x =>
+                    {
+                        x.VariableName = ReplaceInvalidChars(x.LabelText);
+                        return x;
+                    }).ToList();
 
-                    ele.VariableName = ele.Description;
+            }
+
+            if (true == config.Output.UseSiteTitleAsVariableName)
+            {
+                r.SiteDefinitionConverter = r.SiteDefinitionConverter
+                    .Select(x => {
+                        x.SiteVariableName = ReplaceInvalidChars(x.Title);
+                        return x;
+                    })
+                    .ToList();
+            }
+
+            // 全サイトを出力対象として指定する
+            if (true == config.Output.ExportAllSites) {
+                {
+                    r.SiteDefinitionConverter = r.SiteDefinitionConverter
+                        .Select(x => {
+                            x.IsTarget = true;
+                            return x; })
+                        .ToList();
                 }
 
-                r.InterfaceDefinitionConverter = tl;
+                {
+                    r.InterfaceDefinitionConverter = r.InterfaceDefinitionConverter
+                        .Select(x => {
+                            x.IsTarget = true;
+                            return x;
+                        })
+                        .ToList();
+                }
             }
 
             // 読み込み結果をCSVで出力する
             {
                 var of = Path.Combine(workDir.FullName, config.Output.SiteDefinitionFile);
                 logger.Info($"出力対象のインターフェース定義名 : {of}");
-                (new CSVExport()).WriteSiteDefinition(r.SiteDefinitionConverter, of);
+                (new CSVExport()).WriteSiteDefinition(r.SiteDefinitionConverter, of,config.Output.Encoding);
             }
             {
                 var of = Path.Combine(workDir.FullName, config.Output.InterfaceDefinitionFile);
                 logger.Info($"出力対象のサイト定義名 : {of}");
-                (new CSVExport()).WriteInterfaceDefinition(r.InterfaceDefinitionConverter, of);
+                (new CSVExport()).WriteInterfaceDefinition(r.InterfaceDefinitionConverter, of, config.Output.Encoding);
             }
         }
     }

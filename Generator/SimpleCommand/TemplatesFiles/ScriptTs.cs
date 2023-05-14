@@ -18,20 +18,13 @@
  * */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-using System.Text.RegularExpressions;
-using HackPleasanterApi.Generator.CodeGenerator.Models;
-
-namespace HackPleasanterApi.Generator.CodeGenerator
+namespace HackPleasanterApi.Generator.SimpleCommand.TemplatesFiles
 {
-
-    /// <summary>
-    /// コード生成に必要な情報セットを格納
-    /// </summary>
-    public class GenerationContext
+	public class ScriptTs : DownloaderBase
     {
-        public IEnumerable<SiteInfos> Sites;
-    }
+		public ScriptTs():base("https://github.com/yamada28go/HackPleasanterApi.ScriptTs")
+		{
+		}
+	}
 }
+

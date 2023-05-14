@@ -46,12 +46,12 @@ namespace HackPleasanterApi.Generator.Library.Service
         /// <typeparam name="MapType"></typeparam>
         /// <param name="datas"></param>
         /// <param name="filePath"></param>
-        private void write<DataType, MapType>(IEnumerable<DataType> datas, string filePath)
+        private void write<DataType, MapType>(IEnumerable<DataType> datas, string filePath, string encoding)
                 where MapType : ClassMap
         {
 
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            var sjisEnc = Encoding.GetEncoding("Shift_JIS");
+            var sjisEnc = Encoding.GetEncoding(encoding);
             using (var writer = new StreamWriter(filePath, false, sjisEnc))
             using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
@@ -67,7 +67,7 @@ namespace HackPleasanterApi.Generator.Library.Service
         /// <summary>
         /// サイト情報をエクスポートする
         /// </summary>
-        public void doExportSiteInformation(IEnumerable<SiteModel> models, string filePath)
+        public void doExportSiteInformation(IEnumerable<SiteModel> models, string filePath, string encoding)
         {
             // エクスポート可能な形式へ変換する
             var el = Convert(models);
@@ -82,17 +82,17 @@ namespace HackPleasanterApi.Generator.Library.Service
                 .OrderBy(e => e.SiteId)
                 .ToList();
 
-            write<SiteDefinition, SiteDefinitionMap>(sites, filePath);
+            write<SiteDefinition, SiteDefinitionMap>(sites, filePath, encoding);
         }
 
-        public void WriteSiteDefinition(IEnumerable<SiteDefinition> models, string filePath) {
-            write<SiteDefinition, SiteDefinitionMap>(models, filePath);
+        public void WriteSiteDefinition(IEnumerable<SiteDefinition> models, string filePath , string encoding) {
+            write<SiteDefinition, SiteDefinitionMap>(models, filePath, encoding);
         }
 
 
-        public void WriteInterfaceDefinition(IEnumerable<InterfaceDefinition> models, string filePath)
+        public void WriteInterfaceDefinition(IEnumerable<InterfaceDefinition> models, string filePath, string encoding)
         {
-            write<InterfaceDefinition, InterfaceDefinitionMap>(models, filePath);
+            write<InterfaceDefinition, InterfaceDefinitionMap>(models, filePath, encoding);
         }
 
         /// <summary>

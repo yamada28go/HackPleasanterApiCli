@@ -36,7 +36,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Loder
     /// <summary>
     /// CSV読み取り機
     /// </summary>
-    internal class CSVLoader
+    public  class CSVLoader
     {
         private IEnumerable<DataType> LoadCsv<DataType, MapType>(GeneratorConfig refConfig,string path)
         where MapType : ClassMap
