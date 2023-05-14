@@ -10,6 +10,7 @@
     <ProjectReference Include="..\HackPleasanterApi.Generator.CodeGenerator\HackPleasanterApi.Generator.CodeGenerator.csproj" />
     <ProjectReference Include="..\HackPleasanterApi.Generator.JsonDefinitionExtractor\HackPleasanterApi.Generator.JsonDefinitionExtractor.csproj" />
     <ProjectReference Include="..\HackPleasanterApi.Generator.Library\HackPleasanterApi.Generator.Library.csproj" />
+    <ProjectReference Include="..\SimpleCommand\SimpleCommand.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="NLog" />

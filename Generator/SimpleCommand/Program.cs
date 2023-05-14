@@ -35,7 +35,7 @@ class Program
     static void Main(string[] args)
     {
 
-
+        // tempディレクトリで処理する
         TempResource.FolderContext(tempPath =>
         {
 
@@ -74,26 +74,7 @@ class Program
                 var g = new HackPleasanterApi.Generator.SimpleCommand.Logic.CodeGanarator();
                 g.d(workDir, exportCfg, pg);
             }
-
-
-#if false
-
-            var tp = pg.DownLoad();
-
-
-            //設定ファイルがあるパスを取得する
-            var files = Directory.GetFiles(tp, "*", SearchOption.AllDirectories)
-            .Where(x=>x.Contains("CodeGeneratorConfig.xml"))
-            .ToList();
-
-
-            System.IO.FileInfo codeGeneratorConfigPath = new System.IO.FileInfo(files[0]);
-
-            DoGenerate(new DirectoryInfo(workDir), codeGeneratorConfigPath , exportCfg);
-
-#endif
         });
-
 
     }
 

@@ -28,11 +28,6 @@
     <None Remove="CallableCommand \" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="NLog.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="CallableCommand \" />
   </ItemGroup>
 </Project>
