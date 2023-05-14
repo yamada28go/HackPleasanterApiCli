@@ -52,6 +52,7 @@ class Program
 
             // テンプレート種別ごとに生成を行う
 
+
             // TypeScrypt
             {
                 var pg = new ScriptTs(tempPath, "0.0.1");
@@ -67,6 +68,12 @@ class Program
                 g.d(workDir, exportCfg, pg);
             }
 
+            // PostgreSQL
+            {
+                var pg = new PostgreSQL(tempPath, "0.0.1");
+                var g = new HackPleasanterApi.Generator.SimpleCommand.Logic.CodeGanarator();
+                g.d(workDir, exportCfg, pg);
+            }
 
 
 #if false
