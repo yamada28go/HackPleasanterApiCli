@@ -31,17 +31,19 @@ namespace HackPleasanterApi.Generator.SimpleCommand.TemplatesFiles
 
         public string? localPath ;
 
-        public DownloaderBase(string repoUrl)
+        string refLocalPath; string ver;
+
+        public DownloaderBase(string repoUrl, string refLocalPath, string ver)
 		{
             this.repoUrl = repoUrl;
             this.repoName = repoUrl.Split("/").Last();
+
+            this.refLocalPath = refLocalPath;
+            this.ver = ver;
+
 		}
 
-		public string  DownLoad(string refLocalPath , string ver) {
-
-
-            //var repoUrl = "https://github.com/yamada28go/HackPleasanterApi.PostgreSQL";
-
+		public string  DownLoad() {
 
             localPath = Path.Combine(refLocalPath, "TemplatesFiles", repoName);
             Directory.CreateDirectory(localPath);

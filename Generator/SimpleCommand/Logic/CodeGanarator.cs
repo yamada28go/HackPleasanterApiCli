@@ -18,11 +18,13 @@
  * */
 
 using System;
+using System.IO;
 using System.Text.Json;
 using CsvHelper;
 using HackPleasanterApi.Generator.CodeGenerator;
 using HackPleasanterApi.Generator.CodeGenerator.Configs;
 using HackPleasanterApi.Generator.CodeGenerator.Loder;
+using HackPleasanterApi.Generator.JsonDefinitionExtractor.Config;
 using NLog;
 
 namespace HackPleasanterApi.Generator.SimpleCommand.Logic
@@ -39,19 +41,40 @@ namespace HackPleasanterApi.Generator.SimpleCommand.Logic
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
 
+        public void d(
+            string workPath,
+            Tuple<string, DefinitionExtractorConfig> exportCfg,
+            HackPleasanterApi.Generator.SimpleCommand.TemplatesFiles.DownloaderBase baseObj)
+        {
+
+            // テンプレートを取得する
+            var tp = baseObj.DownLoad();
+
+            // テンプレート用のパスを取得する
+            var outPath = Path.Combine(workPath,  baseObj.repoName);
+            Directory.CreateDirectory(outPath);
+
+            //設定ファイルがあるパスを取得する
+            var files = Directory.GetFiles(tp, "*", SearchOption.AllDirectories)
+            .Where(x => x.Contains("CodeGeneratorConfig.xml"))
+            .ToList();
+
+
+            System.IO.FileInfo codeGeneratorConfigPath = new System.IO.FileInfo(files[0]);
+
+            DoGenerate(new DirectoryInfo(outPath), codeGeneratorConfigPath, exportCfg);
+
+        }
+
         /// <summary>
         /// データの生成を行う
         /// </summary>
         /// <param name="workDir"></param>
-        /// <param name="cfgFile"></param>
-        private static void DoGenerate(DirectoryInfo workDir, FileInfo cfgFile, string configPath)
+        /// <param name="codeGeneratorConfigPath"></param>
+        private  void DoGenerate(DirectoryInfo workDir, FileInfo codeGeneratorConfigPath, Tuple<string, DefinitionExtractorConfig> eportConfig)
         {
-            // XML形式としてデフォルト設定を生成する
-            var cfgName = Path.Combine(workDir.FullName, cfgFile.Name);
-            logger.Debug($"OutFile Path : {cfgName}");
-
             //設定を読み込む
-            var c = HackPleasanterApi.Generator.Library.Utility.XMLSerialize.Deserialize<GeneratorConfig>(configPath);
+            var c = HackPleasanterApi.Generator.Library.Utility.XMLSerialize.Deserialize<GeneratorConfig>(codeGeneratorConfigPath.FullName);
 
             // 出力ディレクトリは作業対象ディレクトリをベースパスとして動作させる
             c.OutputConfig.OutputDirectory = Path.Combine(workDir.FullName, c.OutputConfig.OutputDirectory);
@@ -60,37 +83,34 @@ namespace HackPleasanterApi.Generator.SimpleCommand.Logic
             // テンプレートパスは作業ディレクトリからの相対パスに存在するものとする
             foreach (var t in c.TemplateFiles)
             {
-                t.TemplateFileName = Path.Combine(workDir.FullName, t.TemplateFileName);
+                System.IO.FileInfo f = new System.IO.FileInfo(t.TemplateFileName);
+                t.TemplateFileName = Path.Combine(codeGeneratorConfigPath.DirectoryName!, f.Name);
                 logger.Debug($"テンプレートファイルのパスを置き換え : ${t.TemplateFileName}");
             }
 
             // 入力ファイルに関して作業パスを相対パスに存在するものに変換する
             {
-                c.InputFiles.InterfaceDefinitionFile = Path.Combine(workDir.FullName, c.InputFiles.InterfaceDefinitionFile);
+                c.InputFiles.InterfaceDefinitionFile = Path.Combine(eportConfig.Item1, eportConfig.Item2.Output.InterfaceDefinitionFile);
                 logger.Debug($"インターフェース定義ファイルのパスを置き換え : ${c.InputFiles.InterfaceDefinitionFile}");
             }
 
             {
-                c.InputFiles.SiteDefinitionFile = Path.Combine(workDir.FullName, c.InputFiles.SiteDefinitionFile);
+                c.InputFiles.SiteDefinitionFile = Path.Combine(eportConfig.Item1, eportConfig.Item2.Output.SiteDefinitionFile);
                 logger.Debug($"サイト定義ファイルのパスを置き換え : ${c.InputFiles.SiteDefinitionFile}");
             }
 
-#if true
-
-            var l = (new CSVLoader()).DoLoad(c);
+            var l = (new HackPleasanterApi.Generator.CodeGenerator.Loder.CSVLoader()).DoLoad(c);
 
             logger.Info($"CSVから読み取られた対象とするサイト数 : ${l.Count()}");
             logger.Debug($"読み取り対象データ ダンプ : ${JsonSerializer.Serialize(l)}");
 
-            var ct = new GenerationContext
+            var ct = new HackPleasanterApi.Generator.CodeGenerator.GenerationContext
             {
                 Sites = l
             };
 
             // コード定義を生成する
             (new HackPleasanterApi.Generator.CodeGenerator.Generators.Generator()).DoGenerae(c, ct);
-
-#endif
         }
 
     }

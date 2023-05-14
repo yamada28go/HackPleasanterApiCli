@@ -53,7 +53,7 @@ namespace HackPleasanterApi.Generator.SimpleCommand.Logic
         public Tuple<string, DefinitionExtractorConfig> DoExport()
         {
 
-            var exportPath = Path.Combine(this.srcFilePath, "Export");
+            var exportPath = Path.Combine(this.exportDirPath, "Export");
             Directory.CreateDirectory(exportPath);
 
             // 設定ファイル名を作成
@@ -62,7 +62,7 @@ namespace HackPleasanterApi.Generator.SimpleCommand.Logic
                 Input = new DefinitionExtractorConfig.Definition.Input
                 {
 
-                    SiteExportDefinitionFile = this.srcFileName
+                    SiteExportDefinitionFile = Path.Combine(this.srcFilePath, this.srcFileName)
                 },
 
                 Output = new DefinitionExtractorConfig.Definition.Output

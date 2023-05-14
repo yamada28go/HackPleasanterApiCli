@@ -20,9 +20,9 @@
 using System;
 namespace HackPleasanterApi.Generator.SimpleCommand.TemplatesFiles
 {
-	public class PostgreSQL : DownloaderBase
+	public class Csharp : DownloaderBase
     {
-		public PostgreSQL(string refLocalPath, string ver) :base("https://github.com/yamada28go/HackPleasanterApi.PostgreSQL", refLocalPath , ver)
+		public Csharp( string refLocalPath, string ver) :base("https://github.com/yamada28go/HackPleasanterApi.Csharp.git", refLocalPath,ver)
 		{
 		}
 	}

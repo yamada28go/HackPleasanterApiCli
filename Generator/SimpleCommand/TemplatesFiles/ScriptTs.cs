@@ -22,7 +22,7 @@ namespace HackPleasanterApi.Generator.SimpleCommand.TemplatesFiles
 {
 	public class ScriptTs : DownloaderBase
     {
-		public ScriptTs():base("https://github.com/yamada28go/HackPleasanterApi.ScriptTs")
+		public ScriptTs( string refLocalPath, string ver) :base("https://github.com/yamada28go/HackPleasanterApi.ScriptTs" , refLocalPath,ver)
 		{
 		}
 	}
