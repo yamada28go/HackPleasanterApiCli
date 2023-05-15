@@ -117,7 +117,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Loder
                             return new InterfaceDefinition.Definition.ChoicesTextInfo
                             {
                                 Value = l[0],
-                                VariableName = l[0]
+                                VariableName = HackPleasanterApi.Generator.Libraryrary.Utility.CharacterType.ReplaceInvalidChars(l[0])
                             };
                         }else  if (2 == l.Length)
                         {
@@ -128,7 +128,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Loder
                             return new InterfaceDefinition.Definition.ChoicesTextInfo
                             {
                                 Value = l[0],
-                                VariableName = l[0],
+                                VariableName = HackPleasanterApi.Generator.Libraryrary.Utility.CharacterType.ReplaceInvalidChars(l[0]),
                                 Description = l[1]
                             };
                         }
@@ -146,7 +146,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Loder
                             {
                                 Value = l[0],
                                 Description = l[1],
-                                VariableName = l[3]
+                                VariableName = HackPleasanterApi.Generator.Libraryrary.Utility.CharacterType.ReplaceInvalidChars(l[3])
                             };
                         }
                         return null;

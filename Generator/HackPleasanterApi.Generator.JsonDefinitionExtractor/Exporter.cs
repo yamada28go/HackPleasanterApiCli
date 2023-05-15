@@ -88,46 +88,7 @@ namespace HackPleasanterApi.Generator.JsonDefinitionExtractor
             DoExporter(workDir, config);
         }
 
-        /// <summary>
-        /// 使用できない文字列を置換する
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        public static string ReplaceInvalidChars(string input)
-        {
 
-            // C#で使用できない文字を表す正規表現
-            string pattern = @"[^\p{Ll}\p{Lu}\p{Lt}\p{Lo}\p{Nd}\p{Mn}\p{Pc}]";
-
-            // 不正な文字を_に置換する
-            string result = Regex.Replace(input, pattern, "_");
-
-            return result;
-
-#if false
-
-            // C#で使用できない文字を定義します。
-            // これには、空白、制御文字、ASCIIコード0～31、およびUnicodeカテゴリー"Other_Not_Assigned"の文字が含まれます。
-            var invalidChars = Enumerable.Range(0, 32).Concat(new int[] { 127 }).Concat(
-                Enumerable.Range(0xD800, 0xE000 - 0xD800)).Concat(
-                Enumerable.Range(0xFDD0, 0xFDF0 - 0xFDD0)).Concat(
-                Enumerable.Range(0xFFFE, 0x10000 - 0xFFFE))
-                .Select(c => (char)c).ToArray();
-
-            // 渡された文字列の中から使用できない文字を検索し、_に置換します。
-            var result = new StringBuilder(input.Length);
-            foreach (var c in input)
-            {
-                result.Append(invalidChars.Contains(c) ? '_' : c);
-            }
-
-
-            // その他、使えない文字を置換する
-
-            return result.ToString();
-
-#endif
-        }
 
         public void DoExporter(DirectoryInfo workDir, DefinitionExtractorConfig config)
         {
@@ -146,7 +107,7 @@ namespace HackPleasanterApi.Generator.JsonDefinitionExtractor
                     .Where(e => false == string.IsNullOrWhiteSpace(e.LabelText))
                     .Select(x =>
                     {
-                        x.VariableName = ReplaceInvalidChars(x.LabelText);
+                        x.VariableName = HackPleasanterApi.Generator.Libraryrary.Utility.CharacterType.ReplaceInvalidChars(x.LabelText);
                         return x;
                     }).ToList();
 
@@ -156,7 +117,7 @@ namespace HackPleasanterApi.Generator.JsonDefinitionExtractor
             {
                 r.SiteDefinitionConverter = r.SiteDefinitionConverter
                     .Select(x => {
-                        x.SiteVariableName = ReplaceInvalidChars(x.Title);
+                        x.SiteVariableName = HackPleasanterApi.Generator.Libraryrary.Utility.CharacterType.ReplaceInvalidChars(x.Title);
                         return x;
                     })
                     .ToList();
