@@ -150,7 +150,11 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Loder
                             };
                         }
                         return null;
-                    }).Where(e => e != null)
+                    })
+                    .Where(e => e != null)
+                    // 変数名が無いデータは無視する
+                    .Where(x=> false == String.IsNullOrEmpty( x.VariableName ))
+                    .Where(x => false == String.IsNullOrWhiteSpace(x.VariableName))
                     .ToList();
                 }
             }
