@@ -84,7 +84,7 @@ namespace HackPleasanterApi.Generator.SimpleCommand.CallableCommand
                     {
                         // TypeScrypt
                         {
-                            var pg = new ScriptTs(tempPath, "0.0.1");
+                            var pg = new ScriptTs(tempPath, "0.2");
                             var g = new HackPleasanterApi.Generator.SimpleCommand.Logic.CodeGanarator();
                             g.d(workDir, exportCfg, pg);
                         }
@@ -92,14 +92,14 @@ namespace HackPleasanterApi.Generator.SimpleCommand.CallableCommand
 
                         // C#
                         {
-                            var pg = new Csharp(tempPath, "0.0.1");
+                            var pg = new Csharp(tempPath, "0.2");
                             var g = new HackPleasanterApi.Generator.SimpleCommand.Logic.CodeGanarator();
                             g.d(workDir, exportCfg, pg);
                         }
 
                         // PostgreSQL
                         {
-                            var pg = new PostgreSQL(tempPath, "0.0.1");
+                            var pg = new PostgreSQL(tempPath, "0.2");
                             var g = new HackPleasanterApi.Generator.SimpleCommand.Logic.CodeGanarator();
                             g.d(workDir, exportCfg, pg);
                         }
