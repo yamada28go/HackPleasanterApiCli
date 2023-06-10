@@ -48,32 +48,42 @@ class Program
             // 設定情報を抽出する
             // 抽出するファイル名はworkDirから相対パスで取得する
             var ex = new Logic.DefinitionExtractor(workDir, "export.json", tempPath);
-           var exportCfg =  ex.DoExport();
+            var exportCfg =  ex.DoExport();
 
             // テンプレート種別ごとに生成を行う
 
 
             // TypeScrypt
+            var t1 = Task.Run(() =>
             {
-                var pg = new ScriptTs(tempPath, "0.0.1");
-                var g = new HackPleasanterApi.Generator.SimpleCommand.Logic.CodeGanarator();
-                g.d(workDir , exportCfg , pg);
-            }
+                {
+                    var pg = new ScriptTs(tempPath, "0.2");
+                    var g = new HackPleasanterApi.Generator.SimpleCommand.Logic.CodeGanarator();
+                    g.d(workDir, exportCfg, pg);
+                }
+            });
 
 
             // C#
+            var t2 = Task.Run(() =>
             {
-                var pg = new Csharp(tempPath, "0.0.1");
+            
+                var pg = new Csharp(tempPath, "0.2");
                 var g = new HackPleasanterApi.Generator.SimpleCommand.Logic.CodeGanarator();
                 g.d(workDir, exportCfg, pg);
-            }
+            });
 
             // PostgreSQL
+            var t3 = Task.Run(() =>
             {
-                var pg = new PostgreSQL(tempPath, "0.0.1");
+                var pg = new PostgreSQL(tempPath, "0.2");
                 var g = new HackPleasanterApi.Generator.SimpleCommand.Logic.CodeGanarator();
                 g.d(workDir, exportCfg, pg);
-            }
+            });
+
+            t1.Wait();
+            t2.Wait();
+            t3.Wait();
         });
 
     }
