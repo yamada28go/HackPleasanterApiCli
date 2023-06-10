@@ -28,6 +28,8 @@ using HackPleasanterApi.Generator.Library.Service;
 using HackPleasanterApi.Generator.JsonDefinitionExtractor.Config;
 using System.IO;
 using NLog;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace HackPleasanterApi.Generator.JsonDefinitionExtractor
 {
@@ -35,7 +37,7 @@ namespace HackPleasanterApi.Generator.JsonDefinitionExtractor
     /// 主要処理部分
     /// 
     /// </summary>
-    class Exporter
+    public  class Exporter
     {
 
         /// <summary>
@@ -83,6 +85,14 @@ namespace HackPleasanterApi.Generator.JsonDefinitionExtractor
             //設定ファイルを読み取る
             var config = LoadConfig(configPath);
 
+            DoExporter(workDir, config);
+        }
+
+
+
+        public void DoExporter(DirectoryInfo workDir, DefinitionExtractorConfig config)
+        {
+
             // サイト定義JSONを読み込む
             var readFileName = Path.Combine(workDir.FullName, config.Input.SiteExportDefinitionFile);
             logger.Info($"読み込み対象のサイト構成ファイル名 : {readFileName}");
@@ -92,30 +102,57 @@ namespace HackPleasanterApi.Generator.JsonDefinitionExtractor
             // 変換を実行する
             if (true == config.Output.UseDescriptionAsVariableName)
             {
-                var tl = r.InterfaceDefinitionConverter.ToList();
-                foreach (var ele in
-                r.InterfaceDefinitionConverter
+                r.InterfaceDefinitionConverter = r.InterfaceDefinitionConverter
                     .Where(e => null != e)
-                    .Where(e => false == string.IsNullOrWhiteSpace(e.Description))
-                    )
-                {
+                    .Where(e => false == string.IsNullOrWhiteSpace(e.LabelText))
+                    .Select(x =>
+                    {
+                        x.VariableName = HackPleasanterApi.Generator.Libraryrary.Utility.CharacterType.ReplaceInvalidChars(x.LabelText);
+                        return x;
+                    }).ToList();
 
-                    ele.VariableName = ele.Description;
+            }
+
+            if (true == config.Output.UseSiteTitleAsVariableName)
+            {
+                r.SiteDefinitionConverter = r.SiteDefinitionConverter
+                    .Select(x => {
+                        x.SiteVariableName = HackPleasanterApi.Generator.Libraryrary.Utility.CharacterType.ReplaceInvalidChars(x.Title);
+                        return x;
+                    })
+                    .ToList();
+            }
+
+            // 全サイトを出力対象として指定する
+            if (true == config.Output.ExportAllSites) {
+                {
+                    r.SiteDefinitionConverter = r.SiteDefinitionConverter
+                        .Select(x => {
+                            x.IsTarget = true;
+                            return x; })
+                        .ToList();
                 }
 
-                r.InterfaceDefinitionConverter = tl;
+                {
+                    r.InterfaceDefinitionConverter = r.InterfaceDefinitionConverter
+                        .Select(x => {
+                            x.IsTarget = true;
+                            return x;
+                        })
+                        .ToList();
+                }
             }
 
             // 読み込み結果をCSVで出力する
             {
                 var of = Path.Combine(workDir.FullName, config.Output.SiteDefinitionFile);
                 logger.Info($"出力対象のインターフェース定義名 : {of}");
-                (new CSVExport()).WriteSiteDefinition(r.SiteDefinitionConverter, of);
+                (new CSVExport()).WriteSiteDefinition(r.SiteDefinitionConverter, of,config.Output.Encoding);
             }
             {
                 var of = Path.Combine(workDir.FullName, config.Output.InterfaceDefinitionFile);
                 logger.Info($"出力対象のサイト定義名 : {of}");
-                (new CSVExport()).WriteInterfaceDefinition(r.InterfaceDefinitionConverter, of);
+                (new CSVExport()).WriteInterfaceDefinition(r.InterfaceDefinitionConverter, of, config.Output.Encoding);
             }
         }
     }

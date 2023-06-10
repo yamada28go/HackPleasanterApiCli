@@ -36,7 +36,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Loder
     /// <summary>
     /// CSV読み取り機
     /// </summary>
-    internal class CSVLoader
+    public  class CSVLoader
     {
         private IEnumerable<DataType> LoadCsv<DataType, MapType>(GeneratorConfig refConfig,string path)
         where MapType : ClassMap
@@ -117,7 +117,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Loder
                             return new InterfaceDefinition.Definition.ChoicesTextInfo
                             {
                                 Value = l[0],
-                                VariableName = l[0]
+                                VariableName = HackPleasanterApi.Generator.Libraryrary.Utility.CharacterType.ReplaceInvalidChars(l[0])
                             };
                         }else  if (2 == l.Length)
                         {
@@ -128,7 +128,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Loder
                             return new InterfaceDefinition.Definition.ChoicesTextInfo
                             {
                                 Value = l[0],
-                                VariableName = l[0],
+                                VariableName = HackPleasanterApi.Generator.Libraryrary.Utility.CharacterType.ReplaceInvalidChars(l[0]),
                                 Description = l[1]
                             };
                         }
@@ -146,11 +146,15 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Loder
                             {
                                 Value = l[0],
                                 Description = l[1],
-                                VariableName = l[3]
+                                VariableName = HackPleasanterApi.Generator.Libraryrary.Utility.CharacterType.ReplaceInvalidChars(l[3])
                             };
                         }
                         return null;
-                    }).Where(e => e != null)
+                    })
+                    .Where(e => e != null)
+                    // 変数名が無いデータは無視する
+                    .Where(x=> false == String.IsNullOrEmpty( x.VariableName ))
+                    .Where(x => false == String.IsNullOrWhiteSpace(x.VariableName))
                     .ToList();
                 }
             }

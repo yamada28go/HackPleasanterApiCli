@@ -62,12 +62,25 @@ namespace HackPleasanterApi.Generator.JsonDefinitionExtractor.Config
                 /// <summary>
                 /// 入力ファイルのエンコード設定
                 /// </summary>
-                public string Encoding { get; set; }
+                public string Encoding { get; set; } = "Shift_JIS";
 
                 /// <summary>
                 /// ディスクリプションを変数名として使うか
                 /// </summary>
                 public bool UseDescriptionAsVariableName { get; set; } = true;
+
+
+                /// <summary>
+                /// ディスクリプションを変数名として使うか
+                /// </summary>
+                public bool UseSiteTitleAsVariableName { get; set; } = true;
+
+
+                /// <summary>
+                /// 全てのサイトを生成対象とするか
+                /// </summary>
+                public bool ExportAllSites { get; set; } = false;
+
 
             }
 

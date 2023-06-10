@@ -67,6 +67,9 @@ namespace EntranceCommand
             // コード生成器の実行処理コマンドを登録する
             rootCommand.Add(CodeGeneratorCommand.MakeCommand());
 
+            // コード生成を一括で生成するためのコマンド種別を登録する
+            rootCommand.Add(HackPleasanterApi.Generator.SimpleCommand.CallableCommand.SimpleCommandDef.MakeCommand());
+
             // 生成処理を開始
             logger.Debug("Start Invoke!");
 

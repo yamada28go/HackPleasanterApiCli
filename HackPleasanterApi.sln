@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HackPleasanterApi.Generator
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntranceCommand", "Generator\EntranceCommand\EntranceCommand.csproj", "{E9922AAA-B8EF-4058-A0AD-0C7B59E1B923}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCommand", "Generator\SimpleCommand\SimpleCommand.csproj", "{A2230EE9-A12A-43B6-BDDA-B4381D4DF2BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{E9922AAA-B8EF-4058-A0AD-0C7B59E1B923}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9922AAA-B8EF-4058-A0AD-0C7B59E1B923}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9922AAA-B8EF-4058-A0AD-0C7B59E1B923}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2230EE9-A12A-43B6-BDDA-B4381D4DF2BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2230EE9-A12A-43B6-BDDA-B4381D4DF2BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2230EE9-A12A-43B6-BDDA-B4381D4DF2BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2230EE9-A12A-43B6-BDDA-B4381D4DF2BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{3DAA3B4D-4FA0-4690-88D5-774F75AE4ECD} = {0CD834A7-F850-4498-B145-F42EB2CB9EB3}
 		{9BB27919-3081-41C8-869E-D39E962EC987} = {0CD834A7-F850-4498-B145-F42EB2CB9EB3}
 		{E9922AAA-B8EF-4058-A0AD-0C7B59E1B923} = {0CD834A7-F850-4498-B145-F42EB2CB9EB3}
+		{A2230EE9-A12A-43B6-BDDA-B4381D4DF2BF} = {0CD834A7-F850-4498-B145-F42EB2CB9EB3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {527A3D23-5D06-4C79-8B58-8D76460277D0}
