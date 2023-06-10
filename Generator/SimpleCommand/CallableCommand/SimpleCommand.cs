@@ -68,11 +68,7 @@ namespace HackPleasanterApi.Generator.SimpleCommand.CallableCommand
                 TempResource.FolderContext(tempPath =>
                 {
 
-                    //tempPath = "/Volumes/WorkSSD/work/testTTT/workDir";
-
-
                     // 出力対象のファイルパス
-                    //var workDir = "/Volumes/WorkSSD/work/testTTT/";
                     var workDir = WorkingDirectory.FullName;
 
                     // 設定情報を抽出する

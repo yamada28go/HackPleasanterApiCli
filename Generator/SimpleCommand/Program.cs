@@ -39,9 +39,6 @@ class Program
         TempResource.FolderContext(tempPath =>
         {
 
-            //tempPath = "/Volumes/WorkSSD/work/testTTT/workDir";
-
-
             // 出力対象のファイルパス
             var workDir = "/Volumes/WorkSSD/work/testTTT/";
 
