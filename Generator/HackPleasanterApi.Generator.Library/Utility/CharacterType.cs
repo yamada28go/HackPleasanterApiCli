@@ -14,7 +14,10 @@ namespace HackPleasanterApi.Generator.Libraryrary.Utility
         {
 
             // C#で使用できない文字を表す正規表現
-            string pattern = @"[^\p{Ll}\p{Lu}\p{Lt}\p{Lo}\p{Nd}\p{Mn}\p{Pc}]";
+            // 以下だと「ー」が使えないので、
+            //            string pattern = @"[^\p{Ll}\p{Lu}\p{Lt}\p{Lo}\p{Nd}\p{Mn}\p{Pc}]";
+            // 以下に置換する
+            string pattern = @"[^\p{L}\p{M}\p{N}\p{Pc}]";
 
             // 不正な文字を_に置換する
             string result = Regex.Replace(input, pattern, "_");
