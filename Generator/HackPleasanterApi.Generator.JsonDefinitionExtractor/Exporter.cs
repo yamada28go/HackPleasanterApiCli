@@ -104,12 +104,21 @@ namespace HackPleasanterApi.Generator.JsonDefinitionExtractor
             {
                 r.InterfaceDefinitionConverter = r.InterfaceDefinitionConverter
                     .Where(e => null != e)
-                    .Where(e => false == string.IsNullOrWhiteSpace(e.LabelText))
+                    .Where(e => false == string.IsNullOrWhiteSpace(e.LabelText) || false == string.IsNullOrWhiteSpace(e.ColumnName))
                     .Select(x =>
                     {
-                        x.VariableName = HackPleasanterApi.Generator.Libraryrary.Utility.CharacterType.ReplaceInvalidChars(x.LabelText);
-                        return x;
-                    }).ToList();
+                        // どちらかから値を採用する
+                        if (false == string.IsNullOrWhiteSpace(x.LabelText))
+                        {
+                            x.VariableName = HackPleasanterApi.Generator.Libraryrary.Utility.CharacterType.ReplaceInvalidChars(x.LabelText);
+                        }
+                        else {
+                            x.VariableName = HackPleasanterApi.Generator.Libraryrary.Utility.CharacterType.ReplaceInvalidChars(x.ColumnName);
+                        }
+                            return x;
+                    })
+                    .Where(e => false == string.IsNullOrWhiteSpace(e.VariableName))
+                    .ToList();
 
             }
 
