@@ -27,7 +27,7 @@ namespace HackPleasanterApi.Generator.Libraryrary.Utility
                 string num_pattern = @"^(?=\d)";
                 string replacement = "_";
 
-                result = Regex.Replace(input, num_pattern, replacement);
+                result = Regex.Replace(result, num_pattern, replacement);
             }
 
             return result;
