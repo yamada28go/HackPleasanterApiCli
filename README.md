@@ -53,13 +53,13 @@ docker hubでも配布しています。
 bashの場合
 
 ```
-docker run --rm -v $(pwd)/Working:/local yamada28go/hack-pleasanter-api-cli2:0.5 /local SimpleCommand export.json
+docker run --rm -v $(pwd)/Working:/local yamada28go/hack-pleasanter-api-cli2:0.6 /local SimpleCommand export.json
 ```
 
 windowsの場合
 
 ```
-docker run --rm -v %CD%/Working:/local yamada28go/hack-pleasanter-api-cli2:0.5 /local SimpleCommand export.json
+docker run --rm -v %CD%/Working:/local yamada28go/hack-pleasanter-api-cli2:0.6 /local SimpleCommand export.json
 ```
 
 ## 実行結果
