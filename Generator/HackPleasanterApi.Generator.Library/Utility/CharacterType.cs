@@ -22,6 +22,14 @@ namespace HackPleasanterApi.Generator.Libraryrary.Utility
             // 不正な文字を_に置換する
             string result = Regex.Replace(input, pattern, "_");
 
+            //行頭が数字で始まっている場合、使えない文字列となっているので_をつけて数値を外す
+            {
+                string num_pattern = @"^(?=\d)";
+                string replacement = "_";
+
+                result = Regex.Replace(input, num_pattern, replacement);
+            }
+
             return result;
 
 #if false

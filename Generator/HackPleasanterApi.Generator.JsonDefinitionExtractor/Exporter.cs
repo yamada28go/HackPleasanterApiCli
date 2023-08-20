@@ -30,6 +30,8 @@ using System.IO;
 using NLog;
 using System.Text;
 using System.Text.RegularExpressions;
+using System;
+
 
 namespace HackPleasanterApi.Generator.JsonDefinitionExtractor
 {
@@ -128,6 +130,21 @@ namespace HackPleasanterApi.Generator.JsonDefinitionExtractor
                     })
                     .Where(e => false == string.IsNullOrWhiteSpace(e.VariableName))
                     .ToList();
+
+                // 同じ名前を持っていたら、名前が衝突しないように、後ろにカラム名を付加する
+                {
+                  var gl = r.InterfaceDefinitionConverter.Select(x=> Tuple.Create(x.VariableName,x)).GroupBy(x => x.Item1).ToList();
+                    // 名前が重複しているパターン
+                  var tl = gl.Where(x => x.Count() != 1).ToList();
+
+                    // この場合、値が重複しないように変更を書ける
+                    foreach (var i in tl) {
+                        foreach (var e in i)
+                        {
+                            e.Item2.VariableName = e.Item2.VariableName + "_" + e.Item2.ColumnName;
+                        }
+                    }
+                }
 
             }
 
