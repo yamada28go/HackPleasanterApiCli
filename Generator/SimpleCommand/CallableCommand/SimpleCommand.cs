@@ -80,7 +80,7 @@ namespace HackPleasanterApi.Generator.SimpleCommand.CallableCommand
                     {
                         // TypeScrypt
                         {
-                            var pg = new ScriptTs(tempPath, "0.2");
+                            var pg = new ScriptTs(tempPath, "0.3");
                             var g = new HackPleasanterApi.Generator.SimpleCommand.Logic.CodeGanarator();
                             g.d(workDir, exportCfg, pg);
                         }
