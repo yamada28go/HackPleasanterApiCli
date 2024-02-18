@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>HackPleasanterApi.Generator.SimpleCommand</RootNamespace>
+
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <PreserveCompilationReferences>true</PreserveCompilationReferences>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Helper\" />
+    <None Remove="TemplatesFiles\" />
+    <None Remove="Logic\" />
+    <None Remove="CallableCommand\" />
+    <None Remove="TemplatesFiles\Settings\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helper\" />
+    <Folder Include="TemplatesFiles\" />
+    <Folder Include="Logic\" />
+    <Folder Include="CallableCommand\" />
+    <Folder Include="TemplatesFiles\Settings\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="LibGit2Sharp" Version="0.27.2" />
+    <PackageReference Include="ProcessX" Version="1.5.5" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libs\HackPleasanterApi.Generator.CodeGenerator\HackPleasanterApi.Generator.CodeGenerator.csproj" />
+    <ProjectReference Include="..\..\Libs\HackPleasanterApi.Generator.JsonDefinitionExtractor\HackPleasanterApi.Generator.JsonDefinitionExtractor.csproj" />
+  </ItemGroup>
+</Project>
