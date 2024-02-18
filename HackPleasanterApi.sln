@@ -17,11 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackPleasanterApi.Generator
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackPleasanterApi.Generator.JsonDefinitionExtractor", "Generator\Libs\HackPleasanterApi.Generator.JsonDefinitionExtractor\HackPleasanterApi.Generator.JsonDefinitionExtractor.csproj", "{A1EF6F42-6871-4956-B151-DFD9BC832931}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackPleasanterApi.Generator.Library", "Generator\Libs\HackPleasanterApi.Generator.Library\HackPleasanterApi.Generator.Library.csproj", "{A2157200-F323-486A-AC4E-AAA70693510B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugCommand", "Generator\Command\DebugCommand\DebugCommand.csproj", "{9EEFFBC6-107A-4F5B-AC0A-6A9255FE4D07}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerationCommand", "Generator\Command\GenerationCommand\GenerationCommand.csproj", "{2018EC27-608E-4C97-93F0-802DAD085046}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackPleasanterApi.Generator.Library", "Generator\Libs\HackPleasanterApi.Generator.Library\HackPleasanterApi.Generator.Library.csproj", "{46FBB0AF-B19F-4E44-BA0F-E352AA1A4E6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,6 @@ Global
 		{A1EF6F42-6871-4956-B151-DFD9BC832931}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1EF6F42-6871-4956-B151-DFD9BC832931}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1EF6F42-6871-4956-B151-DFD9BC832931}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A2157200-F323-486A-AC4E-AAA70693510B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A2157200-F323-486A-AC4E-AAA70693510B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A2157200-F323-486A-AC4E-AAA70693510B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A2157200-F323-486A-AC4E-AAA70693510B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9EEFFBC6-107A-4F5B-AC0A-6A9255FE4D07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9EEFFBC6-107A-4F5B-AC0A-6A9255FE4D07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EEFFBC6-107A-4F5B-AC0A-6A9255FE4D07}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,6 +49,10 @@ Global
 		{2018EC27-608E-4C97-93F0-802DAD085046}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2018EC27-608E-4C97-93F0-802DAD085046}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2018EC27-608E-4C97-93F0-802DAD085046}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46FBB0AF-B19F-4E44-BA0F-E352AA1A4E6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46FBB0AF-B19F-4E44-BA0F-E352AA1A4E6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46FBB0AF-B19F-4E44-BA0F-E352AA1A4E6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46FBB0AF-B19F-4E44-BA0F-E352AA1A4E6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,9 +63,9 @@ Global
 		{37CB587C-ED26-4B33-A359-3DB1E0B7F4FE} = {0CD834A7-F850-4498-B145-F42EB2CB9EB3}
 		{0767E025-3FF3-4349-A4E3-EF2D9680E2F1} = {37CB587C-ED26-4B33-A359-3DB1E0B7F4FE}
 		{A1EF6F42-6871-4956-B151-DFD9BC832931} = {37CB587C-ED26-4B33-A359-3DB1E0B7F4FE}
-		{A2157200-F323-486A-AC4E-AAA70693510B} = {37CB587C-ED26-4B33-A359-3DB1E0B7F4FE}
 		{9EEFFBC6-107A-4F5B-AC0A-6A9255FE4D07} = {A01D4997-AFF5-49D7-8812-3B142DCDA9A4}
 		{2018EC27-608E-4C97-93F0-802DAD085046} = {A01D4997-AFF5-49D7-8812-3B142DCDA9A4}
+		{46FBB0AF-B19F-4E44-BA0F-E352AA1A4E6D} = {37CB587C-ED26-4B33-A359-3DB1E0B7F4FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {527A3D23-5D06-4C79-8B58-8D76460277D0}

@@ -12,13 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HackPleasanterApi.Generator.Library\HackPleasanterApi.Generator.Library.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="CallableCommand\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CallableCommand\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HackPleasanterApi.Generator.Library\HackPleasanterApi.Generator.Library.csproj" />
   </ItemGroup>
 </Project>
