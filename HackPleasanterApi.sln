@@ -5,17 +5,23 @@ VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generator", "Generator", "{0CD834A7-F850-4498-B145-F42EB2CB9EB3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HackPleasanterApi.Generator.CodeGenerator", "Generator\HackPleasanterApi.Generator.CodeGenerator\HackPleasanterApi.Generator.CodeGenerator.csproj", "{1E8E5B7C-8FBC-4E85-ADC6-3EE86EE3D53A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Working", "Working", "{67ACB997-36A2-4934-B6F9-2E42A132BBAE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HackPleasanterApi.Generator.Library", "Generator\HackPleasanterApi.Generator.Library\HackPleasanterApi.Generator.Library.csproj", "{3DAA3B4D-4FA0-4690-88D5-774F75AE4ECD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Command", "Command", "{A01D4997-AFF5-49D7-8812-3B142DCDA9A4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HackPleasanterApi.Generator.JsonDefinitionExtractor", "Generator\HackPleasanterApi.Generator.JsonDefinitionExtractor\HackPleasanterApi.Generator.JsonDefinitionExtractor.csproj", "{9BB27919-3081-41C8-869E-D39E962EC987}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntranceCommand", "Generator\Command\EntranceCommand\EntranceCommand.csproj", "{03EA307A-8A66-4F3A-A558-A8DDC1CE84ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntranceCommand", "Generator\EntranceCommand\EntranceCommand.csproj", "{E9922AAA-B8EF-4058-A0AD-0C7B59E1B923}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{37CB587C-ED26-4B33-A359-3DB1E0B7F4FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCommand", "Generator\SimpleCommand\SimpleCommand.csproj", "{A2230EE9-A12A-43B6-BDDA-B4381D4DF2BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackPleasanterApi.Generator.CodeGenerator", "Generator\Libs\HackPleasanterApi.Generator.CodeGenerator\HackPleasanterApi.Generator.CodeGenerator.csproj", "{0767E025-3FF3-4349-A4E3-EF2D9680E2F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackPleasanterApi.Generator.JsonDefinitionExtractor", "Generator\Libs\HackPleasanterApi.Generator.JsonDefinitionExtractor\HackPleasanterApi.Generator.JsonDefinitionExtractor.csproj", "{A1EF6F42-6871-4956-B151-DFD9BC832931}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugCommand", "Generator\Command\DebugCommand\DebugCommand.csproj", "{9EEFFBC6-107A-4F5B-AC0A-6A9255FE4D07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerationCommand", "Generator\Command\GenerationCommand\GenerationCommand.csproj", "{2018EC27-608E-4C97-93F0-802DAD085046}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackPleasanterApi.Generator.Library", "Generator\Libs\HackPleasanterApi.Generator.Library\HackPleasanterApi.Generator.Library.csproj", "{46FBB0AF-B19F-4E44-BA0F-E352AA1A4E6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,36 +29,43 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1E8E5B7C-8FBC-4E85-ADC6-3EE86EE3D53A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E8E5B7C-8FBC-4E85-ADC6-3EE86EE3D53A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E8E5B7C-8FBC-4E85-ADC6-3EE86EE3D53A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E8E5B7C-8FBC-4E85-ADC6-3EE86EE3D53A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3DAA3B4D-4FA0-4690-88D5-774F75AE4ECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3DAA3B4D-4FA0-4690-88D5-774F75AE4ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3DAA3B4D-4FA0-4690-88D5-774F75AE4ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3DAA3B4D-4FA0-4690-88D5-774F75AE4ECD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9BB27919-3081-41C8-869E-D39E962EC987}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9BB27919-3081-41C8-869E-D39E962EC987}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9BB27919-3081-41C8-869E-D39E962EC987}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9BB27919-3081-41C8-869E-D39E962EC987}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E9922AAA-B8EF-4058-A0AD-0C7B59E1B923}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E9922AAA-B8EF-4058-A0AD-0C7B59E1B923}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E9922AAA-B8EF-4058-A0AD-0C7B59E1B923}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E9922AAA-B8EF-4058-A0AD-0C7B59E1B923}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A2230EE9-A12A-43B6-BDDA-B4381D4DF2BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A2230EE9-A12A-43B6-BDDA-B4381D4DF2BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A2230EE9-A12A-43B6-BDDA-B4381D4DF2BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A2230EE9-A12A-43B6-BDDA-B4381D4DF2BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03EA307A-8A66-4F3A-A558-A8DDC1CE84ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03EA307A-8A66-4F3A-A558-A8DDC1CE84ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03EA307A-8A66-4F3A-A558-A8DDC1CE84ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03EA307A-8A66-4F3A-A558-A8DDC1CE84ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0767E025-3FF3-4349-A4E3-EF2D9680E2F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0767E025-3FF3-4349-A4E3-EF2D9680E2F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0767E025-3FF3-4349-A4E3-EF2D9680E2F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0767E025-3FF3-4349-A4E3-EF2D9680E2F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1EF6F42-6871-4956-B151-DFD9BC832931}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1EF6F42-6871-4956-B151-DFD9BC832931}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1EF6F42-6871-4956-B151-DFD9BC832931}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1EF6F42-6871-4956-B151-DFD9BC832931}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EEFFBC6-107A-4F5B-AC0A-6A9255FE4D07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EEFFBC6-107A-4F5B-AC0A-6A9255FE4D07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EEFFBC6-107A-4F5B-AC0A-6A9255FE4D07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EEFFBC6-107A-4F5B-AC0A-6A9255FE4D07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2018EC27-608E-4C97-93F0-802DAD085046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2018EC27-608E-4C97-93F0-802DAD085046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2018EC27-608E-4C97-93F0-802DAD085046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2018EC27-608E-4C97-93F0-802DAD085046}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46FBB0AF-B19F-4E44-BA0F-E352AA1A4E6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46FBB0AF-B19F-4E44-BA0F-E352AA1A4E6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46FBB0AF-B19F-4E44-BA0F-E352AA1A4E6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46FBB0AF-B19F-4E44-BA0F-E352AA1A4E6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{1E8E5B7C-8FBC-4E85-ADC6-3EE86EE3D53A} = {0CD834A7-F850-4498-B145-F42EB2CB9EB3}
-		{3DAA3B4D-4FA0-4690-88D5-774F75AE4ECD} = {0CD834A7-F850-4498-B145-F42EB2CB9EB3}
-		{9BB27919-3081-41C8-869E-D39E962EC987} = {0CD834A7-F850-4498-B145-F42EB2CB9EB3}
-		{E9922AAA-B8EF-4058-A0AD-0C7B59E1B923} = {0CD834A7-F850-4498-B145-F42EB2CB9EB3}
-		{A2230EE9-A12A-43B6-BDDA-B4381D4DF2BF} = {0CD834A7-F850-4498-B145-F42EB2CB9EB3}
+		{A01D4997-AFF5-49D7-8812-3B142DCDA9A4} = {0CD834A7-F850-4498-B145-F42EB2CB9EB3}
+		{03EA307A-8A66-4F3A-A558-A8DDC1CE84ED} = {A01D4997-AFF5-49D7-8812-3B142DCDA9A4}
+		{37CB587C-ED26-4B33-A359-3DB1E0B7F4FE} = {0CD834A7-F850-4498-B145-F42EB2CB9EB3}
+		{0767E025-3FF3-4349-A4E3-EF2D9680E2F1} = {37CB587C-ED26-4B33-A359-3DB1E0B7F4FE}
+		{A1EF6F42-6871-4956-B151-DFD9BC832931} = {37CB587C-ED26-4B33-A359-3DB1E0B7F4FE}
+		{9EEFFBC6-107A-4F5B-AC0A-6A9255FE4D07} = {A01D4997-AFF5-49D7-8812-3B142DCDA9A4}
+		{2018EC27-608E-4C97-93F0-802DAD085046} = {A01D4997-AFF5-49D7-8812-3B142DCDA9A4}
+		{46FBB0AF-B19F-4E44-BA0F-E352AA1A4E6D} = {37CB587C-ED26-4B33-A359-3DB1E0B7F4FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {527A3D23-5D06-4C79-8B58-8D76460277D0}

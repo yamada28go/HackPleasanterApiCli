@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+
+    <PreserveCompilationReferences>true</PreserveCompilationReferences>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="15.0.6" />
+    <PackageReference Include="NLog" Version="4.7.6" />
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.21308.1" />
+    <PackageReference Include="RazorLight" Version="2.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="System.CommandLine" />
+    <None Remove="CallableCommand \" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CallableCommand \" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HackPleasanterApi.Generator.Library\HackPleasanterApi.Generator.Library.csproj" />
+  </ItemGroup>
+</Project>
