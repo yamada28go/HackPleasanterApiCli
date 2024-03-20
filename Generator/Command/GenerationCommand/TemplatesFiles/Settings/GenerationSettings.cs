@@ -100,7 +100,7 @@ namespace HackPleasanterApi.Generator.SimpleCommand.TemplatesFiles.Settings
 
     public class ScriptTsSettings : SettingsBase
     {
-        public static string DefaultVer = "0.4";
+        public static string DefaultVer = "0.5";
         public ScriptTsSettings()
     : base(ScriptTsSettings.DefaultVer)
         {
