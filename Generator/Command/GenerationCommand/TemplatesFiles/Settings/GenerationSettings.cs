@@ -115,7 +115,7 @@ namespace HackPleasanterApi.Generator.SimpleCommand.TemplatesFiles.Settings
 
     public class PostgreSQLSettings : SettingsBase
     {
-        public static string DefaultVer = "0.2";
+        public static string DefaultVer = "0.3";
         public PostgreSQLSettings()
     : base(PostgreSQLSettings.DefaultVer)
         {
