@@ -109,7 +109,16 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Loder
                     var lines = ele.ChoicesText.Split(CSVConstant.ChoicesText_NewLine);
                     ele.ChoicesTextInfos = lines.Select(e =>
                     {
-                        var l = e.Split(CSVConstant.ChoicesText_ColumnSeparator);
+                        var l = e.Split(CSVConstant.ChoicesText_ColumnSeparator)
+                        // 空文字が紛れている場合、無視する
+                        // 問題となるパターンとして以下のようなデータが入力された場合が考えられる。
+                        // この場合、PCは2列のデータだが、3列データとして勘違いされてしまう。
+                        //
+                        // [問題データ]
+                        // 100,PC,
+                        // 200,モニタ
+                        // 300,スマホ
+                        .Where(x=> !string.IsNullOrWhiteSpace(x)).ToArray();
 
                         if (1 == l.Length)
                         {
