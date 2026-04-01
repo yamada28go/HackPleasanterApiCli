@@ -1,0 +1,17 @@
+namespace Snapshot.Generated.Models
+{
+    public enum @(Model.SiteDefinition.SiteVariableName)StatusModel
+    {
+@foreach (var item in Model.ClassifiedInterface.ClassHash)
+{
+    if (item.HasChoicesTextInfos)
+    {
+        foreach (var choice in item.ChoicesTextInfos)
+        {
+<text>        @(choice.VariableName) = @(choice.Value),
+</text>
+        }
+    }
+}
+    }
+}
