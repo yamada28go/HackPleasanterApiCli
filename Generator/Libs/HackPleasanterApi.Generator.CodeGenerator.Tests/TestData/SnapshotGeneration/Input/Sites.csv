@@ -1,0 +1,3 @@
+SiteId,Title,IsTarget,SiteVariableName,Memo
+10,Orders,True,Orders,Snapshot target
+20,Ignored,False,Ignored,Should not be generated

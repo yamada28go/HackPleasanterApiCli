@@ -1,0 +1,19 @@
+namespace Snapshot.Generated.Services
+{
+    public static class @(Model.SiteDefinition.SiteVariableName)ServiceSnapshot
+    {
+        public const string GeneratedDate = "@Model.GeneratedDate";
+        public const string TemplateSuffix = "@Model.TemplateFilesConfig.EndPrefix";
+        public const string KnownTemplates = "@string.Join(",", Model.AllTemplateFilesConfig.Keys)";
+@foreach (var item in Model.ClassifiedInterface.NumHash)
+{
+<text>        public const string @(item.VariableName) = "@(item.ColumnName)|@(item.LabelText)|@(item.Description)|@(item.ValidateRequired)";
+</text>
+}
+@foreach (var item in Model.ClassifiedInterface.DateHash)
+{
+<text>        public const string @(item.VariableName) = "@(item.ColumnName)|@(item.LabelText)|@(item.Description)";
+</text>
+}
+    }
+}

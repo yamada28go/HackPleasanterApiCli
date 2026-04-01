@@ -1,0 +1,5 @@
+Title,SiteId,ParentId,InheritPermission,Description,ValidateRequired,ColumnName,LabelText,VariableName,IsTarget,ChoicesText
+Orders,10,0,0,Order status,,ClassA,Status,Status,True,100|C|Open|C|Open description|C|OpenStatus|L|200|C|Closed|C|Closed description|C|ClosedStatus
+Orders,10,0,0,Order amount,True,NumA,Amount,Amount,True,
+Orders,10,0,0,Ship date,,DateA,ShipDate,ShipDate,True,
+Ignored,20,0,0,Ignored amount,,NumA,IgnoredAmount,IgnoredAmount,True,

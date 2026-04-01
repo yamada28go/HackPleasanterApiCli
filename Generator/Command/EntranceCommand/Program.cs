@@ -48,25 +48,7 @@ namespace EntranceCommand
             // 参考
             // https://qiita.com/TsuyoshiUshio@github/items/02902f4f46f0aa37e4b1
 
-            // Create a root command with some options
-            var rootCommand = new RootCommand
-            {
-                        new Argument<DirectoryInfo>(
-                            "WorkingDirectory",
-                            description: "コマンドの作業ディレクトリ"
-                            ),
-            };
-
-            rootCommand.Description = "Pleasanter インターフェースコード生成";
-
-            // コード生成を一括で生成するためのコマンド種別を登録する
-            rootCommand.Add(HackPleasanterApi.Generator.GenerationCommand.CallableCommand.GenerationCommandDef.MakeCommand());
-
-            // コード生成を一括で生成するためのコマンド種別を登録する
-            rootCommand.Add(HackPleasanterApi.Generator.GenerationCommand.CallableCommand.DefaultConfigurationFileGenerationCommandDef.MakeCommand());
-
-            // デバッグ用のオプションを初期化する
-            rootCommand.Add(HackPleasanterApi.Generator.DebugCommand.CallableCommand.DebugCommandDef.MakeCommand());
+            var rootCommand = BuildRootCommand();
 
 
             // 生成処理を開始
@@ -78,6 +60,25 @@ namespace EntranceCommand
             logger.Debug("End Invoke!");
 
             logger.Info($"Pleasanter インターフェースコード生成 コマンド　終了!!! ");
+        }
+
+        internal static RootCommand BuildRootCommand()
+        {
+            var rootCommand = new RootCommand
+            {
+                new Argument<DirectoryInfo>(
+                    "WorkingDirectory",
+                    description: "コマンドの作業ディレクトリ"
+                ),
+            };
+
+            rootCommand.Description = "Pleasanter インターフェースコード生成";
+
+            rootCommand.Add(HackPleasanterApi.Generator.GenerationCommand.CallableCommand.GenerationCommandDef.MakeCommand());
+            rootCommand.Add(HackPleasanterApi.Generator.GenerationCommand.CallableCommand.DefaultConfigurationFileGenerationCommandDef.MakeCommand());
+            rootCommand.Add(HackPleasanterApi.Generator.DebugCommand.CallableCommand.DebugCommandDef.MakeCommand());
+
+            return rootCommand;
         }
     }
 }
