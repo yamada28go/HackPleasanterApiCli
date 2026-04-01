@@ -1,4 +1,4 @@
-using HackPleasanterApi.Generator.JsonDefinitionExtractor.Converter;
+﻿using HackPleasanterApi.Generator.JsonDefinitionExtractor.Converter;
 using HackPleasanterApi.Generator.JsonDefinitionExtractor.Models;
 using Xunit;
 

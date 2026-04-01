@@ -1,4 +1,4 @@
-using HackPleasanterApi.Generator.SimpleCommand.TemplatesFiles.Settings;
+﻿using HackPleasanterApi.Generator.SimpleCommand.TemplatesFiles.Settings;
 using Xunit;
 
 namespace HackPleasanterApi.Generator.GenerationCommand.Tests.TemplatesFiles.Settings;

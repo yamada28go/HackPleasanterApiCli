@@ -17,10 +17,10 @@
  * under the License.
  * */
 
-using CsvHelper.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using CsvHelper.Configuration;
 
 namespace HackPleasanterApi.Generator.Library.Models.CSV.Map
 {

@@ -18,8 +18,8 @@
  * */
 
 using System;
-using HackPleasanterApi.Generator.JsonDefinitionExtractor.Config;
 using System.IO;
+using HackPleasanterApi.Generator.JsonDefinitionExtractor.Config;
 
 namespace HackPleasanterApi.Generator.GenerationCommand.Logic
 {

@@ -17,20 +17,19 @@
  * under the License.
  * */
 
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-
+using System.Text;
+using System.Text.RegularExpressions;
+using HackPleasanterApi.Generator.JsonDefinitionExtractor.Config;
 using HackPleasanterApi.Generator.JsonDefinitionExtractor.Converter;
 using HackPleasanterApi.Generator.JsonDefinitionExtractor.Models;
 using HackPleasanterApi.Generator.JsonDefinitionExtractor.Reader;
 using HackPleasanterApi.Generator.Library.Models.CSV;
 using HackPleasanterApi.Generator.Library.Service;
-using HackPleasanterApi.Generator.JsonDefinitionExtractor.Config;
-using System.IO;
 using NLog;
-using System.Text;
-using System.Text.RegularExpressions;
-using System;
 
 
 namespace HackPleasanterApi.Generator.JsonDefinitionExtractor

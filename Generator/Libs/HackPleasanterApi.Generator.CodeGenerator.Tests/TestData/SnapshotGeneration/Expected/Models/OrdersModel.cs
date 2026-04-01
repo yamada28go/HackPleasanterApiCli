@@ -1,4 +1,4 @@
-namespace Snapshot.Generated.Models
+﻿namespace Snapshot.Generated.Models
 {
     public enum OrdersStatusModel
     {

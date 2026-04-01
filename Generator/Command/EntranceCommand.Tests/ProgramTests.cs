@@ -1,6 +1,6 @@
+﻿using System.CommandLine;
 using HackPleasanterApi.Generator.DebugCommand.CallableCommand;
 using HackPleasanterApi.Generator.GenerationCommand.CallableCommand;
-using System.CommandLine;
 using Xunit;
 
 namespace EntranceCommand.Tests;

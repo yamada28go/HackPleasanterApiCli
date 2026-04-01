@@ -1,4 +1,4 @@
-using HackPleasanterApi.Generator.Libraryrary.Utility;
+﻿using HackPleasanterApi.Generator.Libraryrary.Utility;
 using Xunit;
 
 namespace HackPleasanterApi.Generator.Library.Tests.Utility;

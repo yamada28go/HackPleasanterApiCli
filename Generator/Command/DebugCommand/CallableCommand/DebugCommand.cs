@@ -20,12 +20,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.CommandLine;
-using NLog;
 using System.CommandLine.Invocation;
-using HackPleasanterApi.Generator.JsonDefinitionExtractor.CallableCommand;
+using System.IO;
 using HackPleasanterApi.Generator.CodeGenerator.CallableCommand;
+using HackPleasanterApi.Generator.JsonDefinitionExtractor.CallableCommand;
+using NLog;
 
 namespace HackPleasanterApi.Generator.DebugCommand.CallableCommand
 {

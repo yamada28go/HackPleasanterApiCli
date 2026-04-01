@@ -17,11 +17,11 @@
  * under the License.
  * */
 
-using HackPleasanterApi.Generator.CodeGenerator.CallableCommand;
-using NLog;
 using System.CommandLine;
 using System.IO;
 using System.Linq;
+using HackPleasanterApi.Generator.CodeGenerator.CallableCommand;
+using NLog;
 
 namespace HackPleasanterApi.Generator.CodeGenerator
 {

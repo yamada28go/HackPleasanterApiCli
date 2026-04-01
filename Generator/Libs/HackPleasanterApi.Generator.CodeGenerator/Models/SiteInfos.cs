@@ -17,13 +17,13 @@
  * under the License.
  * */
 
-using HackPleasanterApi.Generator.CodeGenerator.Configs;
-using HackPleasanterApi.Generator.Library.Models.CSV;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using HackPleasanterApi.Generator.CodeGenerator.Configs;
+using HackPleasanterApi.Generator.Library.Models.CSV;
 
 namespace HackPleasanterApi.Generator.CodeGenerator.Models
 {

@@ -21,14 +21,14 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Text;
 using System.Linq;
+using System.Text;
+using CsvHelper;
+using CsvHelper.Configuration;
+using HackPleasanterApi.Generator.CodeGenerator.Configs;
 using HackPleasanterApi.Generator.CodeGenerator.Models;
 using HackPleasanterApi.Generator.Library.Models.CSV;
-using HackPleasanterApi.Generator.CodeGenerator.Configs;
 using HackPleasanterApi.Generator.Library.Models.CSV.Map;
-using CsvHelper.Configuration;
-using CsvHelper;
 using HackPleasanterApi.Generator.Libraryrary.Constant;
 
 namespace HackPleasanterApi.Generator.CodeGenerator.Loder
@@ -118,7 +118,7 @@ namespace HackPleasanterApi.Generator.CodeGenerator.Loder
                         // 100,PC,
                         // 200,モニタ
                         // 300,スマホ
-                        .Where(x=> !string.IsNullOrWhiteSpace(x)).ToArray();
+                        .Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
 
                         if (1 == l.Length)
                         {

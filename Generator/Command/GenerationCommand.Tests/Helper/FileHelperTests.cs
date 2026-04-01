@@ -1,4 +1,4 @@
-using HackPleasanterApi.Generator.GenerationCommand.Helper;
+﻿using HackPleasanterApi.Generator.GenerationCommand.Helper;
 using Xunit;
 
 namespace HackPleasanterApi.Generator.GenerationCommand.Tests.Helper;

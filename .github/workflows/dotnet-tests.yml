@@ -23,5 +23,8 @@ jobs:
       - name: Restore
         run: dotnet restore HackPleasanterApi.sln
 
+      - name: Verify formatting
+        run: dotnet format HackPleasanterApi.sln --verify-no-changes --no-restore
+
       - name: Test
         run: dotnet test HackPleasanterApi.sln --configuration Release --no-restore -m:1 -nodeReuse:false

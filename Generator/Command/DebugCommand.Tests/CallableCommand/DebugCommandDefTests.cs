@@ -1,5 +1,5 @@
+﻿using System.CommandLine;
 using HackPleasanterApi.Generator.DebugCommand.CallableCommand;
-using System.CommandLine;
 using Xunit;
 
 namespace HackPleasanterApi.Generator.DebugCommand.Tests.CallableCommand;
