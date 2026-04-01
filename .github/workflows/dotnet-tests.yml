@@ -24,8 +24,14 @@ jobs:
       - name: Restore
         run: dotnet restore HackPleasanterApi.sln
 
-      - name: Verify formatting
-        run: dotnet format HackPleasanterApi.sln --verify-no-changes --no-restore
+      - name: Verify whitespace formatting
+        run: dotnet format whitespace HackPleasanterApi.sln --verify-no-changes --no-restore
+
+      - name: Verify code style formatting
+        run: dotnet format style HackPleasanterApi.sln --verify-no-changes --no-restore
+
+      - name: Lint
+        run: dotnet build HackPleasanterApi.sln --configuration Release --no-restore
 
       - name: Test
         run: dotnet test HackPleasanterApi.sln --configuration Release --no-restore -m:1 -nodeReuse:false

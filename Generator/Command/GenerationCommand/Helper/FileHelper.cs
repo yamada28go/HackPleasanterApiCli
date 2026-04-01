@@ -17,7 +17,6 @@
  * under the License.
  * */
 
-using System;
 namespace HackPleasanterApi.Generator.GenerationCommand.Helper
 {
     public class FileHelper

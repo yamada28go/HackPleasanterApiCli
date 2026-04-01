@@ -17,15 +17,7 @@
  * under the License.
  * */
 
-using System.Text;
-using System.Text.Json;
-using CsvHelper;
-using HackPleasanterApi.Generator.CodeGenerator.Configs;
 using HackPleasanterApi.Generator.GenerationCommand.Helper;
-using HackPleasanterApi.Generator.GenerationCommand.Logic;
-using HackPleasanterApi.Generator.GenerationCommand.TemplatesFiles;
-using HackPleasanterApi.Generator.JsonDefinitionExtractor.Config;
-using LibGit2Sharp;
 using NLog;
 
 namespace HackPleasanterApi.Generator.GenerationCommand;

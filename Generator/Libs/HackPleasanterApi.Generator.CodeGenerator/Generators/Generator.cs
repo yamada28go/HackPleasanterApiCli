@@ -17,11 +17,8 @@
  * under the License.
  * */
 
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using HackPleasanterApi.Generator.CodeGenerator.Configs;
 using HackPleasanterApi.Generator.CodeGenerator.Models;
 using NLog;

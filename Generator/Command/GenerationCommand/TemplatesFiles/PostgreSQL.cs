@@ -17,8 +17,6 @@
  * under the License.
  * */
 
-using System;
-using System.Runtime.Serialization;
 using HackPleasanterApi.Generator.SimpleCommand.TemplatesFiles.Settings;
 using Zx;
 

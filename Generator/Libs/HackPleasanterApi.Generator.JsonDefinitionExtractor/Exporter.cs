@@ -21,8 +21,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using HackPleasanterApi.Generator.JsonDefinitionExtractor.Config;
 using HackPleasanterApi.Generator.JsonDefinitionExtractor.Converter;
 using HackPleasanterApi.Generator.JsonDefinitionExtractor.Models;

@@ -1,5 +1,4 @@
-﻿using System;
-namespace HackPleasanterApi.Generator.SimpleCommand.TemplatesFiles.Settings
+﻿namespace HackPleasanterApi.Generator.SimpleCommand.TemplatesFiles.Settings
 {
 
     public class DebugSettings

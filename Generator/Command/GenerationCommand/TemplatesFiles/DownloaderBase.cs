@@ -17,13 +17,10 @@
  * under the License.
  * */
 
-using System;
-using System.IO;
 using Cysharp.Diagnostics;
 using HackPleasanterApi.Generator.SimpleCommand.TemplatesFiles.Settings;
 using LibGit2Sharp;
 using NLog;
-using Zx;
 
 namespace HackPleasanterApi.Generator.GenerationCommand.TemplatesFiles
 {

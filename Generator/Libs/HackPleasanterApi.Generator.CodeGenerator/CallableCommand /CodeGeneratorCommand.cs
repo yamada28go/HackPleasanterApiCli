@@ -18,14 +18,7 @@
  * */
 
 
-using System;
-using System.Collections.Generic;
 using System.CommandLine;
-using System.CommandLine.Invocation;
-using System.IO;
-using HackPleasanterApi.Generator.CodeGenerator.Configs;
-using HackPleasanterApi.Generator.CodeGenerator.Loder;
-using Microsoft.Extensions.Logging;
 using NLog;
 
 namespace HackPleasanterApi.Generator.CodeGenerator.CallableCommand

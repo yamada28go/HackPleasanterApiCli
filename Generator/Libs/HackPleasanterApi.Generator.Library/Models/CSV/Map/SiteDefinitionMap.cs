@@ -17,9 +17,6 @@
  * under the License.
  * */
 
-using System;
-using System.Collections.Generic;
-using System.Text;
 using CsvHelper.Configuration;
 
 namespace HackPleasanterApi.Generator.Library.Models.CSV.Map
