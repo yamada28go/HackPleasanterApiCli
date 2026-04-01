@@ -70,7 +70,7 @@ namespace HackPleasanterApi.Generator.Library.Service
                 .Where(e => e != null)
                 .Select(e => new SiteDefinition
                 {
-                    SiteId = e.SiteId,
+                    SiteId = e!.SiteId,
                     Title = e.Title
                 })
                 .OrderBy(e => e.SiteId)
@@ -102,7 +102,7 @@ namespace HackPleasanterApi.Generator.Library.Service
             .Where(e => e.SiteSettings != null).Select(e =>
               {
                   var siteSettings = System.Text.Json.JsonSerializer.Deserialize<SiteSettings>(e.SiteSettings);
-                  if (null == siteSettings.Columns)
+                  if (siteSettings?.Columns == null)
                   {
                       return null;
                   }
@@ -128,7 +128,7 @@ namespace HackPleasanterApi.Generator.Library.Service
 
               })
              .Where(e => e != null)
-            .SelectMany(e => e)
+            .SelectMany(e => e!)
             .Where(e => e != null)
             .OrderBy(e => e.SiteId)
             .ThenBy(e => e.ColumnName)

@@ -28,7 +28,7 @@ namespace HackPleasanterApi.Generator.Library.Models.CSV
         #region Siteテーブル関係
 
         // みんな同じ値を持つ
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
         /// <summary>
         /// 対象となるサイトID
         /// </summary>
@@ -41,12 +41,12 @@ namespace HackPleasanterApi.Generator.Library.Models.CSV
         /// <summary>
         /// ユーザーが指定すサイト名称
         /// </summary>
-        public string SiteVariableName { get; set; }
+        public string SiteVariableName { get; set; } = string.Empty;
 
         /// <summary>
         /// メモ
         /// </summary>
-        public string Memo { get; set; }
+        public string Memo { get; set; } = string.Empty;
 
         /// <summary>
         /// 変換対処テーブルか判定する

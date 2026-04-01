@@ -52,7 +52,6 @@ namespace HackPleasanterApi.Generator.Library.Utility
         public static T Deserialize<T>(string xmlFile) where T : new()
         {
             var xmlSerializer2 = new XmlSerializer(typeof(T));
-            T result;
             var xmlSettings = new System.Xml.XmlReaderSettings()
             {
                 CheckCharacters = false,
@@ -61,10 +60,8 @@ namespace HackPleasanterApi.Generator.Library.Utility
             using (var xmlReader
                     = System.Xml.XmlReader.Create(streamReader, xmlSettings))
             {
-                result = (T)xmlSerializer2.Deserialize(xmlReader);
+                return (T?)xmlSerializer2.Deserialize(xmlReader) ?? new T();
             }
-
-            return result;
         }
 
     }

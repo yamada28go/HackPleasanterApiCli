@@ -22,6 +22,6 @@ namespace HackPleasanterApi.Generator.Library.Models.JSON
     class SiteSettings
     {
 
-        public List<Column> Columns { get; set; }
+        public List<Column>? Columns { get; set; }
     }
 }

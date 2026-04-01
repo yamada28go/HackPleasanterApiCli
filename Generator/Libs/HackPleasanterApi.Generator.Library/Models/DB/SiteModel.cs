@@ -41,8 +41,8 @@ namespace HackPleasanterApi.Generator.Library.Models.DB
         // public User LockedUser = new User();
         // public SiteCollection Ancestors = null;
         public int SiteMenu = 0;
-        public List<string> MonitorChangesColumns = null;
-        public List<string> TitleColumns = null;
+        public List<string>? MonitorChangesColumns = null;
+        public List<string>? TitleColumns = null;
         //   public Export Export = null;
         //public DateTime ApiCountDate = 0.ToDateTime();
         public int ApiCount = 0;
