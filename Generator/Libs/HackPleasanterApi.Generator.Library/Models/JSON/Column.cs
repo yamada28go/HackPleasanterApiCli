@@ -17,15 +17,11 @@
  * under the License.
  * */
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace HackPleasanterApi.Generator.Library.Models.JSON
 {
     class Column
     {
-        public string ColumnName { get; set; }
-        public string LabelText { get; set; }
+        public string ColumnName { get; set; } = string.Empty;
+        public string LabelText { get; set; } = string.Empty;
     }
 }

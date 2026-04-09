@@ -17,13 +17,8 @@
  * under the License.
  * */
 
-using System;
-using System.IO;
 using System.Text.Json;
-using CsvHelper;
-using HackPleasanterApi.Generator.CodeGenerator;
 using HackPleasanterApi.Generator.CodeGenerator.Configs;
-using HackPleasanterApi.Generator.CodeGenerator.Loder;
 using HackPleasanterApi.Generator.JsonDefinitionExtractor.Config;
 using NLog;
 

@@ -18,12 +18,8 @@
  * */
 
 
-using System;
-using System.Collections.Generic;
 using System.CommandLine;
 using System.CommandLine.Invocation;
-using HackPleasanterApi.Generator.GenerationCommand.Helper;
-using HackPleasanterApi.Generator.GenerationCommand.TemplatesFiles;
 using HackPleasanterApi.Generator.SimpleCommand.TemplatesFiles.Settings;
 using NLog;
 

@@ -1,5 +1,4 @@
-using HackPleasanterApi.Generator.CodeGenerator;
-using HackPleasanterApi.Generator.CodeGenerator.Configs;
+﻿using HackPleasanterApi.Generator.CodeGenerator.Configs;
 using HackPleasanterApi.Generator.CodeGenerator.Loder;
 using Xunit;
 

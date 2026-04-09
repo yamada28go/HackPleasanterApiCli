@@ -18,9 +18,6 @@
  * */
 
 using CsvHelper.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HackPleasanterApi.Generator.Library.Models.CSV.Map
 {

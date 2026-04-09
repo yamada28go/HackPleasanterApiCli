@@ -18,11 +18,7 @@
  * */
 
 
-using System;
-using System.Collections.Generic;
 using System.CommandLine;
-using System.CommandLine.Invocation;
-using System.IO;
 using NLog;
 
 namespace HackPleasanterApi.Generator.JsonDefinitionExtractor.CallableCommand

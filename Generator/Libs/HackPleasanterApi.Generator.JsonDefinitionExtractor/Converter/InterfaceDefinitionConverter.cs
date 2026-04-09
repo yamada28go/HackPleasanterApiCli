@@ -17,12 +17,11 @@
  * under the License.
  * */
 
-using HackPleasanterApi.Generator.JsonDefinitionExtractor.Models;
-using HackPleasanterApi.Generator.Library.Models.CSV;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
+using HackPleasanterApi.Generator.JsonDefinitionExtractor.Models;
+using HackPleasanterApi.Generator.Library.Models.CSV;
 using HackPleasanterApi.Generator.Libraryrary.Constant;
 
 namespace HackPleasanterApi.Generator.JsonDefinitionExtractor.Converter

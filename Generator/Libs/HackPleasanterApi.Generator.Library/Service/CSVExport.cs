@@ -17,20 +17,14 @@
  * under the License.
  * */
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.Json;
-using System.Linq;
-using System.IO;
-using CsvHelper;
 using System.Globalization;
-
+using System.Text;
+using CsvHelper;
 using CsvHelper.Configuration;
-using HackPleasanterApi.Generator.Library.Models.DB;
-using HackPleasanterApi.Generator.Library.Models.JSON;
 using HackPleasanterApi.Generator.Library.Models.CSV;
 using HackPleasanterApi.Generator.Library.Models.CSV.Map;
+using HackPleasanterApi.Generator.Library.Models.DB;
+using HackPleasanterApi.Generator.Library.Models.JSON;
 
 namespace HackPleasanterApi.Generator.Library.Service
 {
@@ -76,7 +70,7 @@ namespace HackPleasanterApi.Generator.Library.Service
                 .Where(e => e != null)
                 .Select(e => new SiteDefinition
                 {
-                    SiteId = e.SiteId,
+                    SiteId = e!.SiteId,
                     Title = e.Title
                 })
                 .OrderBy(e => e.SiteId)
@@ -108,7 +102,7 @@ namespace HackPleasanterApi.Generator.Library.Service
             .Where(e => e.SiteSettings != null).Select(e =>
               {
                   var siteSettings = System.Text.Json.JsonSerializer.Deserialize<SiteSettings>(e.SiteSettings);
-                  if (null == siteSettings.Columns)
+                  if (siteSettings?.Columns == null)
                   {
                       return null;
                   }
@@ -134,7 +128,7 @@ namespace HackPleasanterApi.Generator.Library.Service
 
               })
              .Where(e => e != null)
-            .SelectMany(e => e)
+            .SelectMany(e => e!)
             .Where(e => e != null)
             .OrderBy(e => e.SiteId)
             .ThenBy(e => e.ColumnName)

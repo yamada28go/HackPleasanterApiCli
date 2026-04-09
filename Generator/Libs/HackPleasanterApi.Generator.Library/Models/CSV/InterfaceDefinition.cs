@@ -17,10 +17,6 @@
  * under the License.
  * */
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace HackPleasanterApi.Generator.Library.Models.CSV
 
 {
@@ -32,7 +28,7 @@ namespace HackPleasanterApi.Generator.Library.Models.CSV
         #region Siteテーブル関係
 
         // みんな同じ値を持つ
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
         public long SiteId { get; set; }
         public long ParentId { get; set; }
         public long InheritPermission { get; set; }
@@ -40,7 +36,7 @@ namespace HackPleasanterApi.Generator.Library.Models.CSV
         /// <summary>
         /// 説明文字列
         /// </summary>
-        public string Description { get; set; }
+        public string Description { get; set; } = string.Empty;
 
         /// <summary>
         /// 必須レコード
@@ -50,7 +46,7 @@ namespace HackPleasanterApi.Generator.Library.Models.CSV
         /// <summary>
         /// 選択項目(プルダウン、リンクなど)
         /// </summary>
-        public string ChoicesText { get; set; }
+        public string ChoicesText { get; set; } = string.Empty;
 
         /// <summary>
         /// 選択項目定義
@@ -93,17 +89,17 @@ namespace HackPleasanterApi.Generator.Library.Models.CSV
                 /// <summary>
                 /// 変数名
                 /// </summary>
-                public string VariableName { get; set; }
+                public string VariableName { get; set; } = string.Empty;
 
                 /// <summary>
                 /// 説明文字列
                 /// </summary>
-                public string Description { get; set; }
+                public string Description { get; set; } = string.Empty;
 
                 /// <summary>
                 /// 値
                 /// </summary>
-                public string Value { get; set; }
+                public string Value { get; set; } = string.Empty;
 
             }
 
@@ -116,12 +112,12 @@ namespace HackPleasanterApi.Generator.Library.Models.CSV
         /// <summary>
         /// カラム名
         /// </summary>
-        public string ColumnName { get; set; }
+        public string ColumnName { get; set; } = string.Empty;
 
         /// <summary>
         /// 画面上の表示名
         /// </summary>
-        public string LabelText { get; set; }
+        public string LabelText { get; set; } = string.Empty;
 
 
 
@@ -132,7 +128,7 @@ namespace HackPleasanterApi.Generator.Library.Models.CSV
         /// <summary>
         /// 新たに指定する変数名
         /// </summary>
-        public string VariableName { get; set; }
+        public string VariableName { get; set; } = string.Empty;
 
         /// <summary>
         /// 変換対処テーブルか判定する

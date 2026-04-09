@@ -17,9 +17,7 @@
  * under the License.
  * */
 
-using System;
 using HackPleasanterApi.Generator.JsonDefinitionExtractor.Config;
-using System.IO;
 
 namespace HackPleasanterApi.Generator.GenerationCommand.Logic
 {

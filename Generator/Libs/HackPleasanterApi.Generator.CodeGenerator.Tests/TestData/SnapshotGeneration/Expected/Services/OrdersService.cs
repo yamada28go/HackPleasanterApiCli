@@ -1,4 +1,4 @@
-namespace Snapshot.Generated.Services
+﻿namespace Snapshot.Generated.Services
 {
     public static class OrdersServiceSnapshot
     {

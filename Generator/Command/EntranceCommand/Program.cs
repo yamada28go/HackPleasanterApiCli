@@ -17,10 +17,10 @@
  * under the License.
  * */
 
-using NLog;
 using System.CommandLine;
 using System.IO;
 using System.Linq;
+using NLog;
 
 namespace EntranceCommand
 {

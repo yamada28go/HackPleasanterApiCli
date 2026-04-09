@@ -17,15 +17,12 @@
  * under the License.
  * */
 
+using System.IO;
+using System.Linq;
 using HackPleasanterApi.Generator.CodeGenerator.Configs;
 using HackPleasanterApi.Generator.CodeGenerator.Models;
 using NLog;
 using RazorLight;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace HackPleasanterApi.Generator.CodeGenerator.Generators
 {

@@ -17,20 +17,6 @@
  * under the License.
  * */
 
-using HackPleasanterApi.Generator.JsonDefinitionExtractor.Converter;
-using HackPleasanterApi.Generator.JsonDefinitionExtractor.Models;
-using HackPleasanterApi.Generator.JsonDefinitionExtractor.Reader;
-using System;
-using System.IO;
-using System.Text;
-using System.Text.Json;
-using System.Linq;
-using System.Collections.Generic;
-using HackPleasanterApi.Generator.Library.Models.CSV;
-using HackPleasanterApi.Generator.Library.Service;
-using Microsoft.Extensions.CommandLineUtils;
-using HackPleasanterApi.Generator.JsonDefinitionExtractor.Config;
-
 namespace HackPleasanterApi.Generator.JsonDefinitionExtractor
 {
     class Program

@@ -1,4 +1,4 @@
-using System.Text;
+﻿using System.Text;
 using HackPleasanterApi.Generator.JsonDefinitionExtractor.Config;
 using Xunit;
 

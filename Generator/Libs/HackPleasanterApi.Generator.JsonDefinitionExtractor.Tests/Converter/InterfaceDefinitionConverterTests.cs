@@ -1,4 +1,4 @@
-using HackPleasanterApi.Generator.JsonDefinitionExtractor.Converter;
+﻿using HackPleasanterApi.Generator.JsonDefinitionExtractor.Converter;
 using HackPleasanterApi.Generator.JsonDefinitionExtractor.Models;
 using HackPleasanterApi.Generator.Libraryrary.Constant;
 using Xunit;
@@ -72,7 +72,7 @@ public class InterfaceDefinitionConverterTests
         Assert.Equal("ClassA", actual[0].ColumnName);
 
         Assert.Equal(0, actual[1].SiteId);
-        Assert.Null(actual[1].ColumnName);
+        Assert.Equal(string.Empty, actual[1].ColumnName);
 
         Assert.Equal(20, actual[2].SiteId);
         Assert.Equal("NumA", actual[2].ColumnName);
@@ -83,6 +83,6 @@ public class InterfaceDefinitionConverterTests
         Assert.True(actual[3].ValidateRequired);
 
         Assert.Equal(0, actual[4].SiteId);
-        Assert.Null(actual[4].ColumnName);
+        Assert.Equal(string.Empty, actual[4].ColumnName);
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-namespace HackPleasanterApi.Generator.SimpleCommand.TemplatesFiles.Settings
+﻿namespace HackPleasanterApi.Generator.SimpleCommand.TemplatesFiles.Settings
 {
 
     public class DebugSettings
@@ -41,21 +40,22 @@ namespace HackPleasanterApi.Generator.SimpleCommand.TemplatesFiles.Settings
 
         public static GenerationSettings MakeFullSetDefault()
         {
-            var tc = new GenerationSettings(
-                new CsharpSettings(),
-                new ScriptTsSettings(),
-                new PostgreSQLSettings()
-            );
-
             var debug = new DebugSettings { TemplatePath = "Path/to/template/file" };
+            var csharpSettings = new CsharpSettings
+            {
+                DebugSettings = debug,
+                Namespace = "test.namespace"
+            };
+            var scriptTsSettings = new ScriptTsSettings
+            {
+                DebugSettings = debug
+            };
+            var postgreSQLSettings = new PostgreSQLSettings
+            {
+                DebugSettings = debug
+            };
 
-            tc.CsharpSettings.DebugSettings = debug;
-            tc.CsharpSettings.Namespace = "test.namespace";
-
-            tc.ScriptTsSettings.DebugSettings = debug;
-            tc.PostgreSQLSettings.DebugSettings = debug;
-
-            return tc;
+            return new GenerationSettings(csharpSettings, scriptTsSettings, postgreSQLSettings);
         }
 
 
@@ -129,4 +129,3 @@ namespace HackPleasanterApi.Generator.SimpleCommand.TemplatesFiles.Settings
     }
 
 }
-

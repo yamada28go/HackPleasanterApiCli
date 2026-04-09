@@ -15,13 +15,23 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 6.0.x
+          global-json-file: global.json
           cache: true
           cache-dependency-path: |
+            global.json
             **/*.csproj
 
       - name: Restore
         run: dotnet restore HackPleasanterApi.sln
+
+      - name: Verify whitespace formatting
+        run: dotnet format whitespace HackPleasanterApi.sln --verify-no-changes --no-restore
+
+      - name: Verify code style formatting
+        run: dotnet format style HackPleasanterApi.sln --verify-no-changes --no-restore
+
+      - name: Lint
+        run: dotnet build HackPleasanterApi.sln --configuration Release --no-restore
 
       - name: Test
         run: dotnet test HackPleasanterApi.sln --configuration Release --no-restore -m:1 -nodeReuse:false

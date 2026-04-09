@@ -17,9 +17,6 @@
  * under the License.
  * */
 
-using System;
-using System.Diagnostics;
-using Cysharp.Diagnostics;
 using HackPleasanterApi.Generator.SimpleCommand.TemplatesFiles.Settings;
 using Zx;
 

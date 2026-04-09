@@ -1,5 +1,4 @@
-using HackPleasanterApi.Generator.GenerationCommand.CallableCommand;
-using System.CommandLine;
+﻿using HackPleasanterApi.Generator.GenerationCommand.CallableCommand;
 using Xunit;
 
 namespace HackPleasanterApi.Generator.GenerationCommand.Tests.CallableCommand;

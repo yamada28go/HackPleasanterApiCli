@@ -1,4 +1,4 @@
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 using HackPleasanterApi.Generator.Library.Utility;
 using Xunit;
 
