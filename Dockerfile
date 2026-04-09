@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0-noble AS build
 WORKDIR /src
 
 COPY ["HackPleasanterApi.sln", "./"]
@@ -25,12 +25,12 @@ RUN dotnet publish "Generator/Command/EntranceCommand/EntranceCommand.csproj" \
     /p:TreatWarningsAsErrors=false \
     /p:CodeAnalysisTreatWarningsAsErrors=false
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS final
+FROM mcr.microsoft.com/dotnet/aspnet:10.0-noble AS final
 WORKDIR /app
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends curl ca-certificates \
-    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && curl -fsSL https://deb.nodesource.com/setup_24.x | bash - \
     && apt-get install -y --no-install-recommends nodejs \
     && npm install --global prettier sql-formatter \
     && npm cache clean --force \

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
 
     <PreserveCompilationReferences>true</PreserveCompilationReferences>
@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="CsvHelper" Version="15.0.6" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="10.0.0" />
     <PackageReference Include="NLog" Version="4.7.6" />
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.21308.1" />
     <PackageReference Include="RazorLight" Version="2.3.1" />

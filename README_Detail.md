@@ -22,8 +22,8 @@ api 通信定義や、sql 用の view を生成する補助プログラム郡で
 ---
 ## 配布形式
 
-本プログラムは.Net Core環境で実装されています。
-.Net Core環境は可搬可能な形式ではありますが、ホスト側に対象となる環境を用意する必要があります。
+本プログラムは .NET 10 環境で実装されています。
+.NET 10 環境は可搬可能な形式ではありますが、ホスト側に対象となる環境を用意する必要があります。
 このため、環境の持ち運びが便利なdocer環境での配布を基本形式としています。
 
 コマンドのヘルプ出力例を以下に示します。
@@ -287,4 +287,3 @@ CSVファイルからコードを生成します。
 ```
 docker run -v $(pwd)/Working:/local yamada28go/hack-pleasanter-api-cli /local CodeGenerator Generate CodeGeneratorConfig.xml
 ```
-

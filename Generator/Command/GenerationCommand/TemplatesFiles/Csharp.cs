@@ -63,7 +63,7 @@ namespace HackPleasanterApi.Generator.GenerationCommand.TemplatesFiles
             }
 
             //ライブラリを作る
-            var r = await $"dotnet new classlib -n {settingsBase_.ProjectName} -f net6.0";
+            var r = await $"dotnet new classlib -n {settingsBase_.ProjectName} -f net10.0";
             logger.Debug($"cmd out : ${r}");
 
             // "Class1.cs"が作成されるけど不要なので消す
@@ -162,4 +162,3 @@ namespace HackPleasanterApi.Generator.GenerationCommand.TemplatesFiles
         #endregion
     }
 }
-
