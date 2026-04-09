@@ -1,42 +1,41 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
-# --- net core のビルド用定義
-
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS base
-WORKDIR /app
+# syntax=docker/dockerfile:1
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-COPY ["Generator/", "/Generator/"]
-WORKDIR /Generator/Command/EntranceCommand
-RUN dotnet restore "EntranceCommand.csproj"
+WORKDIR /src
 
-# ビルド
-WORKDIR "/Generator/Command/EntranceCommand"
-RUN dotnet build "EntranceCommand.csproj" -c Release -o /app/build
-RUN dotnet publish "EntranceCommand.csproj" -c Release -o /app/publish
+COPY ["HackPleasanterApi.sln", "./"]
+COPY ["Directory.Build.props", "./"]
+COPY ["global.json", "./"]
+COPY ["Generator/Command/EntranceCommand/EntranceCommand.csproj", "Generator/Command/EntranceCommand/"]
+COPY ["Generator/Command/DebugCommand/DebugCommand.csproj", "Generator/Command/DebugCommand/"]
+COPY ["Generator/Command/GenerationCommand/GenerationCommand.csproj", "Generator/Command/GenerationCommand/"]
+COPY ["Generator/Libs/HackPleasanterApi.Generator.CodeGenerator/HackPleasanterApi.Generator.CodeGenerator.csproj", "Generator/Libs/HackPleasanterApi.Generator.CodeGenerator/"]
+COPY ["Generator/Libs/HackPleasanterApi.Generator.JsonDefinitionExtractor/HackPleasanterApi.Generator.JsonDefinitionExtractor.csproj", "Generator/Libs/HackPleasanterApi.Generator.JsonDefinitionExtractor/"]
+COPY ["Generator/Libs/HackPleasanterApi.Generator.Library/HackPleasanterApi.Generator.Library.csproj", "Generator/Libs/HackPleasanterApi.Generator.Library/"]
 
-# 実行対象にコピーする
-FROM base AS publish
-WORKDIR /app/publish
-COPY --from=build /app/publish /app/publish
+RUN dotnet restore "Generator/Command/EntranceCommand/EntranceCommand.csproj" -r linux-x64
 
-# --- 後工程の整形処理用に外部コマンドを使用できるようにする
+COPY ["Generator/", "Generator/"]
 
-# prettierを使えるようにする
-# Node.jsのインストール
-# NodeSourceから最新のNode.jsをインストールするためのコマンドを実行
-RUN apt-get update && apt-get install -y curl 
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
-    apt-get install -y nodejs
-RUN npm install --global prettier
-RUN npm install --global sql-formatter
-RUN rm -rf /var/lib/apt/lists/*    
+RUN dotnet publish "Generator/Command/EntranceCommand/EntranceCommand.csproj" \
+    -c Release \
+    -o /app/publish \
+    /p:DebugType=None \
+    /p:DebugSymbols=false \
+    /p:TreatWarningsAsErrors=false \
+    /p:CodeAnalysisTreatWarningsAsErrors=false
 
-# 実行ファイルを指定
-ENTRYPOINT ["dotnet", "/app/publish/EntranceCommand.dll"]
-#CMD ["--help"]
-#CMD ["while true; do sheep 1; done"]
-#/bin/sh -c "while true; do sleep 1; done"
+FROM mcr.microsoft.com/dotnet/runtime:6.0 AS final
+WORKDIR /app
 
-#デバッグ用　無限待ち
-#ENTRYPOINT ["tail", "-f", "/dev/null"]
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl ca-certificates \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y --no-install-recommends nodejs \
+    && npm install --global prettier sql-formatter \
+    && npm cache clean --force \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=build /app/publish/ ./
+
+ENTRYPOINT ["dotnet", "/app/EntranceCommand.dll"]
