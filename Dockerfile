@@ -25,17 +25,24 @@ RUN dotnet publish "Generator/Command/EntranceCommand/EntranceCommand.csproj" \
     /p:TreatWarningsAsErrors=false \
     /p:CodeAnalysisTreatWarningsAsErrors=false
 
+FROM node:24-bookworm-slim AS node-tools
+ENV NPM_CONFIG_PREFIX=/opt/npm-global
+ENV PATH="${NPM_CONFIG_PREFIX}/bin:${PATH}"
+RUN npm install --global prettier@3.8.1 sql-formatter@15.7.3 \
+    && npm cache clean --force
+
 FROM mcr.microsoft.com/dotnet/aspnet:10.0-noble AS final
 WORKDIR /app
+ENV NPM_CONFIG_PREFIX=/opt/npm-global
+ENV PATH="${NPM_CONFIG_PREFIX}/bin:/usr/local/bin:${PATH}"
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends curl ca-certificates \
-    && curl -fsSL https://deb.nodesource.com/setup_24.x | bash - \
-    && apt-get install -y --no-install-recommends nodejs \
-    && npm install --global prettier sql-formatter \
-    && npm cache clean --force \
-    && rm -rf /var/lib/apt/lists/*
+COPY --from=node-tools /usr/local/bin/node /usr/local/bin/node
+COPY --from=node-tools /usr/local/lib/node_modules /usr/local/lib/node_modules
+COPY --from=node-tools /usr/local/bin/npm /usr/local/bin/npm
+COPY --from=node-tools /usr/local/bin/npx /usr/local/bin/npx
+COPY --from=node-tools /opt/npm-global /opt/npm-global
+COPY --from=build --chown=1000:1000 /app/publish/ ./
 
-COPY --from=build /app/publish/ ./
+USER app
 
 ENTRYPOINT ["dotnet", "/app/EntranceCommand.dll"]
